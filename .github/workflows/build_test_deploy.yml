@@ -37,5 +37,9 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Install playwright and browsers
+        working-directory: ./packages/e2e-tests
+        run: npx playwright install
+
       - name: run e2e playwright tests
-        run: pnpm e2e:test
+        run: pnpm test:e2e
