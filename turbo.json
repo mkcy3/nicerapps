@@ -5,10 +5,20 @@
     "build": {
       "outputs": [".next/**", "!.next/cache/**"]
     },
+    "test": {
+      "cache": false
+    },
+    "e2e:test": {
+      "dependsOn": ["^build"]
+    },
     "lint": {},
     "dev": {
+      "dependsOn": ["^build"],
       "cache": false,
       "persistent": true
+    },
+    "clean": {
+      "cache": false
     }
   }
 }

@@ -1,0 +1,24 @@
+{
+  "name": "e2e-tests",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "npx eslint .",
+    "test": "playwright test",
+    "e2e:test": "start-server-and-test \"(cd ../../apps/charters && pnpm start)\" http://localhost:3000 \"playwright test\""
+  },
+  "dependencies": {
+    "charters": "workspace:*",
+    "start-server-and-test": "^2.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.32.3",
+    "eslint": "^8.39.0",
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*"
+  }
+}
