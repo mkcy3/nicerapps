@@ -4,7 +4,6 @@ module.exports = {
     'turbo',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
     'plugin:typescript-sort-keys/recommended',
     'prettier',
   ],
@@ -24,7 +23,7 @@ module.exports = {
     'react/function-component-definition': [
       2,
       {
-        namedComponents: 'arrow-function',
+        namedComponents: 'function-declaration',
       },
     ],
     '@next/next/no-html-link-for-pages': 'off',
@@ -32,9 +31,6 @@ module.exports = {
   settings: {
     next: {
       rootDir: ['apps/*/', 'packages/*/'],
-    },
-    react: {
-      version: 'detect',
     },
   },
   ignorePatterns: [
