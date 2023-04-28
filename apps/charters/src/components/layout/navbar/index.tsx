@@ -32,7 +32,7 @@ export default function Navbar() {
               <a
                 key={item.name}
                 href={item.href}
-                className="text-sm font-semibold leading-6 text-gray-900"
+                className="inline-block rounded-lg px-2 py-1 text-sm text-slate-700 hover:bg-slate-100 hover:text-slate-900"
               >
                 {item.name}
               </a>
@@ -49,7 +49,7 @@ export default function Navbar() {
               href="#"
               className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
-              Sign up
+              Check Dates
             </a>
           </div>
           <div className="flex lg:hidden">

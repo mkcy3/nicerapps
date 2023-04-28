@@ -1,4 +1,4 @@
-import defaultTheme from 'tailwindcss/defaultTheme'
+const { fontFamily } = require('tailwindcss/defaultTheme')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -24,13 +24,13 @@ module.exports = {
         '4xl': '2rem',
       },
       fontFamily: {
-        sans: ['Inter', ...defaultTheme.fontFamily.sans],
-        display: ['Lexend', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', ...fontFamily.sans],
+        display: ['Lexend', ...fontFamily.sans],
       },
       maxWidth: {
         '2xl': '40rem',
       },
     },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/typography')],
 }
