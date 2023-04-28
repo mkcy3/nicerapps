@@ -1,10 +1,14 @@
 import './globals.css'
 
+import { ClerkProvider } from '@clerk/nextjs/app-beta'
 import React from 'react'
+
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <ClerkProvider>
+        <body>{children}</body>
+      </ClerkProvider>
     </html>
   )
 }

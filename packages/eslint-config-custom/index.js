@@ -19,6 +19,7 @@ module.exports = {
   rules: {
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': 'error',
+    'import/newline-after-import': 'error',
     'no-console': 1,
     'react/function-component-definition': [
       2,
