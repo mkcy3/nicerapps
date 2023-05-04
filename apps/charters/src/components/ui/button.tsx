@@ -6,8 +6,7 @@ export const variantStyles = {
   secondary:
     'group inline-flex items-center justify-center rounded-full px-4 py-2 text-sm text-white ring-1 ring-slate-700 hover:ring-slate-500 focus:outline-none focus-visible:outline-white active:text-slate-400 active:ring-slate-700',
 }
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ComponentProps<'button'> {
   className?: string
   variant?: keyof typeof variantStyles
 }

@@ -22,35 +22,21 @@ export default function MobileMenu({
         data-testid="open-mobile-menu"
       >
         <span className="sr-only">Open main menu</span>
-        <Menu className="h-6 w-6" aria-hidden="true" />
+        <Menu className="h-6 w-6 text-white" aria-hidden="true" />
       </button>
 
       <Dialog
         as="div"
-        className="lg:hidden"
+        className="md:hidden"
         open={isOpen}
         onClose={() => setIsOpen(false)}
       >
         <div className="fixed inset-0 z-10" />
-        <Dialog.Panel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+        <Dialog.Panel className="fixed inset-y-0 left-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
           <div className="flex items-center gap-x-6">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
-            </a>
-            <a
-              href="#"
-              className="ml-auto rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-            >
-              Sign up
-            </a>
             <button
               type="button"
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+              className="-mx-2.5 rounded-md p-2.5 text-gray-700"
               onClick={() => setIsOpen(false)}
               data-testid="close-mobile-menu"
             >
