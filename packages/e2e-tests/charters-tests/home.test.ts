@@ -4,6 +4,6 @@ test('homepage has next.js on it', async ({ page }) => {
   await page.goto('http://localhost:3000')
 
   await expect(
-    page.getByRole('heading', { name: 'Hello, A Next.js!' })
+    page.getByRole('heading', { name: 'Georgian Bay Sailing Yacht Cruises' })
   ).toBeVisible()
 })

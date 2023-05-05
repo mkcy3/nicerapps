@@ -1,12 +1,23 @@
 import './globals.css'
 
+import { ClerkProvider } from '@clerk/nextjs/app-beta'
 import React from 'react'
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+
+import Navbar from '@/components/layout/navbar'
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <ClerkProvider>
+        <body>
+          <Navbar />
+          {children}
+        </body>
+      </ClerkProvider>
     </html>
   )
 }
-
-export default RootLayout
