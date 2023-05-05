@@ -167,9 +167,7 @@ export default function Booking() {
       })
     })
   }
-  console.log(monthObjects)
-  console.log(dateRange)
-  //console.log(range)
+
   function handleClear() {
     setDateRange({ start: null, end: null, range: [] })
   }
@@ -196,6 +194,7 @@ export default function Booking() {
             <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
               {month.days.map((day, dayIdx) =>
                 day?.date ? (
+                  // TODO: all className logic outside of JSX in refactor
                   <button
                     key={day.date}
                     type="button"
@@ -215,8 +214,12 @@ export default function Booking() {
                         'bg-red-400',
                       dayIdx === 0 && 'rounded-tl-lg',
                       dayIdx === 6 && 'rounded-tr-lg',
-                      dayIdx === 28 && 'rounded-bl-lg',
-                      dayIdx === month.days.length - 34 && 'rounded-br-lg'
+                      month.days.length <= 35
+                        ? dayIdx === 28 && 'rounded-bl-lg'
+                        : dayIdx === 35 && 'rounded-bl-lg',
+                      month.days.length === 35 &&
+                        dayIdx === month.days.length - 1 &&
+                        'rounded-br-lg'
                     )}
                   >
                     <time
@@ -231,11 +234,7 @@ export default function Booking() {
                 ) : (
                   <div
                     key={`${month.name}-disabled-${dayIdx}`}
-                    className={cn(
-                      dayIdx === 0 && 'rounded-tl-lg',
-                      dayIdx === 6 && 'rounded-tr-lg',
-                      dayIdx === 34 && 'rounded-br-lg'
-                    )}
+                    className={cn(dayIdx === 0 && 'rounded-tl-lg')}
                   >
                     {' '}
                   </div>
