@@ -19,11 +19,11 @@ model Charter {
   activities  Json?
   startDate   DateTime @db.Date
   endDate     DateTime @db.Date
-  total       Decimal
-  tax         Decimal
-  deposit     Decimal
-  balance     Decimal
-
+  total       Decimal  @db.Decimal(65,2)
+  tax         Decimal  @db.Decimal(65,2)
+  deposit     Decimal  @db.Decimal(65,2)
+  balance     Decimal  @db.Decimal(65,2)
+ 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
