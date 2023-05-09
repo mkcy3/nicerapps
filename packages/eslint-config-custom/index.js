@@ -32,6 +32,9 @@ module.exports = {
     next: {
       rootDir: ['apps/*/', 'packages/*/'],
     },
+    react: {
+      version: '18.2.0',
+    },
   },
   ignorePatterns: [
     '**/*.js',
