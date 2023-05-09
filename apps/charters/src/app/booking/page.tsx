@@ -88,7 +88,6 @@ function buildCalendar(bookedDates: Date[]) {
 
 export default async function Booking() {
   const bookedDates = await getBookedDates()
-  console.log(bookedDates)
   const calendar = buildCalendar(bookedDates)
   return (
     <Container>
