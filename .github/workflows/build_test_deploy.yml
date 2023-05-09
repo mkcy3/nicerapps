@@ -37,6 +37,9 @@ jobs:
       - name: Lint
         run: pnpm lint
 
+      - name: Prisma
+        run: pnpm db:generate:charters
+
       - name: Install playwright and browsers
         working-directory: ./packages/e2e-tests
         run: npx playwright install
