@@ -4,9 +4,9 @@
   "main": "./index.ts",
   "types": "./index.ts",
   "scripts": {
-    "db:generate": "prisma generate",
-    "db:push": "prisma db push --skip-generate",
-    "format:charters": "pnpm exec prisma format --schema ./prisma/charters/schema.prisma"
+    "db:generate:charters": "prisma generate --schema ./prisma/charters/schema.prisma",
+    "db:push:charters": "prisma db push --skip-generate --schema ./prisma/charters/schema.prisma",
+    "format:charters": "prisma format --schema ./prisma/charters/schema.prisma"
   },
   "dependencies": {
     "@prisma/client": "latest"

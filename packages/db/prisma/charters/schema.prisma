@@ -9,13 +9,20 @@ datasource db {
 }
 
 model Charter {
-  stripePi String @id @unique
-  clerkId  String
-clerkEmail String
-sleepAboard Boolean
-passengers Int
-  startDate DateTime @db.Date
-  endDate   DateTime @db.Date
+  stripePi    String   @id @unique
+  stripeIn    String   @unique
+  stripeCus   String
+  clerkId     String
+  clerkEmail  String
+  sleepAboard Boolean
+  passengers  Int
+  activities  Json?
+  startDate   DateTime @db.Date
+  endDate     DateTime @db.Date
+  total       Decimal
+  tax         Decimal
+  deposit     Decimal
+  balance     Decimal
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

@@ -112,9 +112,6 @@ importers:
       '@playwright/test':
         specifier: ^1.32.3
         version: 1.32.3
-      eslint:
-        specifier: ^8.39.0
-        version: 8.39.0
       eslint-config-custom:
         specifier: workspace:*
         version: link:../eslint-config-custom
