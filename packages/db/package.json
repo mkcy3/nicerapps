@@ -1,0 +1,24 @@
+{
+  "name": "db",
+  "version": "0.0.0",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "scripts": {
+    "db:generate:charters": "prisma generate --schema ./prisma/charters/schema.prisma",
+    "db:push:charters": "prisma db push --skip-generate --schema ./prisma/charters/schema.prisma",
+    "format:charters": "prisma format --schema ./prisma/charters/schema.prisma",
+    "db:seed:charters": "NODE_ENV=development prisma db seed"
+  },
+  "prisma": {
+    "seed": "tsx prisma/charters/seed.ts"
+  },
+  "dependencies": {
+    "@prisma/client": "latest"
+  },
+  "devDependencies": {
+    "@types/node": "18.16.1",
+    "prisma": "4.13.0",
+    "tsx": "^3.12.7",
+    "tsconfig": "workspace:*"
+  }
+}

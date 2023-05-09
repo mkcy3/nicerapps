@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Charter {
+  stripePi    String   @id @unique
+  stripeIn    String   @unique
+  stripeCus   String
+  clerkId     String
+  clerkEmail  String
+  sleepAboard Boolean
+  passengers  Int
+  activities  Json?
+  startDate   DateTime @db.Date
+  endDate     DateTime @db.Date
+  total       Decimal  @db.Decimal(65,2)
+  tax         Decimal  @db.Decimal(65,2)
+  deposit     Decimal  @db.Decimal(65,2)
+  balance     Decimal  @db.Decimal(65,2)
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
