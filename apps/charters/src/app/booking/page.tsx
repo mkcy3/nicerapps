@@ -30,10 +30,6 @@ async function getBookedDates() {
     })
     .flat()
 
-  // if (bookedDates.length === 0) {
-  // This will activate the closest `error.js` Error Boundary
-  //   throw new Error('Failed to fetch data');
-  // }
   return rangeDates
 }
 function buildCalendar(bookedDates: Date[]) {
