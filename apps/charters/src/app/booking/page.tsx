@@ -11,16 +11,22 @@ import Container from '@/components/ui/container'
 import { prisma } from '@/lib/prisma'
 
 async function getBookedDates() {
-  const bookedDates = await prisma.charter.findMany({
-    select: {
-      startDate: true,
-      endDate: true,
-    },
-    orderBy: {
-      startDate: 'asc',
-    },
-  })
+  // FIXME: ZOD
+  const bookedDates: { endDate: Date; startDate: Date }[] =
+    await prisma.charter.findMany({
+      select: {
+        startDate: true,
+        endDate: true,
+      },
+      orderBy: {
+        startDate: 'asc',
+      },
+    })
 
+  /** below code block fails on CI as charter is type ANY
+   *  on local machine the any type error was present, until i ran it
+   *  with pnpm dev, and ts started to infer the type for charter
+   */
   const rangeDates = bookedDates
     .map((charter) => {
       return eachDayOfInterval({
