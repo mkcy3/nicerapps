@@ -17,12 +17,6 @@
       "cache": false,
       "persistent": true
     },
-    "db:generate:charters": {
-      "cache": false
-    },
-    "db:push:charters": {
-      "cache": false
-    },
     "clean": {
       "cache": false
     }
