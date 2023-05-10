@@ -2,9 +2,7 @@
 import {
   addDays,
   eachDayOfInterval,
-  eachMonthOfInterval,
   format,
-  isAfter,
   isBefore,
   isSameDay,
   subDays,
