@@ -79,11 +79,11 @@ function buildCalendar(bookedDates: Date[]) {
       return { ...dateObj, isDisabled: false }
     })
 
-    dayDates.unshift(
-      ...new Array(dayDates[0].localDay - 1).fill(dayDates[0].localDay - 1)
-    )
-
-    return { name: format(month, 'MMMM'), days: dayDates }
+    return {
+      name: format(month, 'MMMM'),
+      year: month.getFullYear(),
+      days: dayDates,
+    }
   })
   return monthObjects
 }
@@ -92,8 +92,10 @@ export default async function Booking() {
   const bookedDates = await getBookedDates()
   const calendar = buildCalendar(bookedDates)
   return (
-    <Container>
-      <DatePicker calendar={calendar} />
-    </Container>
+    <main>
+      <Container>
+        <DatePicker calendar={calendar} />
+      </Container>
+    </main>
   )
 }

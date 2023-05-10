@@ -4,14 +4,16 @@ import {
   eachDayOfInterval,
   eachMonthOfInterval,
   format,
+  isAfter,
   isBefore,
   isSameDay,
   subDays,
 } from 'date-fns'
+import { Calendar } from 'iconoir-react'
+import Link from 'next/link'
 import React from 'react'
 import { useImmer } from 'use-immer'
 
-import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
 
 type Day = {
@@ -25,10 +27,11 @@ type Day = {
 type Month = {
   days: Day[]
   name: string
+  year: number
 }
-type Calendar = Month[]
 
-export default function DatePicker({ calendar }: { calendar: Calendar }) {
+export default function DatePicker({ calendar }: { calendar: Month[] }) {
+  const currentMonth = Number(format(new Date(), 'M'))
   const [dateRange, setDateRange] = useImmer<{
     end: Date | null
     range: Date[] | []
@@ -39,63 +42,53 @@ export default function DatePicker({ calendar }: { calendar: Calendar }) {
     range: [],
   })
 
-  function isBookedInRange(calendar: Day[], startRange: Date, endRange: Date) {
-    const firstDay = format(startRange, 'yyyy-MM-dd')
-    const lastDay = format(endRange, 'yyyy-MM-dd')
+  if (currentMonth > 10) return null //<EndOfSeason />
 
-    for (let i = 0, j = calendar.length - 1; i < calendar.length; i++, j--) {
-      if (calendar[i].date === firstDay && calendar[i].isBooked) {
-        return true
-      }
-      if (calendar[j].date === lastDay && calendar[j].isBooked) {
-        return true
-      }
-      if (i === j) {
-        return false
-      }
-    }
-  }
+  const displayDateStart = dateRange?.start
+    ? format(dateRange.start, 'MMM dd')
+    : null
+  const displayDateEnd = dateRange?.end ? format(dateRange.end, 'MMM dd') : null
 
   function handleSelectDate(e: React.MouseEvent<HTMLButtonElement>) {
     const [year, month, day] = e.currentTarget.value.split('-').map(Number)
 
-    const offsetIndex = calendar[month - 5].days[0]
-    const firstDayIndex = typeof offsetIndex === 'number' ? offsetIndex : 0
-    const date = calendar[month - 5].days[day + firstDayIndex - 1]
+    const selectedDate = calendar[month - 5].days[day - 1]
 
     if (!dateRange?.start) {
       return setDateRange((draft) => {
         draft.range = []
-        draft.start = date.day
+        draft.start = selectedDate.day
       })
     }
     const firstDate = dateRange.start
-    if (isBefore(date.day, firstDate)) {
+    if (isBefore(selectedDate.day, firstDate)) {
       return setDateRange((draft) => {
         draft.range = []
-        draft.start = date.day
+        draft.start = selectedDate.day
+
         draft.end = null
       })
     }
     if (
-      isSameDay(date.day, firstDate) ||
-      isSameDay(addDays(firstDate, 1), date.day)
+      isSameDay(selectedDate.day, firstDate) ||
+      isSameDay(addDays(firstDate, 1), selectedDate.day)
     ) {
       return setDateRange((draft) => {
         draft.range = []
-        draft.end = date.day
+        draft.end = selectedDate.day
       })
     }
-
-    const startRange = addDays(firstDate, 1)
-    const endRange = subDays(date.day, 1)
+    const range = eachDayOfInterval({
+      start: addDays(firstDate, 1),
+      end: subDays(selectedDate.day, 1),
+    })
 
     if (
-      isBookedInRange(
-        calendar.flatMap((month) => month.days),
-        startRange,
-        endRange
-      )
+      calendar
+        .flatMap((month) => month.days)
+        .some((day) => {
+          return range.some((r) => isSameDay(day.day, r) && day.isBooked)
+        })
     ) {
       setDateRange((draft) => {
         draft.end = null
@@ -106,29 +99,94 @@ export default function DatePicker({ calendar }: { calendar: Calendar }) {
     }
 
     setDateRange((draft) => {
-      draft.end = date.day
-      draft.range = eachDayOfInterval({
-        start: startRange,
-        end: endRange,
-      })
+      draft.end = selectedDate.day
+      draft.range = range
     })
   }
 
   function handleClear() {
     setDateRange({ start: null, end: null, range: [] })
   }
+
   return (
     <>
-      <div className="my-2">Start Date: {dateRange?.start?.toString()}</div>
-      <div className="my-2">End Date: {dateRange?.end?.toString()}</div>
-      <Button onClick={handleClear}>Clear</Button>
-      <div className="mx-auto grid max-w-3xl grid-cols-1 gap-x-8 gap-y-16 px-4 py-16 sm:grid-cols-2 sm:px-6 xl:max-w-none xl:grid-cols-3 xl:px-8">
+      {/*  FIXME: refactor logic out jsx, make components from repeated jsx*/}
+      <div className="sticky top-0 z-50 bg-white pt-3 sm:relative">
+        <div className="flex flex-row items-center">
+          <div className="flex w-full flex-col gap-y-1 sm:w-2/3 sm:flex-row sm:gap-x-1 sm:py-5 md:w-2/5">
+            <div className="relative rounded-md shadow-sm">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <Calendar
+                  className="h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+              </div>
+              <input
+                type="text"
+                id="start-date"
+                readOnly={true}
+                className="block w-full rounded-md border-0 py-1.5 pl-10 text-left text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                onClick={handleClear}
+                value={displayDateStart ?? ''}
+                placeholder="Embark"
+              />
+
+              {displayDateStart && (
+                <button
+                  onClick={handleClear}
+                  className="absolute inset-y-0 right-0 flex  items-center pr-3"
+                >
+                  <span className="z-10 text-gray-400">Clear</span>
+                </button>
+              )}
+            </div>
+            <span className="mx-auto text-gray-400 sm:self-center">to</span>
+            <div className="relative rounded-md shadow-sm">
+              <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                <Calendar
+                  className="h-5 w-5 text-gray-400"
+                  aria-hidden="true"
+                />
+              </div>
+              <input
+                type="text"
+                id="end-date"
+                readOnly={true}
+                className="block w-full rounded-md border-0 py-1.5 pl-10 text-left text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
+                onClick={handleClear}
+                value={displayDateEnd ?? ''}
+                placeholder="Disembark"
+              />
+
+              {displayDateEnd && (
+                <button
+                  onClick={handleClear}
+                  className="absolute inset-y-0 right-0 flex  items-center pr-3"
+                >
+                  <span className="text-gray-400"> Clear </span>
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="isolate mt-2 grid grid-cols-7 gap-px border-b text-center text-sm sm:hidden">
+          <div>S</div>
+          <div>M</div>
+          <div>T</div>
+          <div>W</div>
+          <div>T</div>
+          <div>F</div>
+          <div>S</div>
+        </div>
+      </div>
+      <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 pb-6 pt-8 sm:pt-0 md:grid-cols-2 md:gap-y-16 xl:grid-cols-3">
         {calendar.map((month) => (
           <section key={month.name} className="text-center">
-            <h2 className="text-sm font-semibold text-gray-900">
-              {month.name}
+            <h2 className="col-start-2 justify-self-center text-sm font-semibold text-gray-900">
+              {month.name} {month.year}
             </h2>
-            <div className="mt-6 grid grid-cols-7 text-xs leading-6 text-gray-500">
+
+            <div className="mt-6 hidden text-xs leading-6 text-gray-500 sm:grid sm:grid-cols-7">
               <div>S</div>
               <div>M</div>
               <div>T</div>
@@ -138,58 +196,68 @@ export default function DatePicker({ calendar }: { calendar: Calendar }) {
               <div>S</div>
             </div>
             <div className="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200">
-              {month.days.map((day, dayIdx) =>
-                day?.date ? (
-                  // FIXME: all className logic outside of JSX in refactor
+              {month.days[0].localDay !== 1 && (
+                <>
+                  {Array(month.days[0].localDay - 1)
+                    .fill(null)
+                    .map((_, i) => (
+                      <div
+                        key={`${month.name}-disabled-${i}`}
+                        className={i === 0 ? 'rounded-tl-lg' : ''}
+                      ></div>
+                    ))}
+                </>
+              )}
+              {month.days.map((day, dayIdx) => (
+                <button
+                  key={day.date}
+                  type="button"
+                  disabled={day.isDisabled || day.isBooked}
+                  onClick={handleSelectDate}
+                  value={day.date}
+                  className={cn(
+                    'py-1.5 hover:bg-gray-100 focus:z-10',
+                    day.isDisabled || day.isBooked
+                      ? 'bg-gray-50 text-gray-400'
+                      : 'bg-white text-gray-900',
+                    isSameDay(dateRange?.start as Date, day.day) &&
+                      'bg-red-900 hover:bg-red-900',
+                    isSameDay(dateRange?.end as Date, day.day) &&
+                      'bg-red-900 hover:bg-red-900',
+                    dateRange.range.some((r) => isSameDay(r, day.day)) &&
+                      'bg-red-400',
+                    dayIdx === 0 && day.localDay === 1 && 'rounded-tl-lg',
+                    dayIdx <= 6 && day.localDay === 7 && 'rounded-tr-lg',
 
-                  <button
-                    key={day.date}
-                    type="button"
-                    disabled={day.isDisabled || day.isBooked}
-                    onClick={handleSelectDate}
-                    value={day.date}
+                    dayIdx >= 23 && day.localDay === 1 && 'rounded-bl-lg',
+                    dayIdx >= 29 && day.localDay === 7 && 'rounded-br-lg'
+                  )}
+                >
+                  <time
+                    dateTime={day.date}
                     className={cn(
-                      'py-1.5 hover:bg-gray-100 focus:z-10',
-                      day.isDisabled || day.isBooked
-                        ? 'bg-gray-50 text-gray-400'
-                        : 'bg-white text-gray-900',
-                      isSameDay(dateRange?.start as Date, day.day) &&
-                        'bg-red-900 hover:bg-red-900',
-                      isSameDay(dateRange?.end as Date, day.day) &&
-                        'bg-red-900 hover:bg-red-900',
-                      dateRange.range.some((r) => isSameDay(r, day.day)) &&
-                        'bg-red-400',
-                      dayIdx === 0 && 'rounded-tl-lg',
-                      dayIdx === 6 && 'rounded-tr-lg',
-                      month.days.length <= 35
-                        ? dayIdx === 28 && 'rounded-bl-lg'
-                        : dayIdx === 35 && 'rounded-bl-lg',
-                      month.days.length === 35 &&
-                        dayIdx === month.days.length - 1 &&
-                        'rounded-br-lg'
+                      'mx-auto flex h-7 w-7 items-center justify-center rounded-full'
                     )}
                   >
-                    <time
-                      dateTime={day.date}
-                      className={cn(
-                        'mx-auto flex h-7 w-7 items-center justify-center rounded-full'
-                      )}
-                    >
-                      {day.monthDay}
-                    </time>
-                  </button>
-                ) : (
-                  <div
-                    key={`${month.name}-disabled-${dayIdx}`}
-                    className={cn(dayIdx === 0 && 'rounded-tl-lg')}
-                  >
-                    {' '}
-                  </div>
-                )
-              )}
+                    {day.monthDay}
+                  </time>
+                </button>
+              ))}
             </div>
           </section>
         ))}
+      </div>
+      <div className="sticky bottom-0 z-50 flex justify-between border bg-white px-6 py-3 sm:hidden">
+        <p className="whitespace-pre-line text-sm">
+          Day Sail: 8 Guests {'\n'}Sleeping: 4-6* Guests
+        </p>
+
+        <Link
+          href="/"
+          className="rounded-full border bg-blue-400 px-6 py-3 text-white "
+        >
+          Next
+        </Link>
       </div>
     </>
   )
