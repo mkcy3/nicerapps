@@ -54,16 +54,15 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
 
     if (!dateRange?.start) {
       return setDateRange((draft) => {
-        draft.range = []
         draft.start = selectedDate.day
+        draft.range = []
       })
     }
     const firstDate = dateRange.start
     if (isBefore(selectedDate.day, firstDate)) {
       return setDateRange((draft) => {
-        draft.range = []
         draft.start = selectedDate.day
-
+        draft.range = []
         draft.end = null
       })
     }
@@ -89,23 +88,23 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
         })
     ) {
       setDateRange((draft) => {
-        draft.end = null
         draft.range = []
+        draft.end = null
       })
       console.log('Error: cannot book that range')
       return
     }
 
     setDateRange((draft) => {
-      draft.end = selectedDate.day
       draft.range = range
+      draft.end = selectedDate.day
     })
   }
 
   function handleClear() {
     setDateRange({ start: null, end: null, range: [] })
   }
-
+  console.log(calendar)
   return (
     <>
       {/*  FIXME: refactor logic out jsx, make components from repeated jsx*/}
@@ -218,10 +217,14 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
                     day.isDisabled || day.isBooked
                       ? 'bg-gray-50 text-gray-400'
                       : 'bg-white text-gray-900',
-                    isSameDay(dateRange?.start as Date, day.day) &&
-                      'bg-red-900 hover:bg-red-900',
-                    isSameDay(dateRange?.end as Date, day.day) &&
-                      'bg-red-900 hover:bg-red-900',
+                    dateRange?.start
+                      ? isSameDay(dateRange?.start as Date, day.day) &&
+                          'bg-red-900 hover:bg-red-900'
+                      : null,
+                    dateRange?.end
+                      ? isSameDay(dateRange?.end as Date, day.day) &&
+                          'bg-red-900 hover:bg-red-900'
+                      : null,
                     dateRange.range.some((r) => isSameDay(r, day.day)) &&
                       'bg-red-400',
                     dayIdx === 0 && day.localDay === 1 && 'rounded-tl-lg',
