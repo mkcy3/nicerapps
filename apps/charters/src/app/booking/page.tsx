@@ -2,6 +2,7 @@ import {
   eachDayOfInterval,
   eachMonthOfInterval,
   format,
+  isAfter,
   isBefore,
   isSameDay,
 } from 'date-fns'
@@ -58,8 +59,7 @@ function buildCalendar(bookedDates: Date[]) {
       const dateObj = {
         localDay: Number(localDay),
         monthDay: Number(monthDay),
-        date: date,
-        day,
+        date,
         isBooked: isSameDay(day, bookedDates[0]),
       }
       if (isSameDay(day, bookedDates[0])) {
@@ -89,6 +89,16 @@ function buildCalendar(bookedDates: Date[]) {
 }
 
 export default async function Booking() {
+  const today = new Date()
+  const cutOffDate = new Date(today.getFullYear(), 9, 10)
+
+  if (isAfter(today, cutOffDate))
+    return (
+      <main>
+        <Container>{/* End of amazing season, book next season! */}</Container>
+      </main>
+    )
+
   const bookedDates = await getBookedDates()
   const calendar = buildCalendar(bookedDates)
   return (

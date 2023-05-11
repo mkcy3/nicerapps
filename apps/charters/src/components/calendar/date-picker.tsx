@@ -5,6 +5,7 @@ import {
   format,
   isBefore,
   isSameDay,
+  parseISO,
   subDays,
 } from 'date-fns'
 import { Calendar } from 'iconoir-react'
@@ -12,11 +13,10 @@ import Link from 'next/link'
 import React from 'react'
 import { useImmer } from 'use-immer'
 
-import { cn } from '@/lib/utils'
+import Day from '@/components/calendar/day'
 
 type Day = {
   date: string
-  day: Date
   isBooked: boolean
   isDisabled: boolean
   localDay: number
@@ -29,18 +29,15 @@ type Month = {
 }
 
 export default function DatePicker({ calendar }: { calendar: Month[] }) {
-  const currentMonth = Number(format(new Date(), 'M'))
   const [dateRange, setDateRange] = useImmer<{
     end: Date | null
     range: Date[] | []
     start: Date | null
   }>({
-    start: null,
     end: null,
     range: [],
+    start: null,
   })
-
-  if (currentMonth > 10) return null //<EndOfSeason />
 
   const displayDateStart = dateRange?.start
     ? format(dateRange.start, 'MMM dd')
@@ -49,42 +46,44 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
 
   function handleSelectDate(e: React.MouseEvent<HTMLButtonElement>) {
     const [year, month, day] = e.currentTarget.value.split('-').map(Number)
-
     const selectedDate = calendar[month - 5].days[day - 1]
+    const selectedDateISO = parseISO(selectedDate.date)
 
     if (!dateRange?.start) {
       return setDateRange((draft) => {
-        draft.start = selectedDate.day
+        draft.start = selectedDateISO
         draft.range = []
       })
     }
     const firstDate = dateRange.start
-    if (isBefore(selectedDate.day, firstDate)) {
+    if (isBefore(selectedDateISO, firstDate)) {
       return setDateRange((draft) => {
-        draft.start = selectedDate.day
+        draft.start = selectedDateISO
         draft.range = []
         draft.end = null
       })
     }
     if (
-      isSameDay(selectedDate.day, firstDate) ||
-      isSameDay(addDays(firstDate, 1), selectedDate.day)
+      isSameDay(selectedDateISO, firstDate) ||
+      isSameDay(addDays(firstDate, 1), selectedDateISO)
     ) {
       return setDateRange((draft) => {
         draft.range = []
-        draft.end = selectedDate.day
+        draft.end = selectedDateISO
       })
     }
     const range = eachDayOfInterval({
       start: addDays(firstDate, 1),
-      end: subDays(selectedDate.day, 1),
+      end: subDays(selectedDateISO, 1),
     })
 
     if (
       calendar
         .flatMap((month) => month.days)
         .some((day) => {
-          return range.some((r) => isSameDay(day.day, r) && day.isBooked)
+          return range.some(
+            (r) => isSameDay(parseISO(day.date), r) && day.isBooked
+          )
         })
     ) {
       setDateRange((draft) => {
@@ -97,7 +96,7 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
 
     setDateRange((draft) => {
       draft.range = range
-      draft.end = selectedDate.day
+      draft.end = selectedDateISO
     })
   }
 
@@ -206,43 +205,13 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
                 </>
               )}
               {month.days.map((day, dayIdx) => (
-                <button
+                <Day
                   key={day.date}
-                  type="button"
-                  disabled={day.isDisabled || day.isBooked}
+                  day={day}
+                  idx={dayIdx}
+                  dateRange={dateRange}
                   onClick={handleSelectDate}
-                  value={day.date}
-                  className={cn(
-                    'py-1.5 hover:bg-gray-100 focus:z-10',
-                    day.isDisabled || day.isBooked
-                      ? 'bg-gray-50 text-gray-400'
-                      : 'bg-white text-gray-900',
-                    dateRange?.start
-                      ? isSameDay(dateRange?.start as Date, day.day) &&
-                          'bg-red-900 hover:bg-red-900'
-                      : null,
-                    dateRange?.end
-                      ? isSameDay(dateRange?.end as Date, day.day) &&
-                          'bg-red-900 hover:bg-red-900'
-                      : null,
-                    dateRange.range.some((r) => isSameDay(r, day.day)) &&
-                      'bg-red-400',
-                    dayIdx === 0 && day.localDay === 1 && 'rounded-tl-lg',
-                    dayIdx <= 6 && day.localDay === 7 && 'rounded-tr-lg',
-
-                    dayIdx >= 23 && day.localDay === 1 && 'rounded-bl-lg',
-                    dayIdx >= 29 && day.localDay === 7 && 'rounded-br-lg'
-                  )}
-                >
-                  <time
-                    dateTime={day.date}
-                    className={cn(
-                      'mx-auto flex h-7 w-7 items-center justify-center rounded-full'
-                    )}
-                  >
-                    {day.monthDay}
-                  </time>
-                </button>
+                />
               ))}
             </div>
           </section>
