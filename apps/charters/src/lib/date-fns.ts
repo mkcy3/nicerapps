@@ -37,7 +37,6 @@ export function eachDayOfInterval(
 ) {
   const { end, start } = interval
   if (!end || !start) return []
-  console.log(end, start)
   if (isSameDay(end, start)) return []
   return dateFns.eachDayOfInterval({ end: end, start: start }, options)
 }
