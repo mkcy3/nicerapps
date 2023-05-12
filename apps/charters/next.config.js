@@ -1,5 +1,5 @@
 module.exports = {
-  //breaks headlessui in react 18
+  //FIXME:reactStrictMode breaks playwright headlessui mobile-menu test
   reactStrictMode: true,
   transpilePackages: ['db'],
   experimental: {

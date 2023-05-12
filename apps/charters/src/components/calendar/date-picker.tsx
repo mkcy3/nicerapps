@@ -1,65 +1,60 @@
 'use client'
-import {
-  addDays,
-  eachDayOfInterval,
-  format,
-  isBefore,
-  isSameDay,
-  parseISO,
-  subDays,
-} from 'date-fns'
+
 import { Calendar } from 'iconoir-react'
 import Link from 'next/link'
 import React from 'react'
 import { useImmer } from 'use-immer'
 
-import Day from '@/components/calendar/day'
+import DayButton, {
+  CalendarDay,
+  DateRange,
+} from '@/components/calendar/day-button'
+import { buttonVariantStyles } from '@/components/ui/button'
+import {
+  addDays,
+  eachDayOfInterval,
+  fns,
+  format,
+  isBefore,
+  isSameDay,
+} from '@/lib/date-fns'
+import { cn } from '@/lib/utils'
 
-type Day = {
-  date: string
-  isBooked: boolean
-  isDisabled: boolean
-  localDay: number
-  monthDay: number
-}
 type Month = {
-  days: Day[]
+  days: CalendarDay[]
   name: string
   year: number
 }
 
 export default function DatePicker({ calendar }: { calendar: Month[] }) {
-  const [dateRange, setDateRange] = useImmer<{
-    end: Date | null
-    range: Date[] | []
-    start: Date | null
-  }>({
+  const [selectedDateRange, setSelectedDateRange] = useImmer<DateRange>({
     end: null,
-    range: [],
     start: null,
   })
 
-  const displayDateStart = dateRange?.start
-    ? format(dateRange.start, 'MMM dd')
-    : null
-  const displayDateEnd = dateRange?.end ? format(dateRange.end, 'MMM dd') : null
+  const bookingRange = eachDayOfInterval({
+    start: selectedDateRange?.start,
+    end: selectedDateRange?.end,
+  })
+
+  const displayDateStart = format(selectedDateRange.start, 'MMM dd')
+  const displayDateEnd = format(selectedDateRange.end, 'MMM dd')
 
   function handleSelectDate(e: React.MouseEvent<HTMLButtonElement>) {
     const [year, month, day] = e.currentTarget.value.split('-').map(Number)
     const selectedDate = calendar[month - 5].days[day - 1]
-    const selectedDateISO = parseISO(selectedDate.date)
+    const selectedDateISO = fns.parseISO(selectedDate.date)
 
-    if (!dateRange?.start) {
-      return setDateRange((draft) => {
+    if (!selectedDateRange?.start) {
+      return setSelectedDateRange((draft) => {
         draft.start = selectedDateISO
-        draft.range = []
       })
     }
-    const firstDate = dateRange.start
+    const firstDate = selectedDateRange.start
     if (isBefore(selectedDateISO, firstDate)) {
-      return setDateRange((draft) => {
+      return setSelectedDateRange((draft) => {
         draft.start = selectedDateISO
-        draft.range = []
+
         draft.end = null
       })
     }
@@ -67,49 +62,46 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
       isSameDay(selectedDateISO, firstDate) ||
       isSameDay(addDays(firstDate, 1), selectedDateISO)
     ) {
-      return setDateRange((draft) => {
-        draft.range = []
+      return setSelectedDateRange((draft) => {
         draft.end = selectedDateISO
       })
     }
     const range = eachDayOfInterval({
-      start: addDays(firstDate, 1),
-      end: subDays(selectedDateISO, 1),
-    })
+      start: firstDate,
+      end: selectedDateISO,
+    }) as Date[]
 
     if (
       calendar
         .flatMap((month) => month.days)
         .some((day) => {
           return range.some(
-            (r) => isSameDay(parseISO(day.date), r) && day.isBooked
+            (r) => isSameDay(fns.parseISO(day.date), r) && day.isBooked
           )
         })
     ) {
-      setDateRange((draft) => {
-        draft.range = []
+      setSelectedDateRange((draft) => {
         draft.end = null
       })
       console.log('Error: cannot book that range')
       return
     }
 
-    setDateRange((draft) => {
-      draft.range = range
+    setSelectedDateRange((draft) => {
       draft.end = selectedDateISO
     })
   }
 
   function handleClear() {
-    setDateRange({ start: null, end: null, range: [] })
+    setSelectedDateRange({ start: null, end: null })
   }
-  console.log(calendar)
+
   return (
     <>
-      {/*  FIXME: refactor logic out jsx, make components from repeated jsx*/}
       <div className="sticky top-0 z-50 bg-white pt-3 sm:relative">
         <div className="flex flex-row items-center">
           <div className="flex w-full flex-col gap-y-1 sm:w-2/3 sm:flex-row sm:gap-x-1 sm:py-5 md:w-2/5">
+            {/* refactor repeated jsx */}
             <div className="relative rounded-md shadow-sm">
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                 <Calendar
@@ -205,11 +197,12 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
                 </>
               )}
               {month.days.map((day, dayIdx) => (
-                <Day
+                <DayButton
                   key={day.date}
                   day={day}
                   idx={dayIdx}
-                  dateRange={dateRange}
+                  dateRange={selectedDateRange}
+                  bookingRange={bookingRange}
                   onClick={handleSelectDate}
                 />
               ))}
@@ -224,7 +217,7 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
 
         <Link
           href="/"
-          className="rounded-full border bg-blue-400 px-6 py-3 text-white "
+          className={cn(buttonVariantStyles['primary'], 'px-6 py-3')}
         >
           Next
         </Link>

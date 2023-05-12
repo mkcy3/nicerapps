@@ -12,7 +12,7 @@ import Container from '@/components/ui/container'
 import { prisma } from '@/lib/prisma'
 
 async function getBookedDates() {
-  // FIXME: ZOD
+  // explicitly set bookedDates as it fails ci otherwise, charter: any
   const bookedDates: { endDate: Date; startDate: Date }[] =
     await prisma.charter.findMany({
       select: {
@@ -24,10 +24,6 @@ async function getBookedDates() {
       },
     })
 
-  /** below code block fails on CI as charter is type ANY
-   *  on local machine the any type error was present, until i ran it
-   *  with pnpm dev, and ts started to infer the type for charter
-   */
   const rangeDates = bookedDates
     .map((charter) => {
       return eachDayOfInterval({
@@ -39,6 +35,7 @@ async function getBookedDates() {
 
   return rangeDates
 }
+
 function buildCalendar(bookedDates: Date[]) {
   const today = new Date()
   const startOfMonth = new Date(2023, 4, 1) // May is month 4 in JavaScript's Date object
@@ -95,7 +92,9 @@ export default async function Booking() {
   if (isAfter(today, cutOffDate))
     return (
       <main>
-        <Container>{/* End of amazing season, book next season! */}</Container>
+        <Container>
+          <div> end of season</div>
+        </Container>
       </main>
     )
 
