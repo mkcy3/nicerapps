@@ -10,10 +10,8 @@ import DayButton, {
   SelectedDates,
 } from '@/components/calendar/day-button'
 import { buttonVariantStyles } from '@/components/ui/button'
-import { format, isBefore, isSameDay, parseToDate } from '@/lib/date-fns'
+import { format, isBefore, isSameDay } from '@/lib/date-fns'
 import { cn } from '@/lib/utils'
-
-import CharterSummary from '../charter-summary'
 
 type Month = {
   days: CalendarDay[]
@@ -78,10 +76,10 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
   }
 
   return (
-    <div className="flex flex-col xl:flex-row">
+    <>
       <h1 className="sr-only">Booking</h1>
-      <div className="xl:w-3/4">
-        <div className="sticky top-0 z-50 bg-white pt-3 sm:relative">
+      <div className="pb-6 sm:pb-16">
+        <div className="sticky top-0 z-50 bg-white pt-3 xl:relative">
           <div className="flex flex-row items-center">
             <div className="flex w-full flex-col gap-y-1 sm:w-2/3 sm:flex-row sm:gap-x-1 sm:py-5 md:w-2/5">
               {/* refactor repeated jsx */}
@@ -197,23 +195,22 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
           ))}
         </div>
       </div>
-      <CharterSummary
-        className="xl:w-1/4"
-        start={parseToDate(start)}
-        end={parseToDate(end)}
-      />
-      <div className="sticky bottom-0 z-50 flex justify-between border bg-white px-6 py-3 sm:hidden">
+
+      <div className="sticky bottom-0 z-50 flex justify-between border bg-white px-6 py-3 xl:rounded-lg">
         <p className="whitespace-pre-line text-sm">
           Day Sail: 8 Guests {'\n'}Sleeping: 4-6* Guests
         </p>
 
         <Link
           href="/"
-          className={cn(buttonVariantStyles['primary'], 'px-6 py-3')}
+          className={cn(
+            buttonVariantStyles['primary'],
+            'align-end px-6 py-3 lg:w-40'
+          )}
         >
           Next
         </Link>
       </div>
-    </div>
+    </>
   )
 }
