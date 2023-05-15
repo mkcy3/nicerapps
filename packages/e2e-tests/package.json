@@ -16,7 +16,7 @@
     "start-server-and-test": "^2.0.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.32.3",
+    "@playwright/test": "^1.33.0",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*"
   }
