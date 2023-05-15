@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 
 test('booking page has months and sub calendars visible', async ({ page }) => {
-  await page.goto('http://localhost:3000/booking')
+  await page.goto('http://localhost:3000/trip')
   await expect(
     page.getByText(
       'May 2023SMTWTFS12345678910111213141516171819202122232425262728293031'

@@ -5,7 +5,7 @@ const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
   : 'http://localhost:3000'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = ['', '/login', '/booking']
+  const routes = ['', '/login', '/trip']
 
   const routesMap = routes.map((route) => ({
     url: `${baseUrl}${route}`,
