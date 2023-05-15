@@ -52,10 +52,11 @@ function buildCalendar(bookedDates: Date[]) {
         day,
         'e, d, yyyy-MM-dd, L'
       ).split(', ')
-
+      const dayOfYear = format(day, 'D', { useAdditionalDayOfYearTokens: true })
       const dateObj = {
         localDay: Number(localDay),
         monthDay: Number(monthDay),
+        dayOfYear: Number(dayOfYear),
         date,
         isBooked: isSameDay(day, bookedDates[0]),
       }
@@ -91,20 +92,16 @@ export default async function Booking() {
 
   if (isAfter(today, cutOffDate))
     return (
-      <main>
-        <Container>
-          <div> end of season</div>
-        </Container>
-      </main>
+      <Container>
+        <div> end of season</div>
+      </Container>
     )
 
   const bookedDates = await getBookedDates()
   const calendar = buildCalendar(bookedDates)
   return (
-    <main>
-      <Container>
-        <DatePicker calendar={calendar} />
-      </Container>
-    </main>
+    <Container>
+      <DatePicker calendar={calendar} />
+    </Container>
   )
 }

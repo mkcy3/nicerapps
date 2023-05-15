@@ -1,12 +1,13 @@
-import { fns, isSameDay } from '@/lib/date-fns'
+import { isSameDay, isWithinInterval } from '@/lib/date-fns'
 import { cn } from '@/lib/utils'
 
-export type DateRange = {
-  end: Date | null
-  start: Date | null
+export type SelectedDates = {
+  end: number
+  start: number
 }
 export type CalendarDay = {
   date: string
+  dayOfYear: number
   isBooked: boolean
   isDisabled: boolean
   localDay: number
@@ -14,26 +15,24 @@ export type CalendarDay = {
 }
 
 interface DayButtonProps extends React.ComponentProps<'button'> {
-  bookingRange: Date[] | []
-  dateRange: DateRange
   day: CalendarDay
   idx: number
+  selectedDates: SelectedDates
 }
 
 export default function DayButton({
   day,
   idx,
-  dateRange,
+  selectedDates,
   onClick,
-  bookingRange,
 }: DayButtonProps) {
-  const dayISO = fns.parseISO(day.date)
+  const { start, end } = selectedDates
+  const dayOfYear = day.dayOfYear
   const isDisabled = day.isDisabled || day.isBooked
 
-  const isSelected =
-    isSameDay(dateRange?.start, dayISO) || isSameDay(dateRange?.end, dayISO)
+  const isSelected = isSameDay(start, dayOfYear) || isSameDay(end, dayOfYear)
 
-  const isRange = bookingRange.some((r) => isSameDay(r, dayISO))
+  const isRange = isWithinInterval(dayOfYear, { start, end })
 
   return (
     <button
@@ -45,9 +44,8 @@ export default function DayButton({
         'py-1.5 hover:bg-gray-100 focus:z-10',
         'bg-white text-gray-900',
         isDisabled && 'bg-gray-50 text-gray-400',
-        isRange && 'bg-red-400',
-        isSelected && 'bg-red-900 hover:bg-red-900',
-
+        isRange && 'bg-indigo-400',
+        isSelected && 'bg-indigo-500 hover:bg-indigo-500',
         idx === 0 && day.localDay === 1 && 'rounded-tl-lg',
         idx <= 6 && day.localDay === 7 && 'rounded-tr-lg',
         idx >= 23 && day.localDay === 1 && 'rounded-bl-lg',
