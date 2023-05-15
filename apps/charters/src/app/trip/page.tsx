@@ -86,7 +86,7 @@ function buildCalendar(bookedDates: Date[]) {
   return monthObjects
 }
 
-export default async function Booking() {
+export default async function TripPage() {
   const today = new Date()
   const cutOffDate = new Date(today.getFullYear(), 9, 10)
 
