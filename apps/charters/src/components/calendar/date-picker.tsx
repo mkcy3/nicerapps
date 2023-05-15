@@ -9,7 +9,7 @@ import DayButton, {
   CalendarDay,
   SelectedDates,
 } from '@/components/calendar/day-button'
-import { buttonVariantStyles } from '@/components/ui/button'
+import { Button, buttonVariantStyles } from '@/components/ui/button'
 import { format, isBefore, isSameDay } from '@/lib/date-fns'
 import { cn } from '@/lib/utils'
 
@@ -200,15 +200,27 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
           Day Sail: 8 Guests {'\n'}Sleeping: 4-6* Guests
         </p>
 
-        <Link
-          href="/"
-          className={cn(
-            buttonVariantStyles['primary'],
-            'align-end px-6 py-3 lg:w-40'
-          )}
-        >
-          Next
-        </Link>
+        {end > 0 ? (
+          <Link
+            href={{
+              pathname: '/book',
+              query: { start: start, end: end },
+            }}
+            className={cn(buttonVariantStyles['primary'], 'px-6 py-3 lg:w-40')}
+          >
+            Next
+          </Link>
+        ) : (
+          <Button
+            variant="primary"
+            className={cn(
+              'bg-red-400 px-6 py-3 hover:bg-red-300 lg:w-40',
+              start > 0 && 'bg-yellow-400 hover:bg-yellow-300'
+            )}
+          >
+            {start > 0 ? 'Disembark Date' : 'Embark Date'}
+          </Button>
+        )}
       </div>
     </>
   )
