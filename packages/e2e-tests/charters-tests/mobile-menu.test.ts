@@ -8,10 +8,10 @@ test('should be able to open and close mobile menu', async ({ page }) => {
   await page.goto('http://localhost:3000')
 
   await page.getByTestId('open-mobile-menu').click()
-  mobileMenu = page.getByTestId('mobile-menu')
+  mobileMenu = await page.getByTestId('mobile-menu')
   await expect(mobileMenu).toBeVisible()
 
   await page.getByTestId('close-mobile-menu').click()
-  mobileMenu = page.getByTestId('mobile-menu')
+  mobileMenu = await page.getByTestId('mobile-menu')
   await expect(mobileMenu).toBeHidden()
 })

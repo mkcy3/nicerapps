@@ -2,6 +2,7 @@ import {
   eachDayOfInterval,
   eachMonthOfInterval,
   format,
+  isAfter,
   isBefore,
   isSameDay,
 } from 'date-fns'
@@ -11,7 +12,7 @@ import Container from '@/components/ui/container'
 import { prisma } from '@/lib/prisma'
 
 async function getBookedDates() {
-  // FIXME: ZOD
+  // explicitly set bookedDates as it fails ci otherwise, charter: any
   const bookedDates: { endDate: Date; startDate: Date }[] =
     await prisma.charter.findMany({
       select: {
@@ -23,10 +24,6 @@ async function getBookedDates() {
       },
     })
 
-  /** below code block fails on CI as charter is type ANY
-   *  on local machine the any type error was present, until i ran it
-   *  with pnpm dev, and ts started to infer the type for charter
-   */
   const rangeDates = bookedDates
     .map((charter) => {
       return eachDayOfInterval({
@@ -38,6 +35,7 @@ async function getBookedDates() {
 
   return rangeDates
 }
+
 function buildCalendar(bookedDates: Date[]) {
   const today = new Date()
   const startOfMonth = new Date(2023, 4, 1) // May is month 4 in JavaScript's Date object
@@ -54,12 +52,12 @@ function buildCalendar(bookedDates: Date[]) {
         day,
         'e, d, yyyy-MM-dd, L'
       ).split(', ')
-
+      const dayOfYear = format(day, 'D', { useAdditionalDayOfYearTokens: true })
       const dateObj = {
         localDay: Number(localDay),
         monthDay: Number(monthDay),
-        date: date,
-        day,
+        dayOfYear: Number(dayOfYear),
+        date,
         isBooked: isSameDay(day, bookedDates[0]),
       }
       if (isSameDay(day, bookedDates[0])) {
@@ -79,16 +77,26 @@ function buildCalendar(bookedDates: Date[]) {
       return { ...dateObj, isDisabled: false }
     })
 
-    dayDates.unshift(
-      ...new Array(dayDates[0].localDay - 1).fill(dayDates[0].localDay - 1)
-    )
-
-    return { name: format(month, 'MMMM'), days: dayDates }
+    return {
+      name: format(month, 'MMMM'),
+      year: month.getFullYear(),
+      days: dayDates,
+    }
   })
   return monthObjects
 }
 
 export default async function Booking() {
+  const today = new Date()
+  const cutOffDate = new Date(today.getFullYear(), 9, 10)
+
+  if (isAfter(today, cutOffDate))
+    return (
+      <Container>
+        <div> end of season</div>
+      </Container>
+    )
+
   const bookedDates = await getBookedDates()
   const calendar = buildCalendar(bookedDates)
   return (

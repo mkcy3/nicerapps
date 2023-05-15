@@ -1,0 +1,1326 @@
+[
+  {
+    "name": "May",
+    "year": 2023,
+    "days": [
+      {
+        "localDay": 2,
+        "monthDay": 1,
+        "date": "2023-05-01",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 3,
+        "monthDay": 2,
+        "date": "2023-05-02",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 4,
+        "monthDay": 3,
+        "date": "2023-05-03",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 5,
+        "monthDay": 4,
+        "date": "2023-05-04",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 6,
+        "monthDay": 5,
+        "date": "2023-05-05",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 7,
+        "monthDay": 6,
+        "date": "2023-05-06",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 1,
+        "monthDay": 7,
+        "date": "2023-05-07",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 2,
+        "monthDay": 8,
+        "date": "2023-05-08",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 3,
+        "monthDay": 9,
+        "date": "2023-05-09",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 4,
+        "monthDay": 10,
+        "date": "2023-05-10",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 5,
+        "monthDay": 11,
+        "date": "2023-05-11",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 6,
+        "monthDay": 12,
+        "date": "2023-05-12",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 7,
+        "monthDay": 13,
+        "date": "2023-05-13",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 1,
+        "monthDay": 14,
+        "date": "2023-05-14",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 2,
+        "monthDay": 15,
+        "date": "2023-05-15",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 3,
+        "monthDay": 16,
+        "date": "2023-05-16",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 4,
+        "monthDay": 17,
+        "date": "2023-05-17",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 5,
+        "monthDay": 18,
+        "date": "2023-05-18",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 6,
+        "monthDay": 19,
+        "date": "2023-05-19",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 7,
+        "monthDay": 20,
+        "date": "2023-05-20",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 1,
+        "monthDay": 21,
+        "date": "2023-05-21",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 2,
+        "monthDay": 22,
+        "date": "2023-05-22",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 3,
+        "monthDay": 23,
+        "date": "2023-05-23",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 4,
+        "monthDay": 24,
+        "date": "2023-05-24",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 5,
+        "monthDay": 25,
+        "date": "2023-05-25",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 26,
+        "date": "2023-05-26",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 27,
+        "date": "2023-05-27",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 28,
+        "date": "2023-05-28",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 29,
+        "date": "2023-05-29",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 30,
+        "date": "2023-05-30",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 31,
+        "date": "2023-05-31",
+        "isBooked": false,
+        "isDisabled": false
+      }
+    ]
+  },
+  {
+    "name": "June",
+    "year": 2023,
+    "days": [
+      {
+        "localDay": 5,
+        "monthDay": 1,
+        "date": "2023-06-01",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 2,
+        "date": "2023-06-02",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 3,
+        "date": "2023-06-03",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 4,
+        "date": "2023-06-04",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 5,
+        "date": "2023-06-05",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 6,
+        "date": "2023-06-06",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 7,
+        "date": "2023-06-07",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 8,
+        "date": "2023-06-08",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 9,
+        "date": "2023-06-09",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 10,
+        "date": "2023-06-10",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 11,
+        "date": "2023-06-11",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 12,
+        "date": "2023-06-12",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 13,
+        "date": "2023-06-13",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 14,
+        "date": "2023-06-14",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 15,
+        "date": "2023-06-15",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 16,
+        "date": "2023-06-16",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 17,
+        "date": "2023-06-17",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 18,
+        "date": "2023-06-18",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 19,
+        "date": "2023-06-19",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 20,
+        "date": "2023-06-20",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 21,
+        "date": "2023-06-21",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 22,
+        "date": "2023-06-22",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 23,
+        "date": "2023-06-23",
+        "isBooked": true,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 24,
+        "date": "2023-06-24",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 25,
+        "date": "2023-06-25",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 26,
+        "date": "2023-06-26",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 27,
+        "date": "2023-06-27",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 28,
+        "date": "2023-06-28",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 29,
+        "date": "2023-06-29",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 30,
+        "date": "2023-06-30",
+        "isBooked": false,
+        "isDisabled": false
+      }
+    ]
+  },
+  {
+    "name": "July",
+    "year": 2023,
+    "days": [
+      {
+        "localDay": 7,
+        "monthDay": 1,
+        "date": "2023-07-01",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 2,
+        "date": "2023-07-02",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 3,
+        "date": "2023-07-03",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 4,
+        "date": "2023-07-04",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 5,
+        "date": "2023-07-05",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 6,
+        "date": "2023-07-06",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 7,
+        "date": "2023-07-07",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 8,
+        "date": "2023-07-08",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 9,
+        "date": "2023-07-09",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 10,
+        "date": "2023-07-10",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 11,
+        "date": "2023-07-11",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 12,
+        "date": "2023-07-12",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 13,
+        "date": "2023-07-13",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 14,
+        "date": "2023-07-14",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 15,
+        "date": "2023-07-15",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 16,
+        "date": "2023-07-16",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 17,
+        "date": "2023-07-17",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 18,
+        "date": "2023-07-18",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 19,
+        "date": "2023-07-19",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 20,
+        "date": "2023-07-20",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 21,
+        "date": "2023-07-21",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 22,
+        "date": "2023-07-22",
+        "isBooked": true,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 23,
+        "date": "2023-07-23",
+        "isBooked": true,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 24,
+        "date": "2023-07-24",
+        "isBooked": true,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 25,
+        "date": "2023-07-25",
+        "isBooked": true,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 26,
+        "date": "2023-07-26",
+        "isBooked": true,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 27,
+        "date": "2023-07-27",
+        "isBooked": true,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 28,
+        "date": "2023-07-28",
+        "isBooked": true,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 29,
+        "date": "2023-07-29",
+        "isBooked": true,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 30,
+        "date": "2023-07-30",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 31,
+        "date": "2023-07-31",
+        "isBooked": false,
+        "isDisabled": false
+      }
+    ]
+  },
+  {
+    "name": "August",
+    "year": 2023,
+    "days": [
+      {
+        "localDay": 3,
+        "monthDay": 1,
+        "date": "2023-08-01",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 2,
+        "date": "2023-08-02",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 3,
+        "date": "2023-08-03",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 4,
+        "date": "2023-08-04",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 5,
+        "date": "2023-08-05",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 6,
+        "date": "2023-08-06",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 7,
+        "date": "2023-08-07",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 8,
+        "date": "2023-08-08",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 9,
+        "date": "2023-08-09",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 10,
+        "date": "2023-08-10",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 11,
+        "date": "2023-08-11",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 12,
+        "date": "2023-08-12",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 13,
+        "date": "2023-08-13",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 14,
+        "date": "2023-08-14",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 15,
+        "date": "2023-08-15",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 16,
+        "date": "2023-08-16",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 17,
+        "date": "2023-08-17",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 18,
+        "date": "2023-08-18",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 19,
+        "date": "2023-08-19",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 20,
+        "date": "2023-08-20",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 21,
+        "date": "2023-08-21",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 22,
+        "date": "2023-08-22",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 23,
+        "date": "2023-08-23",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 24,
+        "date": "2023-08-24",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 25,
+        "date": "2023-08-25",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 26,
+        "date": "2023-08-26",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 27,
+        "date": "2023-08-27",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 28,
+        "date": "2023-08-28",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 29,
+        "date": "2023-08-29",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 30,
+        "date": "2023-08-30",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 31,
+        "date": "2023-08-31",
+        "isBooked": false,
+        "isDisabled": false
+      }
+    ]
+  },
+  {
+    "name": "September",
+    "year": 2023,
+    "days": [
+      {
+        "localDay": 6,
+        "monthDay": 1,
+        "date": "2023-09-01",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 2,
+        "date": "2023-09-02",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 3,
+        "date": "2023-09-03",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 4,
+        "date": "2023-09-04",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 5,
+        "date": "2023-09-05",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 6,
+        "date": "2023-09-06",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 7,
+        "date": "2023-09-07",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 8,
+        "date": "2023-09-08",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 9,
+        "date": "2023-09-09",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 10,
+        "date": "2023-09-10",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 11,
+        "date": "2023-09-11",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 12,
+        "date": "2023-09-12",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 13,
+        "date": "2023-09-13",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 14,
+        "date": "2023-09-14",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 15,
+        "date": "2023-09-15",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 16,
+        "date": "2023-09-16",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 17,
+        "date": "2023-09-17",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 18,
+        "date": "2023-09-18",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 19,
+        "date": "2023-09-19",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 20,
+        "date": "2023-09-20",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 21,
+        "date": "2023-09-21",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 22,
+        "date": "2023-09-22",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 23,
+        "date": "2023-09-23",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 24,
+        "date": "2023-09-24",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 25,
+        "date": "2023-09-25",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 26,
+        "date": "2023-09-26",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 27,
+        "date": "2023-09-27",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 28,
+        "date": "2023-09-28",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 29,
+        "date": "2023-09-29",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 30,
+        "date": "2023-09-30",
+        "isBooked": false,
+        "isDisabled": false
+      }
+    ]
+  },
+  {
+    "name": "October",
+    "year": 2023,
+    "days": [
+      {
+        "localDay": 1,
+        "monthDay": 1,
+        "date": "2023-10-01",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 2,
+        "date": "2023-10-02",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 3,
+        "date": "2023-10-03",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 4,
+        "monthDay": 4,
+        "date": "2023-10-04",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 5,
+        "monthDay": 5,
+        "date": "2023-10-05",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 6,
+        "monthDay": 6,
+        "date": "2023-10-06",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 7,
+        "monthDay": 7,
+        "date": "2023-10-07",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 1,
+        "monthDay": 8,
+        "date": "2023-10-08",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 2,
+        "monthDay": 9,
+        "date": "2023-10-09",
+        "isBooked": false,
+        "isDisabled": false
+      },
+      {
+        "localDay": 3,
+        "monthDay": 10,
+        "date": "2023-10-10",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 4,
+        "monthDay": 11,
+        "date": "2023-10-11",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 5,
+        "monthDay": 12,
+        "date": "2023-10-12",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 6,
+        "monthDay": 13,
+        "date": "2023-10-13",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 7,
+        "monthDay": 14,
+        "date": "2023-10-14",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 1,
+        "monthDay": 15,
+        "date": "2023-10-15",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 2,
+        "monthDay": 16,
+        "date": "2023-10-16",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 3,
+        "monthDay": 17,
+        "date": "2023-10-17",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 4,
+        "monthDay": 18,
+        "date": "2023-10-18",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 5,
+        "monthDay": 19,
+        "date": "2023-10-19",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 6,
+        "monthDay": 20,
+        "date": "2023-10-20",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 7,
+        "monthDay": 21,
+        "date": "2023-10-21",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 1,
+        "monthDay": 22,
+        "date": "2023-10-22",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 2,
+        "monthDay": 23,
+        "date": "2023-10-23",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 3,
+        "monthDay": 24,
+        "date": "2023-10-24",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 4,
+        "monthDay": 25,
+        "date": "2023-10-25",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 5,
+        "monthDay": 26,
+        "date": "2023-10-26",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 6,
+        "monthDay": 27,
+        "date": "2023-10-27",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 7,
+        "monthDay": 28,
+        "date": "2023-10-28",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 1,
+        "monthDay": 29,
+        "date": "2023-10-29",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 2,
+        "monthDay": 30,
+        "date": "2023-10-30",
+        "isBooked": false,
+        "isDisabled": true
+      },
+      {
+        "localDay": 3,
+        "monthDay": 31,
+        "date": "2023-10-31",
+        "isBooked": false,
+        "isDisabled": true
+      }
+    ]
+  }
+]

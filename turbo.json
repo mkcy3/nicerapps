@@ -6,7 +6,8 @@
     "build": {
       "outputs": [".next/**", "!.next/cache/**"]
     },
-    "test": {
+    "test": {},
+    "test:watch": {
       "cache": false
     },
     "test:e2e": {
