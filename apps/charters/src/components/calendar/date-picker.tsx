@@ -95,8 +95,7 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
                   id="start-date"
                   readOnly={true}
                   className={cn(
-                    'block w-full rounded-md border-0 py-1.5 pl-10 text-left text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6',
-                    displayDateStart ?? 'bg-black'
+                    'block w-full rounded-md border-0 py-1.5 pl-10 text-left text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6'
                   )}
                   onClick={handleClear}
                   value={displayDateStart ?? ''}
