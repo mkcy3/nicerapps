@@ -4,7 +4,6 @@
   "globalEnv": ["NEXT_PUBLIC_VERCEL_URL", "NODE_ENV"],
   "pipeline": {
     "build": {
-      "env": ["STRIPE_SECRET_KEY", "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"],
       "outputs": [".next/**", "!.next/cache/**"]
     },
     "test": {},
