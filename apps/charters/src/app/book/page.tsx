@@ -1,27 +1,32 @@
-import { formatDistance } from 'date-fns'
 import { redirect } from 'next/navigation'
+import Stripe from 'stripe'
 
-import { parseToDate } from '@/lib/day-of-year'
+import { format } from '@/lib/day-of-year'
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: '2022-11-15',
+})
 
 async function getPrices() {
-  //get prices from stripe
+  const prices = await stripe.prices.list({
+    limit: 10,
+  })
+
+  return prices
 }
 
-function BookPage({
+async function BookPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
-  const { start, end } = searchParams
+  const { start, end, passengers } = searchParams
+  if (!(start || end || passengers)) return redirect('/trip')
 
-  const startDate = parseToDate(Number(start)) as Date
-  const endDate = parseToDate(Number(end)) as Date
+  const duration = Number(end) - Number(start)
+  const startDate = format(Number(start), 'dd MMM yyyy')
+  const prices = await getPrices()
 
-  const duration =
-    start && end
-      ? `${formatDistance(endDate, startDate).charAt(0)} nights`
-      : 'Day Sail'
-  if (!start || !end) return redirect('/trip')
   return (
     <>
       <div
@@ -54,7 +59,7 @@ function BookPage({
                     className="h-20 w-20 flex-none rounded-md object-cover object-center"
                   /> */}
                 <div className="flex-auto space-y-1">
-                  <h3 className="text-white">{startDate.toString()}</h3>
+                  <h3 className="text-white">{startDate}</h3>
                   <p>{duration}</p>
                 </div>
               </li>
