@@ -1,9 +1,7 @@
 import './globals.css'
 
-import { ClerkProvider } from '@clerk/nextjs/app-beta'
+import { ClerkProvider } from '@clerk/nextjs'
 import React from 'react'
-
-import Navbar from '@/components/layout/navbar'
 
 export default function RootLayout({
   children,
@@ -11,10 +9,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <ClerkProvider>
+    <ClerkProvider>
+      <html lang="en">
         <body>{children}</body>
-      </ClerkProvider>
-    </html>
+      </html>
+    </ClerkProvider>
   )
 }

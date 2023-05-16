@@ -6,6 +6,7 @@ import { parseToDate } from '@/lib/date-fns'
 async function getPrices() {
   //get prices from stripe
 }
+
 function BookPage({
   searchParams,
 }: {
@@ -41,8 +42,6 @@ function BookPage({
             <h2 id="summary-heading" className="sr-only">
               Booking summary
             </h2>
-
-            <dl></dl>
 
             <ul
               role="list"
