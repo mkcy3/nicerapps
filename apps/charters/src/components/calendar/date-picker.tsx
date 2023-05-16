@@ -1,7 +1,6 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import React from 'react'
 import { useState } from 'react'
 import { useImmer } from 'use-immer'
@@ -38,18 +37,18 @@ function LinkWrapper({
   const sharedStyle = 'py-1 sm:my-3 sm:px-6 sm:py-3 lg:w-40'
   const { text, classNames }: { classNames: string; text: string } = (() => {
     if (start === 0) {
-      return { text: 'Check in', classNames: 'bg-red-500 hover:bg-red-400' }
+      return { text: 'Check in?', classNames: 'bg-red-500 hover:bg-red-400' }
     }
     if (end === 0) {
       return {
-        text: 'Check out',
+        text: 'Check out?',
         classNames: 'bg-yellow-500 hover:bg-yellow-400',
       }
     }
 
     if (passengers === 0) {
       return {
-        text: 'Passengers!',
+        text: 'Passengers?',
         classNames: 'bg-orange-500 hover:bg-orange-400',
       }
     }
@@ -82,8 +81,6 @@ function LinkWrapper({
 }
 
 export default function DatePicker({ calendar }: { calendar: Month[] }) {
-  const router = useRouter()
-
   const [selectedDates, setSelectedDates] = useImmer<SelectedDates>({
     end: 0,
     start: 0,
