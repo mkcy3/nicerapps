@@ -1,11 +1,8 @@
 import { SignIn } from '@clerk/nextjs'
 
 type SignInPageProps = {
-  params: { slug: string[] }
-  searchParams: object
+  searchParams: { redirect_url: string }
 }
-export default function Page({ params, searchParams }: SignInPageProps) {
-  console.log(params)
-  console.log(searchParams)
-  return <SignIn />
+export default function Page({ searchParams }: SignInPageProps) {
+  return <SignIn routing="path" redirectUrl={searchParams.redirect_url} />
 }

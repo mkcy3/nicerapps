@@ -1,7 +1,7 @@
 import { formatDistance } from 'date-fns'
 import { redirect } from 'next/navigation'
 
-import { parseToDate } from '@/lib/date-fns'
+import { parseToDate } from '@/lib/day-of-year'
 
 async function getPrices() {
   //get prices from stripe
