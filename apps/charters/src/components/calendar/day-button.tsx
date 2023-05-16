@@ -1,4 +1,4 @@
-import { isSameDay, isWithinInterval } from '@/lib/date-fns'
+import { isSameDay, isWithinInterval } from '@/lib/day-of-year'
 import { cn } from '@/lib/utils'
 
 export type SelectedDates = {
@@ -45,7 +45,7 @@ export default function DayButton({
         'bg-white text-gray-900',
         isDisabled && 'bg-gray-50 text-gray-400 hover:bg-gray-50',
         isRange && 'bg-indigo-400 text-white hover:bg-indigo-600',
-        isSelected && 'bg-indigo-600 text-white hover:bg-indigo-600',
+        isSelected && 'bg-indigo-600 text-white hover:bg-indigo-500',
         idx === 0 && day.localDay === 1 && 'rounded-tl-lg',
         idx <= 6 && day.localDay === 7 && 'rounded-tr-lg',
         idx >= 23 && day.localDay === 1 && 'rounded-bl-lg',

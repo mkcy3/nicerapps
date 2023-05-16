@@ -1,4 +1,4 @@
-import { format, isBefore, isSameDay, isWithinInterval } from '../date-fns'
+import { format, isBefore, isSameDay, isWithinInterval } from '../day-of-year'
 
 describe('Date Functions', () => {
   describe('isSameDay', () => {
