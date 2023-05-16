@@ -2,7 +2,7 @@ import React from 'react'
 
 import Navbar from '@/components/layout/navbar'
 
-function RatesLayout({ children }: { children: React.ReactNode }) {
+function MarketingLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Navbar />
@@ -11,4 +11,4 @@ function RatesLayout({ children }: { children: React.ReactNode }) {
   )
 }
 
-export default RatesLayout
+export default MarketingLayout
