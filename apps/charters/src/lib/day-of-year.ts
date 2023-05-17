@@ -43,3 +43,14 @@ export function isWithinInterval(
 
   return dateFns.isWithinInterval(date, { start: startDate, end: endDate })
 }
+
+export function isWithinSixtyDays(startDate: number) {
+  const date1 = parseToDate(startDate) as Date
+  const difference = dateFns.differenceInDays(date1, new Date())
+
+  if (difference > 60) {
+    return false
+  }
+
+  return true
+}

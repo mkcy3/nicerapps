@@ -1,4 +1,10 @@
-import { format, isBefore, isSameDay, isWithinInterval } from '../day-of-year'
+import {
+  format,
+  isBefore,
+  isSameDay,
+  isWithinInterval,
+  isWithinSixtyDays,
+} from '../day-of-year'
 
 describe('Date Functions', () => {
   describe('isSameDay', () => {
@@ -46,6 +52,30 @@ describe('Date Functions', () => {
     it('should return false when either the start or end of the interval is 0', () => {
       expect(isWithinInterval(300, { start: 0, end: 302 })).toBe(false)
       expect(isWithinInterval(300, { start: 298, end: 0 })).toBe(false)
+    })
+  })
+
+  describe('isWithinSixtyDays', () => {
+    beforeEach(() => {
+      vi.useFakeTimers()
+    })
+
+    afterEach(() => {
+      vi.useRealTimers()
+    })
+
+    it('returns true when the difference is within 60 days', () => {
+      const today = new Date(2023, 1, 1)
+      vi.setSystemTime(today)
+
+      expect(isWithinSixtyDays(4)).toEqual(true)
+    })
+
+    it('returns false when the difference is more than 60 days', () => {
+      const today = new Date(2023, 1, 1)
+      vi.setSystemTime(today)
+
+      expect(isWithinSixtyDays(100)).toEqual(false)
     })
   })
 })

@@ -1,5 +1,5 @@
 'use client'
-
+//USESVR: move all client components to leaves when server actions out of alpha
 import Link from 'next/link'
 import React from 'react'
 import { useState } from 'react'
@@ -80,7 +80,7 @@ function LinkWrapper({
   )
 }
 
-export default function DatePicker({ calendar }: { calendar: Month[] }) {
+export default function Calendar({ calendar }: { calendar: Month[] }) {
   const [selectedDates, setSelectedDates] = useImmer<SelectedDates>({
     end: 0,
     start: 0,
@@ -141,7 +141,6 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
 
   return (
     <>
-      {/* refactor mess */}
       <h1 className="sr-only">Booking</h1>
       <div className="pb-6 sm:pb-16">
         <div className="sticky top-0 z-50 border-b bg-white pt-3 xl:hidden">

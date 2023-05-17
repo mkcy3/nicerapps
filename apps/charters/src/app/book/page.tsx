@@ -1,18 +1,100 @@
+//TODO: proper date exception handling
+import { currentUser } from '@clerk/nextjs'
+import Dinero from 'dinero.js'
 import { redirect } from 'next/navigation'
 import Stripe from 'stripe'
 
 import { format } from '@/lib/day-of-year'
+import { formatAmountForDisplay } from '@/lib/utils'
+
+import Extras from './extras'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: '2022-11-15',
 })
 
-async function getPrices() {
-  const prices = await stripe.prices.list({
-    limit: 10,
+async function getPaymentIntent(nights: number, isSleeping: boolean) {
+  const charterDayDuration = nights + 1
+  const sleepAboardPrice = isSleeping
+    ? Dinero({ amount: 20000, currency: 'CAD' })
+    : Dinero({ amount: 0, currency: 'CAD' })
+
+  const prices = await stripe.prices.list()
+
+  if (!prices.data) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error('Failed to fetch prices')
+  }
+
+  const clerkUser = await currentUser()
+
+  const matchingDayPrice = prices.data.find((price) => {
+    const nicknameParts = price.nickname?.split('-') ?? ['1']
+
+    if (nicknameParts.length === 2) {
+      const min = parseInt(nicknameParts[0])
+      const max = parseInt(nicknameParts[1])
+      return charterDayDuration >= min && charterDayDuration <= max
+    }
+
+    return parseInt(nicknameParts[0]) === charterDayDuration
+  })?.unit_amount as number
+
+  const subTotal = Dinero({
+    amount: matchingDayPrice * charterDayDuration,
+    currency: 'CAD',
   })
 
-  return prices
+  const discount = subTotal.multiply(0.5)
+  const tax = subTotal.subtract(discount).add(sleepAboardPrice).multiply(0.13)
+  //TODO: Deposit and Remaining balance for next season
+  const balance = subTotal.subtract(discount).add(sleepAboardPrice).add(tax)
+
+  // const paymentIntent = await stripe.paymentIntents.create({
+  //   amount: balance.getAmount(),
+  //   currency: 'cad',
+  //   automatic_payment_methods: { enabled: true },
+  //   metadata: {
+  //     clerkUserId: clerkUser?.id as string,
+  //     clerkEmail: clerkUser?.emailAddresses[0].emailAddress as string,
+  //   },
+  // })
+
+  // if (!paymentIntent.id) {
+  //   throw new Error('Failed to create stripe payment intent')
+  // }
+
+  const response = {
+    //stripe_pi: paymentIntent,
+    summary: [
+      {
+        id: 'subtotal',
+        label: 'Subtotal',
+        amount: subTotal.getAmount(),
+      },
+      {
+        id: 'discount',
+        label: 'Discount',
+        amount: discount.getAmount(),
+      },
+      {
+        id: 'sleepAbroad',
+        label: 'Sleep Abroad',
+        amount: sleepAboardPrice.getAmount(),
+      },
+      {
+        id: 'tax',
+        label: 'Tax',
+        amount: tax.getAmount(),
+      },
+      {
+        id: 'balance',
+        label: 'Balance',
+        amount: balance.getAmount(),
+      },
+    ],
+  }
+  return response
 }
 
 async function BookPage({
@@ -20,299 +102,92 @@ async function BookPage({
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
-  const { start, end, passengers } = searchParams
+  const { start, end, passengers, sleep } = searchParams
   if (!(start || end || passengers)) return redirect('/trip')
 
-  const duration = Number(end) - Number(start)
-  const startDate = format(Number(start), 'dd MMM yyyy')
-  const prices = await getPrices()
+  const startDayOfYear = Number(start)
+  const endDayOfYear = Number(end)
+  const duration = endDayOfYear - startDayOfYear
 
+  if (duration < 0 || duration > 14 || (duration > 0 && Number(passengers) > 4))
+    return redirect('/trip')
+
+  const startDate = format(startDayOfYear, 'dd MMM')
+  const endDate = format(endDayOfYear, 'dd MMM yyyy')
+  const isSleeping = String(sleep).toLowerCase() === 'true'
+  //const isWithin = isWithinSixtyDays(startDayOfYear)
+  const { summary } = await getPaymentIntent(duration, isSleeping)
+  const balanceDue = formatAmountForDisplay(
+    summary[summary.length - 1].amount,
+    'CAD'
+  )
+  //console.log(stripe_pi)
   return (
     <>
-      <div
-        className="fixed left-0 top-0 -z-50 hidden h-full w-1/2 bg-white lg:block"
-        aria-hidden="true"
-      />
-      <div
-        className="fixed right-0 top-0 -z-50 hidden h-full w-1/2 bg-indigo-900 lg:block"
-        aria-hidden="true"
-      />
-
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-x-16 lg:grid-cols-2 lg:px-8">
-        <section
-          aria-labelledby="summary-heading"
-          className="bg-indigo-900 pb-12 pt-6 text-indigo-300 md:px-10 lg:col-start-2 lg:row-start-1 lg:mx-auto lg:w-full lg:max-w-lg lg:bg-transparent lg:px-0 lg:pb-24 lg:pt-0"
-        >
-          <div className="mx-auto max-w-2xl px-4 lg:max-w-none lg:px-0">
-            <h2 id="summary-heading" className="sr-only">
-              Booking summary
-            </h2>
-
-            <ul
-              role="list"
-              className="divide-y divide-white divide-opacity-10 text-sm font-medium"
-            >
-              <li className="flex items-start space-x-4 py-6">
-                {/* <img
-                    src={product.imageSrc}
-                    alt={product.imageAlt}
-                    className="h-20 w-20 flex-none rounded-md object-cover object-center"
-                  /> */}
-                <div className="flex-auto space-y-1">
-                  <h3 className="text-white">{startDate}</h3>
-                  <p>{duration}</p>
-                </div>
-              </li>
-            </ul>
-
-            <dl className="space-y-6 border-t border-white border-opacity-10 pt-6 text-sm font-medium">
-              <div className="flex items-center justify-between">
-                <dt className="text-sm font-medium">Amount due</dt>
-                <dd className="mt-1 text-3xl font-bold tracking-tight text-white">
-                  Stripe Price
-                </dd>
-              </div>
-              <div className="flex items-center justify-between">
-                <dt>Subtotal</dt>
-                <dd>$570.00</dd>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <dt>Shipping</dt>
-                <dd>$25.00</dd>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <dt>Taxes</dt>
-                <dd>$47.60</dd>
-              </div>
-
-              <div className="flex items-center justify-between border-t border-white border-opacity-10 pt-6 text-white">
-                <dt className="text-base">Total</dt>
-                <dd className="text-base">$642.60</dd>
-              </div>
-            </dl>
-          </div>
-        </section>
-        <section
-          aria-labelledby="payment-and-shipping-heading"
-          className="py-16 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:w-full lg:max-w-lg lg:pb-24 lg:pt-0"
-        >
-          <h2 id="payment-and-shipping-heading" className="sr-only">
-            Payment and shipping details
-          </h2>
-          <form>
-            <div className="mx-auto max-w-2xl px-4 lg:max-w-none lg:px-0">
-              <div>
-                <h3
-                  id="contact-info-heading"
-                  className="text-lg font-medium text-gray-900"
-                >
-                  Contact information
-                </h3>
-
-                <div className="mt-6">
-                  <label
-                    htmlFor="email-address"
-                    className="block text-sm font-medium text-gray-700"
-                  >
-                    Email address
-                  </label>
-                  <div className="mt-1">
-                    <input
-                      type="email"
-                      id="email-address"
-                      name="email-address"
-                      autoComplete="email"
-                      className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10">
-                <h3
-                  id="payment-heading"
-                  className="text-lg font-medium text-gray-900"
-                >
-                  Payment details
-                </h3>
-
-                <div className="mt-6 grid grid-cols-3 gap-x-4 gap-y-6 sm:grid-cols-4">
-                  <div className="col-span-3 sm:col-span-4">
-                    <label
-                      htmlFor="card-number"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Card number
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        id="card-number"
-                        name="card-number"
-                        autoComplete="cc-number"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="col-span-2 sm:col-span-3">
-                    <label
-                      htmlFor="expiration-date"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Expiration date (MM/YY)
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        name="expiration-date"
-                        id="expiration-date"
-                        autoComplete="cc-exp"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="cvc"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      CVC
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        name="cvc"
-                        id="cvc"
-                        autoComplete="csc"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10">
-                <h3
-                  id="shipping-heading"
-                  className="text-lg font-medium text-gray-900"
-                >
-                  Shipping address
-                </h3>
-
-                <div className="mt-6 grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-3">
-                  <div className="sm:col-span-3">
-                    <label
-                      htmlFor="address"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Address
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        id="address"
-                        name="address"
-                        autoComplete="street-address"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="city"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      City
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        id="city"
-                        name="city"
-                        autoComplete="address-level2"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="region"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      State / Province
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        id="region"
-                        name="region"
-                        autoComplete="address-level1"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="postal-code"
-                      className="block text-sm font-medium text-gray-700"
-                    >
-                      Postal code
-                    </label>
-                    <div className="mt-1">
-                      <input
-                        type="text"
-                        id="postal-code"
-                        name="postal-code"
-                        autoComplete="postal-code"
-                        className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10">
-                <h3 className="text-lg font-medium text-gray-900">
-                  Billing information
-                </h3>
-
-                <div className="mt-6 flex items-center">
-                  <input
-                    id="same-as-shipping"
-                    name="same-as-shipping"
-                    type="checkbox"
-                    defaultChecked
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
-                  />
-                  <div className="ml-2">
-                    <label
-                      htmlFor="same-as-shipping"
-                      className="text-sm font-medium text-gray-900"
-                    >
-                      Same as shipping information
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-10 flex justify-end border-t border-gray-200 pt-6">
-                <button
-                  type="submit"
-                  className="rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-                >
-                  Pay now
-                </button>
+      <h1 className="sr-only">Booking</h1>
+      <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
+        <div>
+          {duration > 0 && (
+            <>
+              {' '}
+              <h2 className="mb-4 border-b text-lg font-medium text-gray-900">
+                Extras
+              </h2>
+              <Extras />{' '}
+            </>
+          )}
+        </div>
+        <div className="mt-10 lg:mt-0">
+          <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
+            <h3 className="sr-only">Sailing Charter details</h3>
+            <div className="space-y-6 border-t border-gray-200 px-4 py-6 sm:px-6">
+              <h2 className="text-lg font-medium text-gray-900">
+                Sailing Charter Details
+              </h2>
+              <div className="flex flex-col">
+                <span>
+                  {startDate} - {endDate}
+                </span>
+                <span>{duration > 0 ? `${duration} nights` : 'Day Sail'}</span>
+                <span>{passengers} passengers</span>
               </div>
             </div>
-          </form>
-        </section>
+
+            <dl className="space-y-6 border-t border-gray-200 px-4 py-6 sm:px-6">
+              {summary.map((item) =>
+                item.amount === 0 ? null : (
+                  <div
+                    key={item.id}
+                    className="flex items-center justify-between"
+                  >
+                    <dt className="text-sm">{item.label}</dt>
+                    <dd className="text-sm font-medium text-gray-900">
+                      {formatAmountForDisplay(item.amount, 'CAD')}
+                    </dd>
+                  </div>
+                )
+              )}
+
+              <div className="flex items-center justify-between border-t border-gray-200 pt-6">
+                <dt className="text-base font-medium">
+                  Balance <span className="text-gray-400">(Due now)</span>
+                </dt>
+                <dd className="text-base font-medium text-gray-900">
+                  {balanceDue}
+                </dd>
+              </div>
+            </dl>
+
+            <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
+              <button
+                type="submit"
+                className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
+              >
+                Pay {balanceDue}
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   )

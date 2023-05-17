@@ -1,7 +1,7 @@
 'use client'
 
 import { Listbox, Transition } from '@headlessui/react'
-import { ArrowUp, Bed, BedReady, Check, Group, SeaWaves } from 'iconoir-react'
+import { ArrowUp, BedReady, Check, Group, SeaWaves } from 'iconoir-react'
 import { Fragment } from 'react'
 
 import { cn } from '@/lib/utils'
@@ -11,9 +11,9 @@ const people = [
   { id: 1, name: '1', icon: BedReady },
   { id: 2, name: '2', icon: BedReady },
   { id: 3, name: '3', icon: BedReady },
-  { id: 4, name: '4 with two berths', icon: BedReady },
-  { id: 5, name: '5', icon: Bed },
-  { id: 6, name: '6 convert saloon bed', icon: Bed },
+  { id: 4, name: '4', icon: BedReady },
+  { id: 5, name: '5', icon: SeaWaves },
+  { id: 6, name: '6', icon: SeaWaves },
   { id: 7, name: '7', icon: SeaWaves },
   { id: 8, name: '8', icon: SeaWaves },
 ]

@@ -7,7 +7,7 @@ import {
   isSameDay,
 } from 'date-fns'
 
-import DatePicker from '@/components/calendar/date-picker'
+import Calendar from '@/components/calendar'
 import Container from '@/components/ui/container'
 import { prisma } from '@/lib/prisma'
 
@@ -101,7 +101,7 @@ export default async function TripPage() {
   const calendar = buildCalendar(bookedDates)
   return (
     <Container>
-      <DatePicker calendar={calendar} />
+      <Calendar calendar={calendar} />
     </Container>
   )
 }
