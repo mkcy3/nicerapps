@@ -10,5 +10,7 @@
   ],
   "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
   "typescript.tsdk": "node_modules/typescript/lib",
-  "eslint.workingDirectories": ["/apps/charters"]
+  "eslint.workingDirectories": ["/apps/charters"],
+
+  "todo-tree.general.tags": ["HACK", "FIX", "TODO", "USESVR"]
 }
