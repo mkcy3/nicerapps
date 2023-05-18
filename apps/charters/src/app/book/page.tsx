@@ -1,5 +1,4 @@
 import { currentUser } from '@clerk/nextjs'
-import { User } from '@clerk/nextjs/dist/server'
 import Dinero from 'dinero.js'
 import { redirect } from 'next/navigation'
 import Stripe from 'stripe'
