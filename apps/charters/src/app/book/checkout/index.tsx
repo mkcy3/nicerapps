@@ -1,49 +1,23 @@
 'use client'
-import {
-  Elements,
-  LinkAuthenticationElement,
-  PaymentElement,
-  useElements,
-  useStripe,
-} from '@stripe/react-stripe-js'
-import { Stripe, StripeElements } from '@stripe/stripe-js'
+import { Elements } from '@stripe/react-stripe-js'
 
-import getStripe from '@/lib/get-stripe'
+import getStripe from '@/lib/stripe'
 
-const loader = 'auto'
+import StripeElements from './stripe-elements'
+
 const appearance = {
   /* ... */
 }
-
-export default function Checkout({ clientSecret }: { clientSecret: string }) {
-  const stripe = useStripe() as Stripe
-  const elements = useElements() as StripeElements
-
-  async function handleSubmit() {
-    //event.preventDefault()
-
-    const { error } = await stripe.confirmPayment({
-      elements,
-      confirmParams: {
-        return_url: 'https://example.com/order/123/complete',
-      },
-    })
-
-    if (error) {
-      // handle error
-    }
-  }
+const loader = 'auto'
+function StripeCheckout({ clientSecret }: { clientSecret: string }) {
   return (
     <Elements
       stripe={getStripe()}
       options={{ clientSecret, appearance, loader }}
     >
-      <form onSubmit={handleSubmit}>
-        <h3>Contact info</h3>
-        <LinkAuthenticationElement options={{}} />
-        <h3>Payment</h3>
-        <PaymentElement options={{}} />;<button type="submit">Submit</button>
-      </form>
+      <StripeElements />
     </Elements>
   )
 }
+
+export default StripeCheckout

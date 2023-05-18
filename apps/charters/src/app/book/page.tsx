@@ -1,32 +1,33 @@
-//TODO: proper date exception handling
 import { currentUser } from '@clerk/nextjs'
+import { User } from '@clerk/nextjs/dist/server'
 import Dinero from 'dinero.js'
 import { redirect } from 'next/navigation'
 import Stripe from 'stripe'
 
 import { format } from '@/lib/day-of-year'
-import { formatAmountForDisplay } from '@/lib/utils'
+import { formatAmountForDisplay, stripeErrorHandling } from '@/lib/utils'
 
+import StripeCheckout from './checkout'
 import Extras from './extras'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: '2022-11-15',
 })
 
-async function getPaymentIntent(nights: number, isSleeping: boolean) {
+async function getPaymentIntent(
+  startDayOfYear: number,
+  endDayOfYear: number,
+  nights: number,
+  isSleeping: boolean,
+  passengers: number
+) {
   const charterDayDuration = nights + 1
-  const sleepAboardPrice = isSleeping
-    ? Dinero({ amount: 20000, currency: 'CAD' })
-    : Dinero({ amount: 0, currency: 'CAD' })
+  const charterStartDate = format(startDayOfYear, 'yyyy-MM-dd')
+  const charterEndDate = format(endDayOfYear, 'yyyy-MM-dd')
 
   const prices = await stripe.prices.list()
 
-  if (!prices.data) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error('Failed to fetch prices')
-  }
-
-  const clerkUser = await currentUser()
+  const clerkUser = (await currentUser()) as User
 
   const matchingDayPrice = prices.data.find((price) => {
     const nicknameParts = price.nickname?.split('-') ?? ['1']
@@ -40,6 +41,10 @@ async function getPaymentIntent(nights: number, isSleeping: boolean) {
     return parseInt(nicknameParts[0]) === charterDayDuration
   })?.unit_amount as number
 
+  const sleepAboardPrice = isSleeping
+    ? Dinero({ amount: 20000, currency: 'CAD' })
+    : Dinero({ amount: 0, currency: 'CAD' })
+
   const subTotal = Dinero({
     amount: matchingDayPrice * charterDayDuration,
     currency: 'CAD',
@@ -50,53 +55,76 @@ async function getPaymentIntent(nights: number, isSleeping: boolean) {
   //TODO: Deposit and Remaining balance for next season
   const balance = subTotal.subtract(discount).add(sleepAboardPrice).add(tax)
 
-  // const paymentIntent = await stripe.paymentIntents.create({
-  //   amount: balance.getAmount(),
-  //   currency: 'cad',
-  //   automatic_payment_methods: { enabled: true },
-  //   metadata: {
-  //     clerkUserId: clerkUser?.id as string,
-  //     clerkEmail: clerkUser?.emailAddresses[0].emailAddress as string,
-  //   },
-  // })
+  const statement = [
+    {
+      id: 'subtotal',
+      label: 'Subtotal',
+      amount: subTotal.getAmount(),
+    },
+    {
+      id: 'discount',
+      label: 'Discount',
+      amount: discount.getAmount(),
+    },
+    {
+      id: 'sleepAbroad',
+      label: 'Sleep Abroad',
+      amount: sleepAboardPrice.getAmount(),
+    },
+    {
+      id: 'tax',
+      label: 'Tax',
+      amount: tax.getAmount(),
+    },
+    {
+      id: 'balance',
+      label: 'Balance',
+      amount: balance.getAmount(),
+    },
+  ]
 
-  // if (!paymentIntent.id) {
-  //   throw new Error('Failed to create stripe payment intent')
-  // }
-
-  const response = {
-    //stripe_pi: paymentIntent,
-    summary: [
-      {
-        id: 'subtotal',
-        label: 'Subtotal',
-        amount: subTotal.getAmount(),
-      },
-      {
-        id: 'discount',
-        label: 'Discount',
-        amount: discount.getAmount(),
-      },
-      {
-        id: 'sleepAbroad',
-        label: 'Sleep Abroad',
-        amount: sleepAboardPrice.getAmount(),
-      },
-      {
-        id: 'tax',
-        label: 'Tax',
-        amount: tax.getAmount(),
-      },
-      {
-        id: 'balance',
-        label: 'Balance',
-        amount: balance.getAmount(),
-      },
-    ],
+  const stripeMetadata = {
+    clerkUserId: clerkUser.id,
+    clerkEmail: clerkUser.emailAddresses[0].emailAddress,
+    charterStartDate,
+    charterEndDate,
+    sleepAboard: isSleeping.toString(),
+    passengers,
   }
-  return response
+
+  //USESVR: currently refreshing page for data via url
+  const storedPaymentId = clerkUser.privateMetadata?.stripePi as string
+  if (storedPaymentId) {
+    try {
+      const updatePaymentIntent = await stripe.paymentIntents.update(
+        storedPaymentId,
+        {
+          amount: balance.getAmount(),
+          metadata: stripeMetadata,
+        }
+      )
+      return { stripePi: updatePaymentIntent, statement: statement }
+    } catch (e) {
+      stripeErrorHandling(e)
+    }
+  }
+
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: balance.getAmount(),
+      currency: 'cad',
+      automatic_payment_methods: { enabled: true },
+      metadata: stripeMetadata,
+    })
+    return { stripePi: paymentIntent, statement: statement }
+  } catch (e) {
+    stripeErrorHandling(e)
+  }
+
+  return { stripePi: null, statement: statement }
 }
 
+//TODO: proper date exception handling
 async function BookPage({
   searchParams,
 }: {
@@ -116,12 +144,17 @@ async function BookPage({
   const endDate = format(endDayOfYear, 'dd MMM yyyy')
   const isSleeping = String(sleep).toLowerCase() === 'true'
   //const isWithin = isWithinSixtyDays(startDayOfYear)
-  const { summary } = await getPaymentIntent(duration, isSleeping)
+  const { stripePi, statement } = await getPaymentIntent(
+    startDayOfYear,
+    endDayOfYear,
+    duration,
+    isSleeping,
+    Number(passengers)
+  )
   const balanceDue = formatAmountForDisplay(
-    summary[summary.length - 1].amount,
+    statement[statement.length - 1].amount,
     'CAD'
   )
-  //console.log(stripe_pi)
   return (
     <>
       <h1 className="sr-only">Booking</h1>
@@ -135,6 +168,9 @@ async function BookPage({
               </h2>
               <Extras />{' '}
             </>
+          )}
+          {stripePi?.client_secret && (
+            <StripeCheckout clientSecret={stripePi.client_secret} />
           )}
         </div>
         <div className="mt-10 lg:mt-0">
@@ -154,7 +190,7 @@ async function BookPage({
             </div>
 
             <dl className="space-y-6 border-t border-gray-200 px-4 py-6 sm:px-6">
-              {summary.map((item) =>
+              {statement.map((item) =>
                 item.amount === 0 ? null : (
                   <div
                     key={item.id}
@@ -177,15 +213,6 @@ async function BookPage({
                 </dd>
               </div>
             </dl>
-
-            <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
-              <button
-                type="submit"
-                className="w-full rounded-md border border-transparent bg-indigo-600 px-4 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-50"
-              >
-                Pay {balanceDue}
-              </button>
-            </div>
           </div>
         </div>
       </div>
