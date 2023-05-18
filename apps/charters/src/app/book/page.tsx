@@ -26,7 +26,7 @@ async function getPaymentIntent(
 
   const prices = await stripe.prices.list()
 
-  const clerkUser = (await currentUser()) as User
+  const clerkUser = await currentUser()
 
   const matchingDayPrice = prices.data.find((price) => {
     const nicknameParts = price.nickname?.split('-') ?? ['1']
@@ -83,8 +83,8 @@ async function getPaymentIntent(
   ]
 
   const stripeMetadata = {
-    clerkUserId: clerkUser.id,
-    clerkEmail: clerkUser.emailAddresses[0].emailAddress,
+    clerkUserId: clerkUser?.id as string,
+    clerkEmail: clerkUser?.emailAddresses[0].emailAddress as string,
     charterStartDate,
     charterEndDate,
     sleepAboard: isSleeping.toString(),
@@ -92,7 +92,7 @@ async function getPaymentIntent(
   }
 
   //USESVR: currently refreshing page for data via url
-  const storedPaymentId = clerkUser.privateMetadata?.stripePi as string
+  const storedPaymentId = clerkUser?.privateMetadata?.stripePi as string
   if (storedPaymentId) {
     try {
       const updatePaymentIntent = await stripe.paymentIntents.update(
