@@ -1,29 +1,93 @@
 'use client'
-
-import { Calendar } from 'iconoir-react'
+//USESVR: move all client components to leaves when server actions out of alpha
 import Link from 'next/link'
 import React from 'react'
+import { useState } from 'react'
 import { useImmer } from 'use-immer'
 
 import DayButton, {
   CalendarDay,
   SelectedDates,
 } from '@/components/calendar/day-button'
-import { buttonVariantStyles } from '@/components/ui/button'
-import { format, isBefore, isSameDay } from '@/lib/date-fns'
+import { Button, buttonVariantStyles } from '@/components/ui/button'
+import { format, isBefore, isSameDay } from '@/lib/day-of-year'
 import { cn } from '@/lib/utils'
+
+import DateInput from './date'
+import PassengerMenu from './passenger-menu'
 
 type Month = {
   days: CalendarDay[]
   name: string
   year: number
 }
+interface LinkWrapperProps extends React.ComponentProps<'button'> {
+  end: number
+  passengers: number
+  start: number
+}
 
-export default function DatePicker({ calendar }: { calendar: Month[] }) {
+//TODO: make reusable w/generics and forwardRef
+function LinkWrapper({
+  start,
+  end,
+  passengers,
+  ...props
+}: LinkWrapperProps): JSX.Element {
+  const sharedStyle = 'py-1 sm:my-3 sm:px-6 sm:py-3 lg:w-40'
+  const { text, classNames }: { classNames: string; text: string } = (() => {
+    if (start === 0) {
+      return { text: 'Check in?', classNames: 'bg-red-500 hover:bg-red-400' }
+    }
+    if (end === 0) {
+      return {
+        text: 'Check out?',
+        classNames: 'bg-yellow-500 hover:bg-yellow-400',
+      }
+    }
+
+    if (passengers === 0) {
+      return {
+        text: 'Passengers?',
+        classNames: 'bg-orange-500 hover:bg-orange-400',
+      }
+    }
+
+    return { text: 'Next', classNames: 'w-1/4' }
+  })()
+
+  if (start > 0 && end > 0 && passengers > 0)
+    return (
+      <Link
+        className={cn(buttonVariantStyles.primary, sharedStyle, classNames)}
+        href={{
+          pathname: '/book',
+          query: { start: start, end: end, passengers: passengers },
+        }}
+      >
+        {text}
+      </Link>
+    )
+
+  return (
+    <Button
+      {...props}
+      variant="primary"
+      className={cn(sharedStyle, classNames)}
+    >
+      {text}
+    </Button>
+  )
+}
+
+export default function Calendar({ calendar }: { calendar: Month[] }) {
   const [selectedDates, setSelectedDates] = useImmer<SelectedDates>({
     end: 0,
     start: 0,
   })
+
+  const [passengers, setPassengers] = useState(0)
+
   const { start, end } = selectedDates
   const displayDateStart = format(start, 'MMM dd')
   const displayDateEnd = format(end, 'MMM dd')
@@ -79,69 +143,23 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
     <>
       <h1 className="sr-only">Booking</h1>
       <div className="pb-6 sm:pb-16">
-        <div className="sticky top-0 z-50 bg-white pt-3 xl:relative">
+        <div className="sticky top-0 z-50 border-b bg-white pt-3 xl:hidden">
           <div className="flex flex-row items-center">
-            <div className="flex w-full flex-col gap-y-1 sm:w-2/3 sm:flex-row sm:gap-x-1 sm:py-5 md:w-2/5">
-              {/* refactor repeated jsx */}
-              <div className="relative rounded-md shadow-sm">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <Calendar
-                    className="h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                </div>
-                <input
-                  type="text"
-                  id="start-date"
-                  readOnly={true}
-                  className={cn(
-                    'block w-full rounded-md border-0 py-1.5 pl-10 text-left text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6',
-                    displayDateStart ?? 'bg-black'
-                  )}
-                  onClick={handleClear}
-                  value={displayDateStart ?? ''}
-                  placeholder="Embark"
-                />
-
-                {displayDateStart && (
-                  <button
-                    onClick={handleClear}
-                    className="absolute inset-y-0 right-0 flex  items-center pr-3"
-                  >
-                    <span className="z-10 text-gray-400">Clear</span>
-                  </button>
-                )}
-              </div>
+            <div className="flex w-full flex-col gap-y-1 sm:w-2/3 sm:flex-row sm:gap-x-1 sm:py-5">
+              <DateInput
+                date={displayDateStart}
+                placeholder={'Check in'}
+                handleClear={handleClear}
+              />
               <span className="mx-auto text-gray-400 sm:self-center">to</span>
-              <div className="relative rounded-md shadow-sm">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <Calendar
-                    className="h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                </div>
-                <input
-                  type="text"
-                  id="end-date"
-                  readOnly={true}
-                  className="block w-full rounded-md border-0 py-1.5 pl-10 text-left text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 sm:text-sm sm:leading-6"
-                  onClick={handleClear}
-                  value={displayDateEnd ?? ''}
-                  placeholder="Disembark"
-                />
-
-                {displayDateEnd && (
-                  <button
-                    onClick={handleClear}
-                    className="absolute inset-y-0 right-0 flex  items-center pr-3"
-                  >
-                    <span className="text-gray-400"> Clear </span>
-                  </button>
-                )}
-              </div>
+              <DateInput
+                date={displayDateEnd}
+                placeholder={'Check out'}
+                handleClear={handleClear}
+              />
             </div>
           </div>
-          <div className="isolate mt-2 grid grid-cols-7 gap-px border-b text-center text-sm sm:hidden">
+          <div className="isolate mt-2 grid grid-cols-7 gap-px text-center text-sm sm:hidden">
             <div>S</div>
             <div>M</div>
             <div>T</div>
@@ -152,7 +170,7 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
           </div>
         </div>
 
-        <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 pt-8 sm:pt-0 md:grid-cols-2 md:gap-y-16 xl:mx-0 xl:grid-cols-3">
+        <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 pt-8 md:grid-cols-2 md:gap-y-16 xl:mx-0 xl:grid-cols-3">
           {calendar.map((month) => (
             <section key={month.name} className="text-center">
               <h2 className="col-start-2 justify-self-center text-sm font-semibold text-gray-900">
@@ -196,20 +214,27 @@ export default function DatePicker({ calendar }: { calendar: Month[] }) {
         </div>
       </div>
 
-      <div className="sticky bottom-0 z-50 flex justify-between border bg-white px-6 py-3 xl:rounded-lg">
-        <p className="whitespace-pre-line text-sm">
-          Day Sail: 8 Guests {'\n'}Sleeping: 4-6* Guests
-        </p>
+      <div className="sticky bottom-0 z-50 flex justify-between border bg-white px-1 py-3 sm:px-6 xl:space-x-5 xl:rounded-lg">
+        <div className="hidden xl:flex xl:flex-row xl:gap-x-1 xl:gap-y-1 xl:py-5">
+          <DateInput
+            date={displayDateStart}
+            placeholder={'Check in'}
+            handleClear={handleClear}
+          />
+          <span className="mx-auto text-gray-400 sm:self-center">to</span>
+          <DateInput
+            date={displayDateEnd}
+            placeholder={'Check out'}
+            handleClear={handleClear}
+          />
+        </div>
 
-        <Link
-          href="/"
-          className={cn(
-            buttonVariantStyles['primary'],
-            'align-end px-6 py-3 lg:w-40'
-          )}
-        >
-          Next
-        </Link>
+        <PassengerMenu
+          selectedIndex={passengers}
+          setSelectedIndex={setPassengers}
+        />
+
+        <LinkWrapper passengers={passengers} start={start} end={end} />
       </div>
     </>
   )

@@ -1,13 +1,13 @@
 import { render, screen } from '@testing-library/react'
 
 import mockedCalendarData from '../__mocks__/calendar.json'
-import DatePicker from '../date-picker'
+import Calendar from '../index'
 
 const CALENDAR = mockedCalendarData
 
-describe('DatePicker', () => {
+describe('Calendar', () => {
   it('should render', () => {
-    render(<DatePicker calendar={CALENDAR} />)
+    render(<Calendar calendar={CALENDAR} />)
     const months = screen.getAllByRole('heading', {
       level: 2,
     })

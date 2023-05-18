@@ -6,6 +6,7 @@
       {
         "localDay": 2,
         "monthDay": 1,
+        "dayOfYear": 121,
         "date": "2023-05-01",
         "isBooked": false,
         "isDisabled": true
@@ -13,6 +14,7 @@
       {
         "localDay": 3,
         "monthDay": 2,
+        "dayOfYear": 122,
         "date": "2023-05-02",
         "isBooked": false,
         "isDisabled": true
@@ -20,6 +22,7 @@
       {
         "localDay": 4,
         "monthDay": 3,
+        "dayOfYear": 123,
         "date": "2023-05-03",
         "isBooked": false,
         "isDisabled": true
@@ -27,6 +30,7 @@
       {
         "localDay": 5,
         "monthDay": 4,
+        "dayOfYear": 124,
         "date": "2023-05-04",
         "isBooked": false,
         "isDisabled": true
@@ -34,6 +38,7 @@
       {
         "localDay": 6,
         "monthDay": 5,
+        "dayOfYear": 125,
         "date": "2023-05-05",
         "isBooked": false,
         "isDisabled": true
@@ -41,6 +46,7 @@
       {
         "localDay": 7,
         "monthDay": 6,
+        "dayOfYear": 126,
         "date": "2023-05-06",
         "isBooked": false,
         "isDisabled": true
@@ -48,6 +54,7 @@
       {
         "localDay": 1,
         "monthDay": 7,
+        "dayOfYear": 127,
         "date": "2023-05-07",
         "isBooked": false,
         "isDisabled": true
@@ -55,6 +62,7 @@
       {
         "localDay": 2,
         "monthDay": 8,
+        "dayOfYear": 128,
         "date": "2023-05-08",
         "isBooked": false,
         "isDisabled": true
@@ -62,6 +70,7 @@
       {
         "localDay": 3,
         "monthDay": 9,
+        "dayOfYear": 129,
         "date": "2023-05-09",
         "isBooked": false,
         "isDisabled": true
@@ -69,6 +78,7 @@
       {
         "localDay": 4,
         "monthDay": 10,
+        "dayOfYear": 130,
         "date": "2023-05-10",
         "isBooked": false,
         "isDisabled": true
@@ -76,6 +86,7 @@
       {
         "localDay": 5,
         "monthDay": 11,
+        "dayOfYear": 131,
         "date": "2023-05-11",
         "isBooked": false,
         "isDisabled": true
@@ -83,6 +94,7 @@
       {
         "localDay": 6,
         "monthDay": 12,
+        "dayOfYear": 132,
         "date": "2023-05-12",
         "isBooked": false,
         "isDisabled": true
@@ -90,6 +102,7 @@
       {
         "localDay": 7,
         "monthDay": 13,
+        "dayOfYear": 133,
         "date": "2023-05-13",
         "isBooked": false,
         "isDisabled": true
@@ -97,6 +110,7 @@
       {
         "localDay": 1,
         "monthDay": 14,
+        "dayOfYear": 134,
         "date": "2023-05-14",
         "isBooked": false,
         "isDisabled": true
@@ -104,6 +118,7 @@
       {
         "localDay": 2,
         "monthDay": 15,
+        "dayOfYear": 135,
         "date": "2023-05-15",
         "isBooked": false,
         "isDisabled": true
@@ -111,6 +126,7 @@
       {
         "localDay": 3,
         "monthDay": 16,
+        "dayOfYear": 136,
         "date": "2023-05-16",
         "isBooked": false,
         "isDisabled": true
@@ -118,6 +134,7 @@
       {
         "localDay": 4,
         "monthDay": 17,
+        "dayOfYear": 137,
         "date": "2023-05-17",
         "isBooked": false,
         "isDisabled": true
@@ -125,6 +142,7 @@
       {
         "localDay": 5,
         "monthDay": 18,
+        "dayOfYear": 138,
         "date": "2023-05-18",
         "isBooked": false,
         "isDisabled": true
@@ -132,6 +150,7 @@
       {
         "localDay": 6,
         "monthDay": 19,
+        "dayOfYear": 139,
         "date": "2023-05-19",
         "isBooked": false,
         "isDisabled": true
@@ -139,6 +158,7 @@
       {
         "localDay": 7,
         "monthDay": 20,
+        "dayOfYear": 140,
         "date": "2023-05-20",
         "isBooked": false,
         "isDisabled": true
@@ -146,6 +166,7 @@
       {
         "localDay": 1,
         "monthDay": 21,
+        "dayOfYear": 141,
         "date": "2023-05-21",
         "isBooked": false,
         "isDisabled": true
@@ -153,6 +174,7 @@
       {
         "localDay": 2,
         "monthDay": 22,
+        "dayOfYear": 142,
         "date": "2023-05-22",
         "isBooked": false,
         "isDisabled": true
@@ -160,6 +182,7 @@
       {
         "localDay": 3,
         "monthDay": 23,
+        "dayOfYear": 143,
         "date": "2023-05-23",
         "isBooked": false,
         "isDisabled": true
@@ -167,6 +190,7 @@
       {
         "localDay": 4,
         "monthDay": 24,
+        "dayOfYear": 144,
         "date": "2023-05-24",
         "isBooked": false,
         "isDisabled": true
@@ -174,6 +198,7 @@
       {
         "localDay": 5,
         "monthDay": 25,
+        "dayOfYear": 145,
         "date": "2023-05-25",
         "isBooked": false,
         "isDisabled": false
@@ -181,6 +206,7 @@
       {
         "localDay": 6,
         "monthDay": 26,
+        "dayOfYear": 146,
         "date": "2023-05-26",
         "isBooked": false,
         "isDisabled": false
@@ -188,6 +214,7 @@
       {
         "localDay": 7,
         "monthDay": 27,
+        "dayOfYear": 147,
         "date": "2023-05-27",
         "isBooked": false,
         "isDisabled": false
@@ -195,6 +222,7 @@
       {
         "localDay": 1,
         "monthDay": 28,
+        "dayOfYear": 148,
         "date": "2023-05-28",
         "isBooked": false,
         "isDisabled": false
@@ -202,6 +230,7 @@
       {
         "localDay": 2,
         "monthDay": 29,
+        "dayOfYear": 149,
         "date": "2023-05-29",
         "isBooked": false,
         "isDisabled": false
@@ -209,6 +238,7 @@
       {
         "localDay": 3,
         "monthDay": 30,
+        "dayOfYear": 150,
         "date": "2023-05-30",
         "isBooked": false,
         "isDisabled": false
@@ -216,6 +246,7 @@
       {
         "localDay": 4,
         "monthDay": 31,
+        "dayOfYear": 151,
         "date": "2023-05-31",
         "isBooked": false,
         "isDisabled": false
@@ -229,6 +260,7 @@
       {
         "localDay": 5,
         "monthDay": 1,
+        "dayOfYear": 152,
         "date": "2023-06-01",
         "isBooked": false,
         "isDisabled": false
@@ -236,6 +268,7 @@
       {
         "localDay": 6,
         "monthDay": 2,
+        "dayOfYear": 153,
         "date": "2023-06-02",
         "isBooked": false,
         "isDisabled": false
@@ -243,6 +276,7 @@
       {
         "localDay": 7,
         "monthDay": 3,
+        "dayOfYear": 154,
         "date": "2023-06-03",
         "isBooked": false,
         "isDisabled": false
@@ -250,6 +284,7 @@
       {
         "localDay": 1,
         "monthDay": 4,
+        "dayOfYear": 155,
         "date": "2023-06-04",
         "isBooked": false,
         "isDisabled": false
@@ -257,6 +292,7 @@
       {
         "localDay": 2,
         "monthDay": 5,
+        "dayOfYear": 156,
         "date": "2023-06-05",
         "isBooked": false,
         "isDisabled": false
@@ -264,6 +300,7 @@
       {
         "localDay": 3,
         "monthDay": 6,
+        "dayOfYear": 157,
         "date": "2023-06-06",
         "isBooked": false,
         "isDisabled": false
@@ -271,6 +308,7 @@
       {
         "localDay": 4,
         "monthDay": 7,
+        "dayOfYear": 158,
         "date": "2023-06-07",
         "isBooked": false,
         "isDisabled": false
@@ -278,6 +316,7 @@
       {
         "localDay": 5,
         "monthDay": 8,
+        "dayOfYear": 159,
         "date": "2023-06-08",
         "isBooked": false,
         "isDisabled": false
@@ -285,6 +324,7 @@
       {
         "localDay": 6,
         "monthDay": 9,
+        "dayOfYear": 160,
         "date": "2023-06-09",
         "isBooked": false,
         "isDisabled": false
@@ -292,6 +332,7 @@
       {
         "localDay": 7,
         "monthDay": 10,
+        "dayOfYear": 161,
         "date": "2023-06-10",
         "isBooked": false,
         "isDisabled": false
@@ -299,6 +340,7 @@
       {
         "localDay": 1,
         "monthDay": 11,
+        "dayOfYear": 162,
         "date": "2023-06-11",
         "isBooked": false,
         "isDisabled": false
@@ -306,6 +348,7 @@
       {
         "localDay": 2,
         "monthDay": 12,
+        "dayOfYear": 163,
         "date": "2023-06-12",
         "isBooked": false,
         "isDisabled": false
@@ -313,6 +356,7 @@
       {
         "localDay": 3,
         "monthDay": 13,
+        "dayOfYear": 164,
         "date": "2023-06-13",
         "isBooked": false,
         "isDisabled": false
@@ -320,6 +364,7 @@
       {
         "localDay": 4,
         "monthDay": 14,
+        "dayOfYear": 165,
         "date": "2023-06-14",
         "isBooked": false,
         "isDisabled": false
@@ -327,6 +372,7 @@
       {
         "localDay": 5,
         "monthDay": 15,
+        "dayOfYear": 166,
         "date": "2023-06-15",
         "isBooked": false,
         "isDisabled": false
@@ -334,6 +380,7 @@
       {
         "localDay": 6,
         "monthDay": 16,
+        "dayOfYear": 167,
         "date": "2023-06-16",
         "isBooked": false,
         "isDisabled": false
@@ -341,6 +388,7 @@
       {
         "localDay": 7,
         "monthDay": 17,
+        "dayOfYear": 168,
         "date": "2023-06-17",
         "isBooked": false,
         "isDisabled": false
@@ -348,6 +396,7 @@
       {
         "localDay": 1,
         "monthDay": 18,
+        "dayOfYear": 169,
         "date": "2023-06-18",
         "isBooked": false,
         "isDisabled": false
@@ -355,6 +404,7 @@
       {
         "localDay": 2,
         "monthDay": 19,
+        "dayOfYear": 170,
         "date": "2023-06-19",
         "isBooked": false,
         "isDisabled": false
@@ -362,6 +412,7 @@
       {
         "localDay": 3,
         "monthDay": 20,
+        "dayOfYear": 171,
         "date": "2023-06-20",
         "isBooked": false,
         "isDisabled": false
@@ -369,6 +420,7 @@
       {
         "localDay": 4,
         "monthDay": 21,
+        "dayOfYear": 172,
         "date": "2023-06-21",
         "isBooked": false,
         "isDisabled": false
@@ -376,6 +428,7 @@
       {
         "localDay": 5,
         "monthDay": 22,
+        "dayOfYear": 173,
         "date": "2023-06-22",
         "isBooked": false,
         "isDisabled": false
@@ -383,6 +436,7 @@
       {
         "localDay": 6,
         "monthDay": 23,
+        "dayOfYear": 174,
         "date": "2023-06-23",
         "isBooked": true,
         "isDisabled": false
@@ -390,6 +444,7 @@
       {
         "localDay": 7,
         "monthDay": 24,
+        "dayOfYear": 175,
         "date": "2023-06-24",
         "isBooked": false,
         "isDisabled": false
@@ -397,6 +452,7 @@
       {
         "localDay": 1,
         "monthDay": 25,
+        "dayOfYear": 176,
         "date": "2023-06-25",
         "isBooked": false,
         "isDisabled": false
@@ -404,6 +460,7 @@
       {
         "localDay": 2,
         "monthDay": 26,
+        "dayOfYear": 177,
         "date": "2023-06-26",
         "isBooked": false,
         "isDisabled": false
@@ -411,6 +468,7 @@
       {
         "localDay": 3,
         "monthDay": 27,
+        "dayOfYear": 178,
         "date": "2023-06-27",
         "isBooked": false,
         "isDisabled": false
@@ -418,6 +476,7 @@
       {
         "localDay": 4,
         "monthDay": 28,
+        "dayOfYear": 179,
         "date": "2023-06-28",
         "isBooked": false,
         "isDisabled": false
@@ -425,6 +484,7 @@
       {
         "localDay": 5,
         "monthDay": 29,
+        "dayOfYear": 180,
         "date": "2023-06-29",
         "isBooked": false,
         "isDisabled": false
@@ -432,6 +492,7 @@
       {
         "localDay": 6,
         "monthDay": 30,
+        "dayOfYear": 181,
         "date": "2023-06-30",
         "isBooked": false,
         "isDisabled": false
@@ -445,6 +506,7 @@
       {
         "localDay": 7,
         "monthDay": 1,
+        "dayOfYear": 182,
         "date": "2023-07-01",
         "isBooked": false,
         "isDisabled": false
@@ -452,6 +514,7 @@
       {
         "localDay": 1,
         "monthDay": 2,
+        "dayOfYear": 183,
         "date": "2023-07-02",
         "isBooked": false,
         "isDisabled": false
@@ -459,6 +522,7 @@
       {
         "localDay": 2,
         "monthDay": 3,
+        "dayOfYear": 184,
         "date": "2023-07-03",
         "isBooked": false,
         "isDisabled": false
@@ -466,6 +530,7 @@
       {
         "localDay": 3,
         "monthDay": 4,
+        "dayOfYear": 185,
         "date": "2023-07-04",
         "isBooked": false,
         "isDisabled": false
@@ -473,6 +538,7 @@
       {
         "localDay": 4,
         "monthDay": 5,
+        "dayOfYear": 186,
         "date": "2023-07-05",
         "isBooked": false,
         "isDisabled": false
@@ -480,6 +546,7 @@
       {
         "localDay": 5,
         "monthDay": 6,
+        "dayOfYear": 187,
         "date": "2023-07-06",
         "isBooked": false,
         "isDisabled": false
@@ -487,6 +554,7 @@
       {
         "localDay": 6,
         "monthDay": 7,
+        "dayOfYear": 188,
         "date": "2023-07-07",
         "isBooked": false,
         "isDisabled": false
@@ -494,6 +562,7 @@
       {
         "localDay": 7,
         "monthDay": 8,
+        "dayOfYear": 189,
         "date": "2023-07-08",
         "isBooked": false,
         "isDisabled": false
@@ -501,6 +570,7 @@
       {
         "localDay": 1,
         "monthDay": 9,
+        "dayOfYear": 190,
         "date": "2023-07-09",
         "isBooked": false,
         "isDisabled": false
@@ -508,6 +578,7 @@
       {
         "localDay": 2,
         "monthDay": 10,
+        "dayOfYear": 191,
         "date": "2023-07-10",
         "isBooked": false,
         "isDisabled": false
@@ -515,6 +586,7 @@
       {
         "localDay": 3,
         "monthDay": 11,
+        "dayOfYear": 192,
         "date": "2023-07-11",
         "isBooked": false,
         "isDisabled": false
@@ -522,6 +594,7 @@
       {
         "localDay": 4,
         "monthDay": 12,
+        "dayOfYear": 193,
         "date": "2023-07-12",
         "isBooked": false,
         "isDisabled": false
@@ -529,6 +602,7 @@
       {
         "localDay": 5,
         "monthDay": 13,
+        "dayOfYear": 194,
         "date": "2023-07-13",
         "isBooked": false,
         "isDisabled": false
@@ -536,6 +610,7 @@
       {
         "localDay": 6,
         "monthDay": 14,
+        "dayOfYear": 195,
         "date": "2023-07-14",
         "isBooked": false,
         "isDisabled": false
@@ -543,6 +618,7 @@
       {
         "localDay": 7,
         "monthDay": 15,
+        "dayOfYear": 196,
         "date": "2023-07-15",
         "isBooked": false,
         "isDisabled": false
@@ -550,6 +626,7 @@
       {
         "localDay": 1,
         "monthDay": 16,
+        "dayOfYear": 197,
         "date": "2023-07-16",
         "isBooked": false,
         "isDisabled": false
@@ -557,6 +634,7 @@
       {
         "localDay": 2,
         "monthDay": 17,
+        "dayOfYear": 198,
         "date": "2023-07-17",
         "isBooked": false,
         "isDisabled": false
@@ -564,6 +642,7 @@
       {
         "localDay": 3,
         "monthDay": 18,
+        "dayOfYear": 199,
         "date": "2023-07-18",
         "isBooked": false,
         "isDisabled": false
@@ -571,6 +650,7 @@
       {
         "localDay": 4,
         "monthDay": 19,
+        "dayOfYear": 200,
         "date": "2023-07-19",
         "isBooked": false,
         "isDisabled": false
@@ -578,6 +658,7 @@
       {
         "localDay": 5,
         "monthDay": 20,
+        "dayOfYear": 201,
         "date": "2023-07-20",
         "isBooked": false,
         "isDisabled": false
@@ -585,6 +666,7 @@
       {
         "localDay": 6,
         "monthDay": 21,
+        "dayOfYear": 202,
         "date": "2023-07-21",
         "isBooked": false,
         "isDisabled": false
@@ -592,6 +674,7 @@
       {
         "localDay": 7,
         "monthDay": 22,
+        "dayOfYear": 203,
         "date": "2023-07-22",
         "isBooked": true,
         "isDisabled": false
@@ -599,6 +682,7 @@
       {
         "localDay": 1,
         "monthDay": 23,
+        "dayOfYear": 204,
         "date": "2023-07-23",
         "isBooked": true,
         "isDisabled": false
@@ -606,6 +690,7 @@
       {
         "localDay": 2,
         "monthDay": 24,
+        "dayOfYear": 205,
         "date": "2023-07-24",
         "isBooked": true,
         "isDisabled": false
@@ -613,6 +698,7 @@
       {
         "localDay": 3,
         "monthDay": 25,
+        "dayOfYear": 206,
         "date": "2023-07-25",
         "isBooked": true,
         "isDisabled": false
@@ -620,6 +706,7 @@
       {
         "localDay": 4,
         "monthDay": 26,
+        "dayOfYear": 207,
         "date": "2023-07-26",
         "isBooked": true,
         "isDisabled": false
@@ -627,6 +714,7 @@
       {
         "localDay": 5,
         "monthDay": 27,
+        "dayOfYear": 208,
         "date": "2023-07-27",
         "isBooked": true,
         "isDisabled": false
@@ -634,6 +722,7 @@
       {
         "localDay": 6,
         "monthDay": 28,
+        "dayOfYear": 209,
         "date": "2023-07-28",
         "isBooked": true,
         "isDisabled": false
@@ -641,6 +730,7 @@
       {
         "localDay": 7,
         "monthDay": 29,
+        "dayOfYear": 210,
         "date": "2023-07-29",
         "isBooked": true,
         "isDisabled": false
@@ -648,6 +738,7 @@
       {
         "localDay": 1,
         "monthDay": 30,
+        "dayOfYear": 211,
         "date": "2023-07-30",
         "isBooked": false,
         "isDisabled": false
@@ -655,6 +746,7 @@
       {
         "localDay": 2,
         "monthDay": 31,
+        "dayOfYear": 212,
         "date": "2023-07-31",
         "isBooked": false,
         "isDisabled": false
@@ -668,6 +760,7 @@
       {
         "localDay": 3,
         "monthDay": 1,
+        "dayOfYear": 213,
         "date": "2023-08-01",
         "isBooked": false,
         "isDisabled": false
@@ -675,6 +768,7 @@
       {
         "localDay": 4,
         "monthDay": 2,
+        "dayOfYear": 214,
         "date": "2023-08-02",
         "isBooked": false,
         "isDisabled": false
@@ -682,6 +776,7 @@
       {
         "localDay": 5,
         "monthDay": 3,
+        "dayOfYear": 215,
         "date": "2023-08-03",
         "isBooked": false,
         "isDisabled": false
@@ -689,6 +784,7 @@
       {
         "localDay": 6,
         "monthDay": 4,
+        "dayOfYear": 216,
         "date": "2023-08-04",
         "isBooked": false,
         "isDisabled": false
@@ -696,6 +792,7 @@
       {
         "localDay": 7,
         "monthDay": 5,
+        "dayOfYear": 217,
         "date": "2023-08-05",
         "isBooked": false,
         "isDisabled": false
@@ -703,6 +800,7 @@
       {
         "localDay": 1,
         "monthDay": 6,
+        "dayOfYear": 218,
         "date": "2023-08-06",
         "isBooked": false,
         "isDisabled": false
@@ -710,6 +808,7 @@
       {
         "localDay": 2,
         "monthDay": 7,
+        "dayOfYear": 219,
         "date": "2023-08-07",
         "isBooked": false,
         "isDisabled": false
@@ -717,6 +816,7 @@
       {
         "localDay": 3,
         "monthDay": 8,
+        "dayOfYear": 220,
         "date": "2023-08-08",
         "isBooked": false,
         "isDisabled": false
@@ -724,6 +824,7 @@
       {
         "localDay": 4,
         "monthDay": 9,
+        "dayOfYear": 221,
         "date": "2023-08-09",
         "isBooked": false,
         "isDisabled": false
@@ -731,6 +832,7 @@
       {
         "localDay": 5,
         "monthDay": 10,
+        "dayOfYear": 222,
         "date": "2023-08-10",
         "isBooked": false,
         "isDisabled": false
@@ -738,6 +840,7 @@
       {
         "localDay": 6,
         "monthDay": 11,
+        "dayOfYear": 223,
         "date": "2023-08-11",
         "isBooked": false,
         "isDisabled": false
@@ -745,6 +848,7 @@
       {
         "localDay": 7,
         "monthDay": 12,
+        "dayOfYear": 224,
         "date": "2023-08-12",
         "isBooked": false,
         "isDisabled": false
@@ -752,6 +856,7 @@
       {
         "localDay": 1,
         "monthDay": 13,
+        "dayOfYear": 225,
         "date": "2023-08-13",
         "isBooked": false,
         "isDisabled": false
@@ -759,6 +864,7 @@
       {
         "localDay": 2,
         "monthDay": 14,
+        "dayOfYear": 226,
         "date": "2023-08-14",
         "isBooked": false,
         "isDisabled": false
@@ -766,6 +872,7 @@
       {
         "localDay": 3,
         "monthDay": 15,
+        "dayOfYear": 227,
         "date": "2023-08-15",
         "isBooked": false,
         "isDisabled": false
@@ -773,6 +880,7 @@
       {
         "localDay": 4,
         "monthDay": 16,
+        "dayOfYear": 228,
         "date": "2023-08-16",
         "isBooked": false,
         "isDisabled": false
@@ -780,6 +888,7 @@
       {
         "localDay": 5,
         "monthDay": 17,
+        "dayOfYear": 229,
         "date": "2023-08-17",
         "isBooked": false,
         "isDisabled": false
@@ -787,6 +896,7 @@
       {
         "localDay": 6,
         "monthDay": 18,
+        "dayOfYear": 230,
         "date": "2023-08-18",
         "isBooked": false,
         "isDisabled": false
@@ -794,6 +904,7 @@
       {
         "localDay": 7,
         "monthDay": 19,
+        "dayOfYear": 231,
         "date": "2023-08-19",
         "isBooked": false,
         "isDisabled": false
@@ -801,6 +912,7 @@
       {
         "localDay": 1,
         "monthDay": 20,
+        "dayOfYear": 232,
         "date": "2023-08-20",
         "isBooked": false,
         "isDisabled": false
@@ -808,6 +920,7 @@
       {
         "localDay": 2,
         "monthDay": 21,
+        "dayOfYear": 233,
         "date": "2023-08-21",
         "isBooked": false,
         "isDisabled": false
@@ -815,6 +928,7 @@
       {
         "localDay": 3,
         "monthDay": 22,
+        "dayOfYear": 234,
         "date": "2023-08-22",
         "isBooked": false,
         "isDisabled": false
@@ -822,6 +936,7 @@
       {
         "localDay": 4,
         "monthDay": 23,
+        "dayOfYear": 235,
         "date": "2023-08-23",
         "isBooked": false,
         "isDisabled": false
@@ -829,6 +944,7 @@
       {
         "localDay": 5,
         "monthDay": 24,
+        "dayOfYear": 236,
         "date": "2023-08-24",
         "isBooked": false,
         "isDisabled": false
@@ -836,6 +952,7 @@
       {
         "localDay": 6,
         "monthDay": 25,
+        "dayOfYear": 237,
         "date": "2023-08-25",
         "isBooked": false,
         "isDisabled": false
@@ -843,6 +960,7 @@
       {
         "localDay": 7,
         "monthDay": 26,
+        "dayOfYear": 238,
         "date": "2023-08-26",
         "isBooked": false,
         "isDisabled": false
@@ -850,6 +968,7 @@
       {
         "localDay": 1,
         "monthDay": 27,
+        "dayOfYear": 239,
         "date": "2023-08-27",
         "isBooked": false,
         "isDisabled": false
@@ -857,6 +976,7 @@
       {
         "localDay": 2,
         "monthDay": 28,
+        "dayOfYear": 240,
         "date": "2023-08-28",
         "isBooked": false,
         "isDisabled": false
@@ -864,6 +984,7 @@
       {
         "localDay": 3,
         "monthDay": 29,
+        "dayOfYear": 241,
         "date": "2023-08-29",
         "isBooked": false,
         "isDisabled": false
@@ -871,6 +992,7 @@
       {
         "localDay": 4,
         "monthDay": 30,
+        "dayOfYear": 242,
         "date": "2023-08-30",
         "isBooked": false,
         "isDisabled": false
@@ -878,6 +1000,7 @@
       {
         "localDay": 5,
         "monthDay": 31,
+        "dayOfYear": 243,
         "date": "2023-08-31",
         "isBooked": false,
         "isDisabled": false
@@ -891,6 +1014,7 @@
       {
         "localDay": 6,
         "monthDay": 1,
+        "dayOfYear": 244,
         "date": "2023-09-01",
         "isBooked": false,
         "isDisabled": false
@@ -898,6 +1022,7 @@
       {
         "localDay": 7,
         "monthDay": 2,
+        "dayOfYear": 245,
         "date": "2023-09-02",
         "isBooked": false,
         "isDisabled": false
@@ -905,6 +1030,7 @@
       {
         "localDay": 1,
         "monthDay": 3,
+        "dayOfYear": 246,
         "date": "2023-09-03",
         "isBooked": false,
         "isDisabled": false
@@ -912,6 +1038,7 @@
       {
         "localDay": 2,
         "monthDay": 4,
+        "dayOfYear": 247,
         "date": "2023-09-04",
         "isBooked": false,
         "isDisabled": false
@@ -919,6 +1046,7 @@
       {
         "localDay": 3,
         "monthDay": 5,
+        "dayOfYear": 248,
         "date": "2023-09-05",
         "isBooked": false,
         "isDisabled": false
@@ -926,6 +1054,7 @@
       {
         "localDay": 4,
         "monthDay": 6,
+        "dayOfYear": 249,
         "date": "2023-09-06",
         "isBooked": false,
         "isDisabled": false
@@ -933,6 +1062,7 @@
       {
         "localDay": 5,
         "monthDay": 7,
+        "dayOfYear": 250,
         "date": "2023-09-07",
         "isBooked": false,
         "isDisabled": false
@@ -940,6 +1070,7 @@
       {
         "localDay": 6,
         "monthDay": 8,
+        "dayOfYear": 251,
         "date": "2023-09-08",
         "isBooked": false,
         "isDisabled": false
@@ -947,6 +1078,7 @@
       {
         "localDay": 7,
         "monthDay": 9,
+        "dayOfYear": 252,
         "date": "2023-09-09",
         "isBooked": false,
         "isDisabled": false
@@ -954,6 +1086,7 @@
       {
         "localDay": 1,
         "monthDay": 10,
+        "dayOfYear": 253,
         "date": "2023-09-10",
         "isBooked": false,
         "isDisabled": false
@@ -961,6 +1094,7 @@
       {
         "localDay": 2,
         "monthDay": 11,
+        "dayOfYear": 254,
         "date": "2023-09-11",
         "isBooked": false,
         "isDisabled": false
@@ -968,6 +1102,7 @@
       {
         "localDay": 3,
         "monthDay": 12,
+        "dayOfYear": 255,
         "date": "2023-09-12",
         "isBooked": false,
         "isDisabled": false
@@ -975,6 +1110,7 @@
       {
         "localDay": 4,
         "monthDay": 13,
+        "dayOfYear": 256,
         "date": "2023-09-13",
         "isBooked": false,
         "isDisabled": false
@@ -982,6 +1118,7 @@
       {
         "localDay": 5,
         "monthDay": 14,
+        "dayOfYear": 257,
         "date": "2023-09-14",
         "isBooked": false,
         "isDisabled": false
@@ -989,6 +1126,7 @@
       {
         "localDay": 6,
         "monthDay": 15,
+        "dayOfYear": 258,
         "date": "2023-09-15",
         "isBooked": false,
         "isDisabled": false
@@ -996,6 +1134,7 @@
       {
         "localDay": 7,
         "monthDay": 16,
+        "dayOfYear": 259,
         "date": "2023-09-16",
         "isBooked": false,
         "isDisabled": false
@@ -1003,6 +1142,7 @@
       {
         "localDay": 1,
         "monthDay": 17,
+        "dayOfYear": 260,
         "date": "2023-09-17",
         "isBooked": false,
         "isDisabled": false
@@ -1010,6 +1150,7 @@
       {
         "localDay": 2,
         "monthDay": 18,
+        "dayOfYear": 261,
         "date": "2023-09-18",
         "isBooked": false,
         "isDisabled": false
@@ -1017,6 +1158,7 @@
       {
         "localDay": 3,
         "monthDay": 19,
+        "dayOfYear": 262,
         "date": "2023-09-19",
         "isBooked": false,
         "isDisabled": false
@@ -1024,6 +1166,7 @@
       {
         "localDay": 4,
         "monthDay": 20,
+        "dayOfYear": 263,
         "date": "2023-09-20",
         "isBooked": false,
         "isDisabled": false
@@ -1031,6 +1174,7 @@
       {
         "localDay": 5,
         "monthDay": 21,
+        "dayOfYear": 264,
         "date": "2023-09-21",
         "isBooked": false,
         "isDisabled": false
@@ -1038,6 +1182,7 @@
       {
         "localDay": 6,
         "monthDay": 22,
+        "dayOfYear": 265,
         "date": "2023-09-22",
         "isBooked": false,
         "isDisabled": false
@@ -1045,6 +1190,7 @@
       {
         "localDay": 7,
         "monthDay": 23,
+        "dayOfYear": 266,
         "date": "2023-09-23",
         "isBooked": false,
         "isDisabled": false
@@ -1052,6 +1198,7 @@
       {
         "localDay": 1,
         "monthDay": 24,
+        "dayOfYear": 267,
         "date": "2023-09-24",
         "isBooked": false,
         "isDisabled": false
@@ -1059,6 +1206,7 @@
       {
         "localDay": 2,
         "monthDay": 25,
+        "dayOfYear": 268,
         "date": "2023-09-25",
         "isBooked": false,
         "isDisabled": false
@@ -1066,6 +1214,7 @@
       {
         "localDay": 3,
         "monthDay": 26,
+        "dayOfYear": 269,
         "date": "2023-09-26",
         "isBooked": false,
         "isDisabled": false
@@ -1073,6 +1222,7 @@
       {
         "localDay": 4,
         "monthDay": 27,
+        "dayOfYear": 270,
         "date": "2023-09-27",
         "isBooked": false,
         "isDisabled": false
@@ -1080,6 +1230,7 @@
       {
         "localDay": 5,
         "monthDay": 28,
+        "dayOfYear": 271,
         "date": "2023-09-28",
         "isBooked": false,
         "isDisabled": false
@@ -1087,6 +1238,7 @@
       {
         "localDay": 6,
         "monthDay": 29,
+        "dayOfYear": 272,
         "date": "2023-09-29",
         "isBooked": false,
         "isDisabled": false
@@ -1094,6 +1246,7 @@
       {
         "localDay": 7,
         "monthDay": 30,
+        "dayOfYear": 273,
         "date": "2023-09-30",
         "isBooked": false,
         "isDisabled": false
@@ -1107,6 +1260,7 @@
       {
         "localDay": 1,
         "monthDay": 1,
+        "dayOfYear": 274,
         "date": "2023-10-01",
         "isBooked": false,
         "isDisabled": false
@@ -1114,6 +1268,7 @@
       {
         "localDay": 2,
         "monthDay": 2,
+        "dayOfYear": 275,
         "date": "2023-10-02",
         "isBooked": false,
         "isDisabled": false
@@ -1121,6 +1276,7 @@
       {
         "localDay": 3,
         "monthDay": 3,
+        "dayOfYear": 276,
         "date": "2023-10-03",
         "isBooked": false,
         "isDisabled": false
@@ -1128,6 +1284,7 @@
       {
         "localDay": 4,
         "monthDay": 4,
+        "dayOfYear": 277,
         "date": "2023-10-04",
         "isBooked": false,
         "isDisabled": false
@@ -1135,6 +1292,7 @@
       {
         "localDay": 5,
         "monthDay": 5,
+        "dayOfYear": 278,
         "date": "2023-10-05",
         "isBooked": false,
         "isDisabled": false
@@ -1142,6 +1300,7 @@
       {
         "localDay": 6,
         "monthDay": 6,
+        "dayOfYear": 279,
         "date": "2023-10-06",
         "isBooked": false,
         "isDisabled": false
@@ -1149,6 +1308,7 @@
       {
         "localDay": 7,
         "monthDay": 7,
+        "dayOfYear": 280,
         "date": "2023-10-07",
         "isBooked": false,
         "isDisabled": false
@@ -1156,6 +1316,7 @@
       {
         "localDay": 1,
         "monthDay": 8,
+        "dayOfYear": 281,
         "date": "2023-10-08",
         "isBooked": false,
         "isDisabled": false
@@ -1163,6 +1324,7 @@
       {
         "localDay": 2,
         "monthDay": 9,
+        "dayOfYear": 282,
         "date": "2023-10-09",
         "isBooked": false,
         "isDisabled": false
@@ -1170,6 +1332,7 @@
       {
         "localDay": 3,
         "monthDay": 10,
+        "dayOfYear": 283,
         "date": "2023-10-10",
         "isBooked": false,
         "isDisabled": true
@@ -1177,6 +1340,7 @@
       {
         "localDay": 4,
         "monthDay": 11,
+        "dayOfYear": 284,
         "date": "2023-10-11",
         "isBooked": false,
         "isDisabled": true
@@ -1184,6 +1348,7 @@
       {
         "localDay": 5,
         "monthDay": 12,
+        "dayOfYear": 285,
         "date": "2023-10-12",
         "isBooked": false,
         "isDisabled": true
@@ -1191,6 +1356,7 @@
       {
         "localDay": 6,
         "monthDay": 13,
+        "dayOfYear": 286,
         "date": "2023-10-13",
         "isBooked": false,
         "isDisabled": true
@@ -1198,6 +1364,7 @@
       {
         "localDay": 7,
         "monthDay": 14,
+        "dayOfYear": 287,
         "date": "2023-10-14",
         "isBooked": false,
         "isDisabled": true
@@ -1205,6 +1372,7 @@
       {
         "localDay": 1,
         "monthDay": 15,
+        "dayOfYear": 288,
         "date": "2023-10-15",
         "isBooked": false,
         "isDisabled": true
@@ -1212,6 +1380,7 @@
       {
         "localDay": 2,
         "monthDay": 16,
+        "dayOfYear": 289,
         "date": "2023-10-16",
         "isBooked": false,
         "isDisabled": true
@@ -1219,6 +1388,7 @@
       {
         "localDay": 3,
         "monthDay": 17,
+        "dayOfYear": 290,
         "date": "2023-10-17",
         "isBooked": false,
         "isDisabled": true
@@ -1226,6 +1396,7 @@
       {
         "localDay": 4,
         "monthDay": 18,
+        "dayOfYear": 291,
         "date": "2023-10-18",
         "isBooked": false,
         "isDisabled": true
@@ -1233,6 +1404,7 @@
       {
         "localDay": 5,
         "monthDay": 19,
+        "dayOfYear": 292,
         "date": "2023-10-19",
         "isBooked": false,
         "isDisabled": true
@@ -1240,6 +1412,7 @@
       {
         "localDay": 6,
         "monthDay": 20,
+        "dayOfYear": 293,
         "date": "2023-10-20",
         "isBooked": false,
         "isDisabled": true
@@ -1247,6 +1420,7 @@
       {
         "localDay": 7,
         "monthDay": 21,
+        "dayOfYear": 294,
         "date": "2023-10-21",
         "isBooked": false,
         "isDisabled": true
@@ -1254,6 +1428,7 @@
       {
         "localDay": 1,
         "monthDay": 22,
+        "dayOfYear": 295,
         "date": "2023-10-22",
         "isBooked": false,
         "isDisabled": true
@@ -1261,6 +1436,7 @@
       {
         "localDay": 2,
         "monthDay": 23,
+        "dayOfYear": 296,
         "date": "2023-10-23",
         "isBooked": false,
         "isDisabled": true
@@ -1268,6 +1444,7 @@
       {
         "localDay": 3,
         "monthDay": 24,
+        "dayOfYear": 297,
         "date": "2023-10-24",
         "isBooked": false,
         "isDisabled": true
@@ -1275,6 +1452,7 @@
       {
         "localDay": 4,
         "monthDay": 25,
+        "dayOfYear": 298,
         "date": "2023-10-25",
         "isBooked": false,
         "isDisabled": true
@@ -1282,6 +1460,7 @@
       {
         "localDay": 5,
         "monthDay": 26,
+        "dayOfYear": 299,
         "date": "2023-10-26",
         "isBooked": false,
         "isDisabled": true
@@ -1289,6 +1468,7 @@
       {
         "localDay": 6,
         "monthDay": 27,
+        "dayOfYear": 300,
         "date": "2023-10-27",
         "isBooked": false,
         "isDisabled": true
@@ -1296,6 +1476,7 @@
       {
         "localDay": 7,
         "monthDay": 28,
+        "dayOfYear": 301,
         "date": "2023-10-28",
         "isBooked": false,
         "isDisabled": true
@@ -1303,6 +1484,7 @@
       {
         "localDay": 1,
         "monthDay": 29,
+        "dayOfYear": 302,
         "date": "2023-10-29",
         "isBooked": false,
         "isDisabled": true
@@ -1310,6 +1492,7 @@
       {
         "localDay": 2,
         "monthDay": 30,
+        "dayOfYear": 303,
         "date": "2023-10-30",
         "isBooked": false,
         "isDisabled": true
@@ -1317,6 +1500,7 @@
       {
         "localDay": 3,
         "monthDay": 31,
+        "dayOfYear": 304,
         "date": "2023-10-31",
         "isBooked": false,
         "isDisabled": true
