@@ -5,7 +5,11 @@
   "pipeline": {
     "build": {
       "dependsOn": ["^build"],
-      "env": ["STRIPE_SECRET_KEY", "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"],
+      "env": [
+        "STRIPE_SECRET_KEY",
+        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+        "STRIPE_WH_SECRET_KEY"
+      ],
       "outputs": [".next/**", "!.next/cache/**"]
     },
 
