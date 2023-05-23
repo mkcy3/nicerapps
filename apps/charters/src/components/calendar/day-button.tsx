@@ -1,13 +1,14 @@
-import { isSameDay, isWithinInterval } from '@/lib/day-of-year'
+import { isSameDay, isWithinInterval } from 'date-fns'
+
 import { cn } from '@/lib/utils'
 
 export type SelectedDates = {
-  end: number
-  start: number
+  endDate: Date | null
+  startDate: Date | null
 }
 export type CalendarDay = {
-  date: string
-  dayOfYear: number
+  date: Date
+  dateISO: string
   isBooked: boolean
   isDisabled: boolean
   localDay: number
@@ -26,19 +27,24 @@ export default function DayButton({
   selectedDates,
   onClick,
 }: DayButtonProps) {
-  const { start, end } = selectedDates
-  const dayOfYear = day.dayOfYear
+  const { startDate, endDate } = selectedDates
+
   const isDisabled = day.isDisabled || day.isBooked
 
-  const isSelected = isSameDay(start, dayOfYear) || isSameDay(end, dayOfYear)
+  const isSelected =
+    (startDate && isSameDay(startDate, day.date)) ||
+    (endDate && isSameDay(endDate, day.date))
 
-  const isRange = isWithinInterval(dayOfYear, { start, end })
+  const isRange =
+    startDate &&
+    endDate &&
+    isWithinInterval(day.date, { start: startDate, end: endDate })
 
   return (
     <button
       type="button"
       disabled={isDisabled}
-      value={day.date}
+      value={day.dateISO}
       onClick={onClick}
       className={cn(
         'py-1.5 hover:bg-gray-100 focus:z-10',
@@ -53,7 +59,7 @@ export default function DayButton({
       )}
     >
       <time
-        dateTime={day.date}
+        dateTime={day.dateISO}
         className={cn(
           'mx-auto flex h-7 w-7 items-center justify-center rounded-full'
         )}
