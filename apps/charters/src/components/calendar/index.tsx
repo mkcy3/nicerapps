@@ -1,5 +1,6 @@
 'use client'
 //USESVR: move all client components to leaves when server actions out of alpha
+import { addDays, format, isBefore, isSameDay, parseISO } from 'date-fns'
 import Link from 'next/link'
 import React from 'react'
 import { useState } from 'react'
@@ -10,7 +11,6 @@ import DayButton, {
   SelectedDates,
 } from '@/components/calendar/day-button'
 import { Button, buttonVariantStyles } from '@/components/ui/button'
-import { format, isBefore, isSameDay } from '@/lib/day-of-year'
 import { cn } from '@/lib/utils'
 
 import DateInput from './date'
@@ -22,9 +22,9 @@ type Month = {
   year: number
 }
 interface LinkWrapperProps extends React.ComponentProps<'button'> {
-  end: number
+  end: Date | null
   passengers: number
-  start: number
+  start: Date | null
 }
 
 //TODO: make reusable w/generics and forwardRef
@@ -36,10 +36,10 @@ function LinkWrapper({
 }: LinkWrapperProps): JSX.Element {
   const sharedStyle = 'py-1 sm:my-3 sm:px-6 sm:py-3 lg:w-40'
   const { text, classNames }: { classNames: string; text: string } = (() => {
-    if (start === 0) {
+    if (!start) {
       return { text: 'Check in?', classNames: 'bg-red-500 hover:bg-red-400' }
     }
-    if (end === 0) {
+    if (!end) {
       return {
         text: 'Check out?',
         classNames: 'bg-yellow-500 hover:bg-yellow-400',
@@ -56,13 +56,17 @@ function LinkWrapper({
     return { text: 'Next', classNames: 'w-1/4' }
   })()
 
-  if (start > 0 && end > 0 && passengers > 0)
+  if (start && end && passengers > 0)
     return (
       <Link
         className={cn(buttonVariantStyles.primary, sharedStyle, classNames)}
         href={{
           pathname: '/book',
-          query: { start: start, end: end, passengers: passengers },
+          query: {
+            start: format(start, 'yyyy-MM-dd'),
+            end: format(end, 'yyyy-MM-dd'),
+            passengers: passengers,
+          },
         }}
       >
         {text}
@@ -82,61 +86,74 @@ function LinkWrapper({
 
 export default function Calendar({ calendar }: { calendar: Month[] }) {
   const [selectedDates, setSelectedDates] = useImmer<SelectedDates>({
-    end: 0,
-    start: 0,
+    endDate: null,
+    startDate: null,
   })
 
   const [passengers, setPassengers] = useState(0)
 
-  const { start, end } = selectedDates
-  const displayDateStart = format(start, 'MMM dd')
-  const displayDateEnd = format(end, 'MMM dd')
+  const { startDate, endDate } = selectedDates
+  const displayDateStart = startDate ? format(startDate, 'MMM dd') : ''
+  const displayDateEnd = endDate ? format(endDate, 'MMM dd') : ''
 
   function handleSelectDate(e: React.MouseEvent<HTMLButtonElement>) {
-    const [year, month, day] = e.currentTarget.value.split('-').map(Number)
-    const selectedDate = calendar[month - 5].days[day - 1]
-    const selectedDayOfYear = selectedDate.dayOfYear
+    const selectedDate = parseISO(e.currentTarget.value)
 
-    if (start === 0) {
+    if (!startDate) {
       return setSelectedDates((draft) => {
-        draft.start = selectedDayOfYear
+        draft.startDate = selectedDate
       })
     }
 
-    if (isBefore(selectedDayOfYear, start)) {
+    if (isBefore(selectedDate, startDate)) {
       return setSelectedDates((draft) => {
-        draft.start = selectedDayOfYear
-        draft.end = 0
+        draft.startDate = selectedDate
+        draft.endDate = null
       })
     }
     if (
-      isSameDay(selectedDayOfYear, start) ||
-      isSameDay(selectedDayOfYear, start + 1)
+      isSameDay(selectedDate, startDate) ||
+      isSameDay(selectedDate, addDays(startDate, 1))
     ) {
       return setSelectedDates((draft) => {
-        draft.end = selectedDayOfYear
+        draft.endDate = selectedDate
       })
     }
     const flatCalendar = calendar.flatMap((month) => month.days)
-    const firstIndex = start - flatCalendar[0].dayOfYear
-    const lastIndex = selectedDayOfYear - flatCalendar[0].dayOfYear
+    const firstIndex =
+      Number(format(startDate, 'D', { useAdditionalDayOfYearTokens: true })) -
+      Number(
+        format(flatCalendar[0].date, 'D', {
+          useAdditionalDayOfYearTokens: true,
+        })
+      )
+
+    const lastIndex =
+      Number(
+        format(selectedDate, 'D', { useAdditionalDayOfYearTokens: true })
+      ) -
+      Number(
+        format(flatCalendar[0].date, 'D', {
+          useAdditionalDayOfYearTokens: true,
+        })
+      )
 
     if (
       flatCalendar.slice(firstIndex, lastIndex + 1).some((day) => day.isBooked)
     ) {
       setSelectedDates((draft) => {
-        draft.end = 0
+        draft.endDate = null
       })
       console.log('Error: cannot book that range')
       return
     }
     setSelectedDates((draft) => {
-      draft.end = selectedDayOfYear
+      draft.endDate = selectedDate
     })
   }
 
   function handleClear() {
-    setSelectedDates({ start: 0, end: 0 })
+    setSelectedDates({ startDate: null, endDate: null })
   }
 
   return (
@@ -201,7 +218,7 @@ export default function Calendar({ calendar }: { calendar: Month[] }) {
                 )}
                 {month.days.map((day, dayIdx) => (
                   <DayButton
-                    key={day.date}
+                    key={day.dateISO}
                     day={day}
                     idx={dayIdx}
                     selectedDates={selectedDates}
@@ -234,7 +251,7 @@ export default function Calendar({ calendar }: { calendar: Month[] }) {
           setSelectedIndex={setPassengers}
         />
 
-        <LinkWrapper passengers={passengers} start={start} end={end} />
+        <LinkWrapper passengers={passengers} start={startDate} end={endDate} />
       </div>
     </>
   )

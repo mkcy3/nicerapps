@@ -1,89 +1,45 @@
-import {
-  eachDayOfInterval,
-  eachMonthOfInterval,
-  format,
-  isAfter,
-  isBefore,
-  isSameDay,
-} from 'date-fns'
+import { eachDayOfInterval, isAfter, parseISO } from 'date-fns'
 
 import Calendar from '@/components/calendar'
 import Container from '@/components/ui/container'
-import { prisma } from '@/lib/prisma'
+import { getCurrentSucceededIntents } from '@/lib/stripe'
+import { buildCalendar } from '@/lib/utils'
+
+const reservedDates = [
+  '2023-07-14',
+  '2023-07-15',
+  '2023-07-16',
+  '2023-07-17',
+  '2023-07-18',
+  '2023-07-19',
+  '2023-07-20',
+  '2023-07-21',
+  '2023-07-22',
+  '2023-07-23',
+  '2023-07-24',
+].map((dateString) => parseISO(dateString))
 
 async function getBookedDates() {
-  // explicitly set bookedDates as it fails ci otherwise, charter: any
-  const bookedDates: { endDate: Date; startDate: Date }[] =
-    await prisma.charter.findMany({
-      select: {
-        startDate: true,
-        endDate: true,
-      },
-      orderBy: {
-        startDate: 'asc',
-      },
-    })
+  const intents = await getCurrentSucceededIntents()
+  const stripeDates = intents.map((intent) => {
+    const { charterStartDate, charterEndDate } = intent.metadata
 
-  const rangeDates = bookedDates
-    .map((charter) => {
-      return eachDayOfInterval({
-        start: charter.startDate,
-        end: charter.endDate,
-      })
-    })
-    .flat()
-
-  return rangeDates
-}
-
-function buildCalendar(bookedDates: Date[]) {
-  const today = new Date()
-  const startOfMonth = new Date(2023, 4, 1) // May is month 4 in JavaScript's Date object
-  const endOfMonth = new Date(2023, 9, 31) // October is month 9 in JavaScript's Date object
-  const months = eachMonthOfInterval({ start: startOfMonth, end: endOfMonth })
-  const monthObjects = months.map((month) => {
-    const daysInMonth = eachDayOfInterval({
-      start: month,
-      end: new Date(month.getFullYear(), month.getMonth() + 1, 0),
-    })
-
-    const dayDates = daysInMonth.map((day, idx) => {
-      const [localDay, monthDay, date, month] = format(
-        day,
-        'e, d, yyyy-MM-dd, L'
-      ).split(', ')
-      const dayOfYear = format(day, 'D', { useAdditionalDayOfYearTokens: true })
-      const dateObj = {
-        localDay: Number(localDay),
-        monthDay: Number(monthDay),
-        dayOfYear: Number(dayOfYear),
-        date,
-        isBooked: isSameDay(day, bookedDates[0]),
-      }
-      if (isSameDay(day, bookedDates[0])) {
-        bookedDates.shift()
-      }
-
-      if (isBefore(day, today)) {
-        return { ...dateObj, isDisabled: true }
-      }
-      if (month === '5' && idx < 24) {
-        return { ...dateObj, isDisabled: true }
-      }
-      if (month === '10' && idx > 8) {
-        return { ...dateObj, isDisabled: true }
-      }
-
-      return { ...dateObj, isDisabled: false }
-    })
-
-    return {
-      name: format(month, 'MMMM'),
-      year: month.getFullYear(),
-      days: dayDates,
+    if (charterStartDate === charterEndDate) {
+      return parseISO(charterStartDate)
     }
+
+    return eachDayOfInterval({
+      start: parseISO(charterStartDate),
+      end: parseISO(charterEndDate),
+    })
   })
-  return monthObjects
+
+  const bookedDates = stripeDates
+    .flat()
+    .concat(reservedDates)
+    .sort((a, b) => a.getTime() - b.getTime())
+
+  return bookedDates
 }
 
 export default async function TripPage() {

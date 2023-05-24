@@ -1,5 +1,11 @@
 import { ClassValue, clsx } from 'clsx'
-import Stripe from 'stripe'
+import {
+  eachDayOfInterval,
+  eachMonthOfInterval,
+  format,
+  isBefore,
+  isSameDay,
+} from 'date-fns'
 import { twMerge } from 'tailwind-merge'
 
 export function cn(...inputs: ClassValue[]) {
@@ -17,52 +23,53 @@ export function formatAmountForDisplay(
   }).format(amount / 100)
 }
 
-/* eslint-disable */
-export function stripeErrorHandling(err: unknown) {
-  if (err instanceof Stripe.errors.StripeError) {
-    switch (err.type) {
-      case 'StripeCardError':
-        // A declined card error
-        err.message // => e.g. "Your card's expiration year is invalid."
-        break
-      case 'StripeInvalidRequestError':
-        // Invalid parameters were supplied to Stripe's API
-        console.log(err)
-        break
-      case 'StripeAPIError':
-        // An error occurred internally with Stripe's API
-        console.log(err)
-        break
-      case 'StripeConnectionError':
-        // Some kind of error occurred during the HTTPS communication
-        console.log(err)
-        break
-      case 'StripeAuthenticationError':
-        // You probably used an incorrect API key
-        console.log(err)
-        break
-      case 'StripeRateLimitError':
-        // Too many requests hit the API too quickly
-        console.log(err)
-        break
-      case 'StripePermissionError':
-        // Access to a resource is not allowed
-        console.log(err)
-        break
-      case 'StripeIdempotencyError':
-        // An idempotency key was used improperly
-        console.log(err)
-        break
-      case 'StripeInvalidGrantError':
-        // InvalidGrantError is raised when a specified code doesn't exist, is
-        // expired, has been used, or doesn't belong to you; a refresh token doesn't
-        // exist, or doesn't belong to you; or if an API key's mode (live or test)
-        // doesn't match the mode of a code or refresh token.
-        console.log(err)
-        break
+export function buildCalendar(bookedDates: Date[]) {
+  const today = new Date()
+  const startOfMonth = new Date(today.getFullYear(), 4, 1, 0, 0, 0) // May is month 4 in JavaScript's Date object
+  const endOfMonth = new Date(today.getFullYear(), 9, 31, 0, 0, 0) // October is month 9 in JavaScript's Date object
+  const months = eachMonthOfInterval({ start: startOfMonth, end: endOfMonth })
+  const monthObjects = months.map((month) => {
+    const daysInMonth = eachDayOfInterval({
+      start: month,
+      end: new Date(month.getFullYear(), month.getMonth() + 1, 0),
+    })
+
+    const dayDates = daysInMonth.map((day, idx) => {
+      const [localDay, monthDay, dateISO, month] = format(
+        day,
+        'e, d, yyyy-MM-dd, L'
+      ).split(', ')
+
+      const dateObj = {
+        localDay: Number(localDay),
+        monthDay: Number(monthDay),
+        dateISO,
+        date: day,
+        isBooked: false,
+        isDisabled: false,
+      }
+
+      if (isSameDay(day, bookedDates[0])) {
+        dateObj.isBooked = true
+        bookedDates.shift()
+      }
+
+      if (
+        isBefore(day, today) ||
+        (month === '5' && idx < 24) ||
+        (month === '10' && idx > 8)
+      ) {
+        dateObj.isDisabled = true
+      }
+
+      return dateObj
+    })
+
+    return {
+      name: format(month, 'MMMM'),
+      year: month.getFullYear(),
+      days: dayDates,
     }
-  } else {
-    // Handle any other type of unexpected error
-    throw new Error(err as string)
-  }
+  })
+  return monthObjects
 }

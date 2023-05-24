@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
 
-import mockedCalendarData from '../__mocks__/calendar.json'
+import { mockData } from '../__mocks__/calendar'
 import Calendar from '../index'
 
-const CALENDAR = mockedCalendarData
+const CALENDAR = mockData()
 
 describe('Calendar', () => {
   it('should render', () => {
