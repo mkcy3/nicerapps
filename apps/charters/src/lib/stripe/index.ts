@@ -1,3 +1,6 @@
+import 'server-only'
+
+import Dinero from 'dinero.js'
 import Stripe from 'stripe'
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
@@ -15,7 +18,7 @@ export async function getCurrentSucceededIntents() {
   })
   return result.data
 }
-export async function getPricePerDay(nights: number) {
+export async function getCharterStatement(nights: number, isSleeping: boolean) {
   const charterDays = nights + 1
 
   const prices = await stripe.prices.list()
@@ -32,7 +35,49 @@ export async function getPricePerDay(nights: number) {
     return parseInt(nicknameParts[0]) === charterDays
   })?.unit_amount as number
 
-  return matchingDayPrice
+  const sleepAboardPrice = isSleeping
+    ? Dinero({ amount: 20000, currency: 'CAD' })
+    : Dinero({ amount: 0, currency: 'CAD' })
+
+  const subTotal = Dinero({
+    amount: matchingDayPrice * charterDays,
+    currency: 'CAD',
+  })
+
+  const discount = subTotal.multiply(0.5)
+  const tax = subTotal.subtract(discount).add(sleepAboardPrice).multiply(0.13)
+  //TODO: Deposit and Remaining balance for next season
+  const balance = subTotal.subtract(discount).add(sleepAboardPrice).add(tax)
+
+  const statement = [
+    {
+      id: 'subtotal',
+      label: 'Subtotal',
+      amount: subTotal.getAmount(),
+    },
+    {
+      id: 'discount',
+      label: 'Discount',
+      amount: discount.getAmount(),
+    },
+    {
+      id: 'sleepAbroad',
+      label: 'Sleep Abroad',
+      amount: sleepAboardPrice.getAmount(),
+    },
+    {
+      id: 'tax',
+      label: 'Tax',
+      amount: tax.getAmount(),
+    },
+    {
+      id: 'balance',
+      label: 'Balance',
+      amount: balance.getAmount(),
+    },
+  ]
+
+  return statement
 }
 
 /* eslint-disable */
