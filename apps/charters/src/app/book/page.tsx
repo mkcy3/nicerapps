@@ -20,7 +20,7 @@ async function BookPage({
   const endDate = parseISO(end as string)
   const nights = differenceInCalendarDays(endDate, startDate)
 
-  if (nights < 0 || nights > 14 || (nights > 0 && Number(passengers) > 4))
+  if (nights < 0 || nights > 14 || (nights > 0 && Number(passengers) > 6))
     return redirect('/trip')
 
   const displayStartDate = format(startDate, 'dd MMM')

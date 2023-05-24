@@ -14,7 +14,8 @@ import { Button } from '@/components/ui/button'
 export default function StripeElements() {
   const stripe = useStripe()
   const elements = useElements()
-
+  const searchParams = useSearchParams()
+  const params = new URLSearchParams(searchParams.toString())
   //USESVR: here
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
@@ -25,7 +26,7 @@ export default function StripeElements() {
       return
     }
 
-    const res = await fetch('/book/api', {
+    const res = await fetch(`/book/api?` + params.toString(), {
       method: 'POST',
     })
 
@@ -35,7 +36,7 @@ export default function StripeElements() {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: 'http://localhost:3000/success',
+        return_url: `${process.env.NEXT_PUBLIC_URL}/success`,
       },
     })
 
