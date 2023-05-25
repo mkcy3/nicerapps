@@ -1,7 +1,6 @@
 import { eachDayOfInterval, isAfter, parseISO } from 'date-fns'
 
 import Calendar from '@/components/calendar'
-import Container from '@/components/ui/container'
 import { getCurrentSucceededIntents } from '@/lib/stripe'
 import { buildCalendar } from '@/lib/utils'
 
@@ -46,18 +45,9 @@ export default async function TripPage() {
   const today = new Date()
   const cutOffDate = new Date(today.getFullYear(), 9, 10)
 
-  if (isAfter(today, cutOffDate))
-    return (
-      <Container>
-        <div> end of season</div>
-      </Container>
-    )
+  if (isAfter(today, cutOffDate)) return <div> end of season</div>
 
   const bookedDates = await getBookedDates()
   const calendar = buildCalendar(bookedDates)
-  return (
-    <Container>
-      <Calendar calendar={calendar} />
-    </Container>
-  )
+  return <Calendar calendar={calendar} />
 }
