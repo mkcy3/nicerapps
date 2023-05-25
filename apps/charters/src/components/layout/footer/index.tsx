@@ -5,16 +5,12 @@ const navigation = {
     { name: 'Commerce', href: '#' },
     { name: 'Insights', href: '#' },
   ],
-  support: [
-    { name: 'FAQ', href: '#' },
-    { name: 'Contact', href: '#' },
-    { name: 'Refunds & Cancellation', href: '#' },
-  ],
+  support: [{ name: 'FAQ', href: '#' }],
   resources: [
+    { name: 'FAQ', href: '#' },
     { name: 'Charter Terms', href: '#' },
-    { name: 'Privacy', href: '#' },
-    { name: 'Terms of Use', href: '#' },
-    { name: 'Sitemap', href: '/sitemap' },
+    { name: 'Privacy', href: '/privacy' },
+    { name: 'Terms of Use', href: '/terms-of-use' },
   ],
 }
 const social = [
@@ -73,12 +69,9 @@ export default function Footer() {
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
             alt="Company name"
           />
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+          <div className="mt-16 grid gap-8 sm:col-span-3 sm:grid-cols-3 xl:mt-0">
             {Object.entries(navigation).map(([key, value]) => (
-              <div
-                key={key + '-footer'}
-                className="md:grid md:grid-cols-2 md:gap-8"
-              >
+              <div key={key + '-footer'} className="md:grid md:gap-8">
                 <div>
                   <h3 className="text-sm font-semibold capitalize leading-6 text-gray-900">
                     {key}

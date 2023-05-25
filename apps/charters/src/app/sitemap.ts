@@ -5,7 +5,8 @@ const baseUrl = process.env.NEXT_PUBLIC_URL
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     '',
-    '/login',
+    '/sign-in',
+    '/sign-up',
     '/trip',
     '/rates',
     '/itinerary',

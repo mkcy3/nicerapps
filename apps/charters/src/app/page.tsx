@@ -1,6 +1,7 @@
 import { Calendar, Search } from 'iconoir-react'
 import Image from 'next/image'
 
+import Banner from '@/components/layout/banner'
 import Footer from '@/components/layout/footer'
 import Navbar from '@/components/layout/navbar'
 import { Button } from '@/components/ui/button'
@@ -44,6 +45,7 @@ export default function HomePage() {
         alt=""
         className="absolute inset-0 -z-10 h-full w-full object-cover"
       />
+      <Banner />
       <Container>
         <Navbar />
         <main className="space-y-24 pt-24 sm:space-y-32 lg:space-y-40">
