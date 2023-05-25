@@ -19,7 +19,7 @@ export default function Extras() {
     const toggle = !enabled
     setEnabled(toggle)
     params.set('sleep', toggle.toString())
-    //@ts-expect-error see fix above
+
     router.push(pathname + '?' + params.toString())
   }
 
