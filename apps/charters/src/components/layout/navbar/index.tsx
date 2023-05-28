@@ -11,9 +11,9 @@ const menu = [
 
 export default function Navbar() {
   return (
-    <header>
+    <header className="px-6 py-4">
       <nav
-        className="flex items-center justify-between gap-x-6 pt-6"
+        className="flex items-center justify-between gap-x-6"
         aria-label="Global"
       >
         <div className="flex md:hidden">

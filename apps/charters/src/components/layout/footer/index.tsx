@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 const navigation = {
   adventures: [
     { name: '', href: '#' },
@@ -5,12 +7,10 @@ const navigation = {
     { name: 'Commerce', href: '#' },
     { name: 'Insights', href: '#' },
   ],
-  support: [{ name: 'FAQ', href: '#' }],
+
   resources: [
     { name: 'FAQ', href: '#' },
     { name: 'Charter Terms', href: '#' },
-    { name: 'Privacy', href: '/privacy' },
-    { name: 'Terms of Use', href: '/terms-of-use' },
   ],
 }
 const social = [
@@ -58,18 +58,25 @@ const social = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white" aria-labelledby="footer-heading">
+    <footer
+      className="mt-16 border-t border-gray-900/10"
+      aria-labelledby="footer-heading"
+    >
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className=" pb-8 pt-16 sm:pt-24 lg:pt-32">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+      <div className=" pb-8 pt-16">
+        <div className="space-y-8">
           <img
-            className="h-7"
+            className="col-span-3 h-7"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
             alt="Company name"
           />
+
           <div className="mt-16 grid gap-8 sm:col-span-3 sm:grid-cols-3 xl:mt-0">
+            <div>
+              <p>156 Marina Park Ave, Midland, ON L4R 4P4</p>
+            </div>
             {Object.entries(navigation).map(([key, value]) => (
               <div key={key + '-footer'} className="md:grid md:gap-8">
                 <div>
@@ -79,12 +86,12 @@ export default function Footer() {
                   <ul role="list" className="mt-6 space-y-4">
                     {value.map((item) => (
                       <li key={item.name + '-footer'}>
-                        <a
+                        <Link
                           href={item.href}
                           className="text-sm leading-6 text-gray-600 hover:text-gray-900"
                         >
                           {item.name}
-                        </a>
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -93,7 +100,7 @@ export default function Footer() {
             ))}
           </div>
         </div>
-        <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24 lg:flex lg:items-center lg:justify-between">
+        <div className="mt-8 border-t border-gray-900/10 pt-8 lg:mt-24 lg:flex lg:items-center lg:justify-between">
           <div>
             <h3 className="text-sm font-semibold leading-6 text-gray-900">
               Subscribe to our newsletter
@@ -139,9 +146,11 @@ export default function Footer() {
               </a>
             ))}
           </div>
-          <p className="mt-8 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
-            &copy; {new Date().getFullYear()} Nicercharters
-          </p>
+          <div className="mt-8 space-x-6 text-xs leading-5 text-gray-500 md:order-1 md:mt-0">
+            <span>&copy; {new Date().getFullYear()} Nicercharters </span>
+            <Link href="/privacy"> Privacy</Link>{' '}
+            <Link href="/terms-of-use"> Terms of Use</Link>
+          </div>
         </div>
       </div>
     </footer>

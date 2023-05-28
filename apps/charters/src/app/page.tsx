@@ -46,10 +46,11 @@ export default function HomePage() {
         className="absolute inset-0 -z-10 h-full w-full object-cover"
       />
       <Banner />
+
       <Container>
         <Navbar />
-        <main className="space-y-24 pt-24 sm:space-y-32 lg:space-y-40">
-          <section id="hero">
+        <main className="space-y-24 pt-24 sm:space-y-32">
+          <section id="hero" className="h-screen">
             <h1 className="font-display text-5xl font-medium tracking-tight text-white sm:text-6xl">
               Georgian Bay Sailing Yacht Cruises
             </h1>
