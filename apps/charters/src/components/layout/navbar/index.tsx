@@ -6,7 +6,7 @@ const menu = [
   { name: 'Destinations', href: '#' },
   { name: 'Itinerary', href: '#' },
   { name: 'Marketplace', href: '#' },
-  { name: 'Rates', href: '#' },
+  { name: 'Rates', href: '/rates' },
 ]
 
 export default function Navbar() {
@@ -20,24 +20,24 @@ export default function Navbar() {
           <MobileMenu menu={menu} />
         </div>
         <div className="hidden md:flex lg:flex-1">
-          <a href="#" className="-m-1.5 p-1.5">
+          <Link href="#" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
             <img
               className="h-8 w-auto"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
               alt=""
             />
-          </a>
+          </Link>
         </div>
         <div className="hidden md:flex md:gap-x-6 lg:gap-x-12">
           {menu.map((item) => (
-            <a
+            <Link
               key={item.name}
               href={item.href}
               className="inline-block text-sm font-semibold text-white hover:text-slate-500"
             >
               {item.name}
-            </a>
+            </Link>
           ))}
         </div>
         <div className="flex flex-1 items-center justify-end gap-x-6">

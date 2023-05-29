@@ -11,6 +11,7 @@ const navigation = {
   resources: [
     { name: 'FAQ', href: '#' },
     { name: 'Charter Terms', href: '#' },
+    { name: 'Sitemap', href: '#' },
   ],
 }
 const social = [

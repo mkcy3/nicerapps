@@ -12,6 +12,7 @@ function MarketingLayout({ children }: { children: React.ReactNode }) {
       <Navbar />
       <Container className="max-w-7xl">
         <main>{children}</main>
+
         <Footer />
       </Container>
     </>
