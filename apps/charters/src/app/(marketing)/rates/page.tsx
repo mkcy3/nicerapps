@@ -1,14 +1,12 @@
-const people = [
-  {
-    name: 'Lindsay Walton',
-    title: 'Front-end Developer',
-    email: 'lindsay.walton@example.com',
-    role: 'Member',
-  },
-  // More people...
-]
+import { getPrices } from '@/lib/stripe'
+import { formatAmountForDisplay } from '@/lib/utils'
 
-export default function RatesPage() {
+export default async function RatesPage() {
+  const prices = await getPrices()
+  const descendingPrices = prices.data.sort(
+    (a, b) => b.unit_amount! - a.unit_amount!
+  )
+
   return (
     <div className="px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
@@ -40,7 +38,7 @@ export default function RatesPage() {
                       scope="col"
                       className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
                     >
-                      Name
+                      Length
                     </th>
                     <th
                       scope="col"
@@ -60,36 +58,25 @@ export default function RatesPage() {
                     >
                       Role
                     </th>
-                    <th
-                      scope="col"
-                      className="relative py-3.5 pl-3 pr-4 sm:pr-6"
-                    >
-                      <span className="sr-only">Edit</span>
-                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-200 bg-white">
-                  {people.map((person) => (
-                    <tr key={person.email}>
+                  {descendingPrices.map((price) => (
+                    <tr key={price.id}>
                       <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
-                        {person.name}
+                        {price.metadata.name}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.title}
+                        {formatAmountForDisplay(
+                          Number(price.metadata.amount),
+                          'CAD'
+                        )}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.email}
+                        {price.metadata.passengers}
                       </td>
                       <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">
-                        {person.role}
-                      </td>
-                      <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                        <a
-                          href="#"
-                          className="text-indigo-600 hover:text-indigo-900"
-                        >
-                          Edit<span className="sr-only">, {person.name}</span>
-                        </a>
+                        {'what'}
                       </td>
                     </tr>
                   ))}

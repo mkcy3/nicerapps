@@ -21,7 +21,7 @@ export async function getCurrentSucceededIntents() {
 export async function getCharterStatement(nights: number, isSleeping: boolean) {
   const charterDays = nights + 1
 
-  const prices = await stripe.prices.list()
+  const prices = await getPrices()
 
   const matchingDayPrice = prices.data.find((price) => {
     const nicknameParts = price.nickname?.split('-') ?? ['1']
@@ -78,6 +78,9 @@ export async function getCharterStatement(nights: number, isSleeping: boolean) {
   ]
 
   return statement
+}
+export async function getPrices() {
+  return await stripe.prices.list()
 }
 
 /* eslint-disable */
