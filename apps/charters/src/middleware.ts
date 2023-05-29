@@ -5,7 +5,7 @@ export default authMiddleware({
     '/',
     '/trip(.*)',
     '/rates',
-    '/itinerary',
+    '/destinations',
     '/privacy',
     '/terms-of-use',
   ],

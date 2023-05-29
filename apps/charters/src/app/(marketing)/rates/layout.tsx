@@ -6,7 +6,7 @@ const information = [
     text: 'Every overnight charter has the option to add the sleep aboard addition at checkout. The weekend or any single night charter, this is included.',
   },
   {
-    text: 'For short overnight charters, two additional passengers can sleep in the makeshift saloon bed.',
+    text: 'For short overnight charters, two additional passengers can sleep in the makeshift saloon bed. Not recommended for adults on longer trips.',
   },
 ]
 

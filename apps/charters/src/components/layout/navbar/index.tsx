@@ -3,9 +3,8 @@ import Link from 'next/link'
 import MobileMenu from './mobile-menu'
 
 const menu = [
-  { name: 'Destinations', href: '#' },
-  { name: 'Itinerary', href: '#' },
-  { name: 'Marketplace', href: '#' },
+  { name: 'Destinations', href: '/destinations' },
+  { name: 'Skipper', href: '#' },
   { name: 'Rates', href: '/rates' },
 ]
 

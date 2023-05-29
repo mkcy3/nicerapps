@@ -61,8 +61,8 @@ export default async function TripPage() {
         <main>
           <Calendar calendar={calendar} />
         </main>
+        <Footer />
       </Container>
-      <Footer />
     </>
   )
 }

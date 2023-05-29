@@ -9,7 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/sign-up',
     '/trip',
     '/rates',
-    '/itinerary',
+    '/destinations',
     '/privacy',
     '/terms-of-use',
   ]
