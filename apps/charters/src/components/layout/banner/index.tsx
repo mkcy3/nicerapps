@@ -1,15 +1,17 @@
-'use client'
-import { Cancel } from 'iconoir-react'
+import { cookies } from 'next/headers'
 import Link from 'next/link'
-import { useState } from 'react'
+
+import Close from './close'
 
 export default function Banner() {
-  const [isOpen, setIsOpen] = useState(true)
+  const cookieStore = cookies()
+  //FIX: types and returns github.com/vercel/next.js/issues/49259
+  const isOpen = cookieStore.get('banner')
 
   return (
     <>
-      {isOpen && (
-        <div className="flex items-center gap-x-6 bg-indigo-600 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
+      {!isOpen && (
+        <div className="absolute inset-x-0 flex items-center gap-x-6 bg-indigo-600 px-6 py-2.5 sm:px-3.5 sm:before:flex-1">
           <p className="text-sm leading-6 text-white">
             <Link href="/trip">
               <strong className="font-semibold">2023 Season</strong>
@@ -20,19 +22,12 @@ export default function Banner() {
               >
                 <circle cx={1} cy={1} r={1} />
               </svg>
-              All charters are 50% off for the first 10 bookings. &nbsp;
+              All charters are 50% off for the first 5 bookings. &nbsp;
               <span aria-hidden="true">&rarr;</span>
             </Link>
           </p>
           <div className="flex flex-1 justify-end">
-            <button
-              type="button"
-              className="-m-3 p-3 focus-visible:outline-offset-[-4px]"
-              onClick={() => setIsOpen(false)}
-            >
-              <span className="sr-only">Dismiss</span>
-              <Cancel className="h-5 w-5 text-white" aria-hidden="true" />
-            </button>
+            <Close />
           </div>
         </div>
       )}
