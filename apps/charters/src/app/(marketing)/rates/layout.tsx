@@ -8,6 +8,9 @@ const information = [
   {
     text: 'For short overnight charters, two additional passengers can sleep in the makeshift saloon bed. Not recommended for adults on longer trips.',
   },
+  {
+    text: 'All personal and payment information is not stored or handled by us. The checkout process is handled securely by Stripe.',
+  },
 ]
 
 export default function RatesLayout({
@@ -16,7 +19,7 @@ export default function RatesLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="px-4 sm:px-6 lg:px-8">
+    <div className="mt-16 min-h-screen px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-base font-semibold leading-6 text-gray-900">

@@ -1,10 +1,6 @@
 import { eachDayOfInterval, isAfter, parseISO } from 'date-fns'
 
 import Calendar from '@/components/calendar'
-import Banner from '@/components/layout/banner'
-import Footer from '@/components/layout/footer'
-import Navbar from '@/components/layout/navbar'
-import Container from '@/components/ui/container'
 import { getCurrentSucceededIntents } from '@/lib/stripe'
 import { buildCalendar } from '@/lib/utils'
 
@@ -53,16 +49,5 @@ export default async function TripPage() {
 
   const bookedDates = await getBookedDates()
   const calendar = buildCalendar(bookedDates)
-  return (
-    <>
-      <Banner />
-      <Navbar />
-      <Container>
-        <main>
-          <Calendar calendar={calendar} />
-        </main>
-        <Footer />
-      </Container>
-    </>
-  )
+  return <Calendar calendar={calendar} />
 }

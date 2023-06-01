@@ -1,12 +1,59 @@
 import { Calendar, Search } from 'iconoir-react'
+import { cookies } from 'next/headers'
 import Image from 'next/image'
+import Link from 'next/link'
 
 import Banner from '@/components/layout/banner'
 import Footer from '@/components/layout/footer'
 import Navbar from '@/components/layout/navbar'
-import { Button } from '@/components/ui/button'
+import { buttonVariantStyles } from '@/components/ui/button'
 import Container from '@/components/ui/container'
+import { cn } from '@/lib/utils'
 
+const posts = [
+  {
+    id: 1,
+    title: 'Having a blast',
+    href: '#',
+    description:
+      'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
+    date: 'Mar 16, 2020',
+    datetime: '2020-03-16',
+    author: {
+      name: 'Michael Foster',
+      imageUrl:
+        'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    },
+  },
+  {
+    id: 2,
+    title: 'Adventurers',
+    href: '#',
+    description:
+      'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
+    date: 'Mar 16, 2020',
+    datetime: '2020-03-16',
+    author: {
+      name: 'Michael Foster',
+      imageUrl:
+        'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    },
+  },
+  {
+    id: 3,
+    title: 'Aspiring Cruisers',
+    href: '#',
+    description:
+      'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
+    imageUrl:
+      'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
+  },
+  // More posts...
+]
 const faqs = [
   {
     id: 1,
@@ -37,71 +84,97 @@ const faqs = [
   },
 ]
 
+// function Photos() {
+//   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
+
+//   return (
+//     <div className="mt-16 sm:mt-20">
+//       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
+//         {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
+//           <div
+//             key={image.src}
+//             className={clsx(
+//               'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
+//               rotations[imageIndex % rotations.length]
+//             )}
+//           >
+//             <Image
+//               src={image}
+//               alt=""
+//               sizes="(min-width: 640px) 18rem, 11rem"
+//               className="absolute inset-0 h-full w-full object-cover"
+//             />
+//           </div>
+//         ))}
+//       </div>
+//     </div>
+//   )
+// }
+
 export default function HomePage() {
   return (
     <>
-      <img
-        src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2830&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
-        alt=""
-        className="absolute inset-0 -z-10 h-full w-full object-cover"
-      />
+      <Navbar />
       <Banner />
-
       <Container>
-        <Navbar />
-        <main className="space-y-24 pt-24 sm:space-y-32">
-          <section id="hero" className="h-screen">
-            <h1 className="font-display text-5xl font-medium tracking-tight text-white sm:text-6xl">
-              Georgian Bay Sailing Yacht Cruises
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg tracking-tight text-slate-200">
-              Blah blah
-            </p>
-            <div className="mt-6 flex gap-x-4 rounded-full bg-white p-2">
-              <div className="relative rounded-full shadow-sm">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <Calendar
-                    className="h-5 w-5 text-gray-400"
-                    aria-hidden="true"
-                  />
-                </div>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  className="block w-full rounded-full border-0 py-1.5 pl-10 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  placeholder="you@example.com"
-                />
-              </div>
-              <select
-                id="location"
-                name="location"
-                className=" block rounded-full border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                defaultValue="Add Guests"
-              >
-                <option>Add Guests</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-              </select>
+        <main>
+          <img
+            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2830&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
+            alt=""
+            className="absolute inset-0 -z-10 h-full w-full object-cover"
+          />
+          <section id="hero" className="h-[calc(100vh-72px)] pt-16">
+            <div className="flex h-full flex-col items-start justify-center space-y-6">
+              <h1 className="font-display text-5xl font-medium tracking-tight text-white sm:text-6xl">
+                Go sailing on Georgian Bay
+              </h1>
+              <p className="max-w-2xl text-lg tracking-tight text-slate-200">
+                Blah blah
+              </p>
 
-              <Button variant="primary" className="py-1.5">
-                {' '}
-                <Search
-                  className="h-5 w-5 font-bold text-white"
-                  strokeWidth={2.5}
-                  aria-hidden="true"
-                />
-                Search
-              </Button>
+              <Link href="/trip" className={cn(buttonVariantStyles.primary)}>
+                Check Dates
+              </Link>
+
+              <div className="flex justify-between"></div>
             </div>
           </section>
-          <section id="faq" className="divide-y divide-gray-900/10">
+          <section id="destinations" className="pt-16">
+            <div className="px-6 lg:px-8">
+              <div className="mx-auto max-w-2xl text-center">
+                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                  Experiences for everyone
+                </h2>
+                <p className="mt-2 text-lg leading-8 text-gray-600">
+                  Every charter is whatever you want to make of it!
+                </p>
+              </div>
+              <div className="mx-auto mt-16 grid max-w-2xl auto-rows-fr grid-cols-1 gap-8 sm:mt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                {posts.map((post) => (
+                  <article
+                    key={post.id}
+                    className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80"
+                  >
+                    <img
+                      src={post.imageUrl}
+                      alt=""
+                      className="absolute inset-0 -z-10 h-full w-full object-cover"
+                    />
+                    <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />
+                    <div className="absolute inset-0 -z-10 rounded-2xl ring-1 ring-inset ring-gray-900/10" />
+
+                    <h3 className="mt-3 text-lg font-semibold leading-6 text-white">
+                      <a href={post.href}>
+                        <span className="absolute inset-0" />
+                        {post.title}
+                      </a>
+                    </h3>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+          <section id="faq" className="divide-y divide-gray-900/10 pt-16">
             <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">
               Frequently asked questions
             </h2>
@@ -124,8 +197,8 @@ export default function HomePage() {
             </dl>
           </section>
         </main>
-        <Footer />
       </Container>
+      <Footer />
     </>
   )
 }

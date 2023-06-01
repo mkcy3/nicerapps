@@ -2,6 +2,7 @@
 
 import { Dialog } from '@headlessui/react'
 import { Cancel, Menu } from 'iconoir-react'
+import Link from 'next/link'
 import { useState } from 'react'
 
 export default function MobileMenu({
@@ -22,7 +23,7 @@ export default function MobileMenu({
         data-testid="open-mobile-menu"
       >
         <span className="sr-only">Open main menu</span>
-        <Menu className="h-6 w-6 text-white" aria-hidden="true" />
+        <Menu className="h-6 w-6 text-black" aria-hidden="true" />
       </button>
 
       <Dialog
@@ -48,22 +49,22 @@ export default function MobileMenu({
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {menu.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
               <div className="py-6">
-                <a
-                  href="#"
+                <Link
+                  href="/trip"
                   className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                 >
                   Log in
-                </a>
+                </Link>
               </div>
             </div>
           </div>
