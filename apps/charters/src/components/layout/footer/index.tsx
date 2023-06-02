@@ -11,7 +11,7 @@ const navigation = {
   ],
 
   resources: [
-    { name: 'FAQ', href: '#' },
+    { name: 'FAQ', href: '/faq' },
     { name: 'Charter Terms', href: '#' },
     { name: 'Sitemap', href: '#' },
   ],

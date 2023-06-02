@@ -2,15 +2,12 @@ import Link from 'next/link'
 
 import { buttonVariantStyles } from '@/components/ui/button'
 import Container from '@/components/ui/container'
+import { navbarNavigation } from '@/lib/cms'
 import { cn } from '@/lib/utils'
 
 import MobileMenu from './mobile-menu'
 
-const menu = [
-  { name: 'Destinations', href: '#destinations' },
-  { name: 'Skipper', href: '#skipper' },
-  { name: 'Rates', href: '/rates' },
-]
+const menu = navbarNavigation
 
 export default function Navbar() {
   return (
