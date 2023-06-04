@@ -71,15 +71,18 @@ export default function HomePage() {
   return (
     <>
       <Navbar />
-
+      <Banner />
       <main>
         <img
           src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2830&q=80&blend=111827&sat=-100&exp=15&blend-mode=multiply"
           alt=""
-          className="absolute inset-0 -z-10 h-full w-full object-cover"
+          className="absolute inset-0 -z-10 h-5/6 w-full object-cover"
         />
 
-        <section id="hero" className="h-[calc(100vh-72px)] py-24 sm:py-32">
+        <section
+          id="hero"
+          className="h-[calc(83.333333vh-72px)] py-24 sm:py-32"
+        >
           <Container>
             <div className="flex h-full flex-col items-start justify-center space-y-6">
               <h1 className="font-display text-5xl font-medium tracking-tight text-white sm:text-6xl">
@@ -191,7 +194,7 @@ export default function HomePage() {
                     Skipper
                   </p>
                   <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                    Meet Milan Kornicer
+                    Meet Milan Kor<span className="text-indigo-600">nicer</span>
                   </h1>
                   <div className="max-w-xl">
                     {/* 
