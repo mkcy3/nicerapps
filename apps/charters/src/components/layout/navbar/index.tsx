@@ -7,8 +7,7 @@ import { cn } from '@/lib/utils'
 
 import MobileMenu from './mobile-menu'
 import UserButton from './user-button'
-
-const menu = navbarNavigation
+import UserMenu from './user-menu'
 
 export default function Navbar() {
   return (
@@ -18,12 +17,9 @@ export default function Navbar() {
           className="flex items-center justify-between gap-x-6"
           aria-label="Global"
         >
-          <div className="flex md:hidden">
-            <MobileMenu menu={menu} />
-          </div>
-          <div className="hidden md:flex lg:flex-1">
-            <Link href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Your Company</span>
+          <div className="flex lg:flex-1">
+            <Link href="/" className="-m-1.5 p-1.5">
+              <span className="sr-only">Nicer Charters</span>
               <img
                 className="h-8 w-auto"
                 src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
@@ -31,8 +27,23 @@ export default function Navbar() {
               />
             </Link>
           </div>
+          <div className="flex space-x-5 md:hidden">
+            {navbarNavigation.map(
+              (item) =>
+                !item.href.startsWith('#') && (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className="inline-block  text-sm  font-semibold hover:text-slate-500"
+                  >
+                    {item.name}
+                  </Link>
+                )
+            )}
+          </div>
+
           <div className="hidden md:flex md:gap-x-6 lg:gap-x-12">
-            {menu.map((item) => (
+            {navbarNavigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
@@ -43,7 +54,18 @@ export default function Navbar() {
             ))}
           </div>
           <div className="flex flex-1 items-center justify-end gap-x-6">
-            <UserButton />
+            <div className="hidden md:block">
+              <UserMenu>
+                {/* @ts-expect-error even with 5.1 and using workspace version this errors... */}
+                <UserButton />
+              </UserMenu>
+            </div>
+            <div className="block md:hidden">
+              <MobileMenu menu={navbarNavigation}>
+                {/* @ts-expect-error even with 5.1 and using workspace version this errors... */}
+                <UserButton />
+              </MobileMenu>
+            </div>
           </div>
         </nav>
       </Container>
