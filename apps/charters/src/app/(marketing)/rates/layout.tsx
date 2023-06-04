@@ -3,7 +3,7 @@ import React, { Suspense } from 'react'
 
 const information = [
   {
-    text: 'Every overnight charter has the option to add the sleep aboard addition at checkout. The weekend or any single night charter, this is included.',
+    text: 'Every overnight charter has the option to add the sleep aboard addition at checkout. Any single night charter, including weekends, this is included.',
   },
   {
     text: 'For short overnight charters, two additional passengers can sleep in the makeshift saloon bed. Not recommended for adults on longer trips.',
@@ -28,14 +28,6 @@ export default function RatesLayout({
           <p className="mt-2 text-sm text-gray-700">
             Rates are listed below include skipper, but without provisions.
           </p>
-        </div>
-        <div className="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-          <button
-            type="button"
-            className="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-          >
-            Add user
-          </button>
         </div>
       </div>
       <div className="mt-8 flow-root">
