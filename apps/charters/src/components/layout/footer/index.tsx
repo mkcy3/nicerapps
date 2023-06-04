@@ -1,21 +1,9 @@
 import Link from 'next/link'
 
 import Container from '@/components/ui/container'
+import { footerNavigation } from '@/lib/cms'
 
-const navigation = {
-  adventures: [
-    { name: '', href: '#' },
-    { name: 'Analytics', href: '#' },
-    { name: 'Commerce', href: '#' },
-    { name: 'Insights', href: '#' },
-  ],
-
-  resources: [
-    { name: 'FAQ', href: '/faq' },
-    { name: 'Charter Terms', href: '#' },
-    { name: 'Sitemap', href: '#' },
-  ],
-}
+const navigation = footerNavigation
 const social = [
   {
     name: 'Facebook',
@@ -61,10 +49,7 @@ const social = [
 
 export default function Footer() {
   return (
-    <footer
-      className="mt-16 border-t border-gray-900/10"
-      aria-labelledby="footer-heading"
-    >
+    <footer aria-labelledby="footer-heading">
       <Container>
         <h2 id="footer-heading" className="sr-only">
           Footer
@@ -107,11 +92,11 @@ export default function Footer() {
           <div className="mt-8 border-t border-gray-900/10 pt-8 lg:mt-24 lg:flex lg:items-center lg:justify-between">
             <div>
               <h3 className="text-sm font-semibold leading-6 text-gray-900">
-                Subscribe to our newsletter
+                First 3 Bookings in January get 15% off.
               </h3>
               <p className="mt-2 text-sm leading-6 text-gray-600">
-                The latest news, articles, and resources, sent to your inbox
-                weekly.
+                Get notified when season bookings open! Its the only email we
+                send.
               </p>
             </div>
             <form className="mt-6 sm:flex sm:max-w-md lg:mt-0">
