@@ -6,6 +6,7 @@ import { navbarNavigation } from '@/lib/cms'
 import { cn } from '@/lib/utils'
 
 import MobileMenu from './mobile-menu'
+import UserButton from './user-button'
 
 const menu = navbarNavigation
 
@@ -42,9 +43,7 @@ export default function Navbar() {
             ))}
           </div>
           <div className="flex flex-1 items-center justify-end gap-x-6">
-            <Link href="/trip" className={cn(buttonVariantStyles.primary)}>
-              Check Dates
-            </Link>
+            <UserButton />
           </div>
         </nav>
       </Container>

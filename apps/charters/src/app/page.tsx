@@ -206,7 +206,7 @@ export default function HomePage() {
                   Skipper
                 </p>
                 <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                  Meet Milan Kornicer
+                  Meet Milan Kor<span className="text-indigo-600">nicer</span>
                 </h1>
                 <div className="max-w-xl">
                   {/* 
