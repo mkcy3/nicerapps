@@ -1,4 +1,5 @@
 /* eslint no-case-declarations: 0 */
+// working and tested webhook saved for future.
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
@@ -13,27 +14,19 @@ export async function POST(req: NextRequest) {
 
   let event
 
-  // Get the signature sent by Stripe
   const signature = req.headers.get('stripe-signature') as string
   try {
     event = stripe.webhooks.constructEvent(request, signature, endpointSecret)
   } catch (err: unknown) {
     if (err instanceof Error) {
-      console.log(`⚠️  Webhook signature verification failed.`, err.message)
       return NextResponse.json({ status: 400 })
     }
   }
 
   switch (event?.type) {
     case 'payment_intent.succeeded':
-      // finish roundtrip to planetscale
-      const paymentIntent = event.data.object as Stripe.PaymentIntent
-      console.log(`PaymentIntent for ${paymentIntent.id} was successful!`)
-
       break
     case 'payment_method.attached':
-      //const paymentMethod = event.data.object as Stripe.PaymentMethod
-
       break
     default:
       console.log(`Unhandled event type ${event?.type}.`)
@@ -44,4 +37,3 @@ export async function POST(req: NextRequest) {
     { status: 200 }
   )
 }
-//https://github.com/vercel/next.js/issues/49739
