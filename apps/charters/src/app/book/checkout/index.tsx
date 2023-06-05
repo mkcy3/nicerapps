@@ -32,7 +32,7 @@ function StripeCheckout({ amount, nights, children }: StripeCheckoutProps) {
       <h1 className="sr-only">Booking</h1>
       <div className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
         <div>
-          {nights > 0 && <Extras />}
+          {nights > 1 && <Extras />}
           <Elements stripe={getStripe()} options={options}>
             <StripeElements />
           </Elements>

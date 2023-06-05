@@ -33,9 +33,9 @@ jobs:
         run: pnpm install
       - name: Lint
         run: pnpm lint
-      - name: Prisma
-        working-directory: ./packages/db
-        run: pnpm db:generate:charters
+      # - name: Prisma
+      #   working-directory: ./packages/db
+      #   run: pnpm db:generate:charters
 
       - name: Build
         run: pnpm build

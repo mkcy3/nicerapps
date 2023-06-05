@@ -1,8 +1,6 @@
-import React from 'react'
-
-function TermsOfUsePage() {
+export default function TermsOfUsePage() {
   return (
-    <div className="prose">
+    <div className="prose mt-16">
       <h1>Terms of Use</h1>
       <span className="text-sm">
         This website is open source and can be viewed via the Github link below.
@@ -29,5 +27,3 @@ function TermsOfUsePage() {
     </div>
   )
 }
-
-export default TermsOfUsePage
