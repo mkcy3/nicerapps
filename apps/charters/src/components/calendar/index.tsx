@@ -160,7 +160,7 @@ export default function Calendar({ calendar }: { calendar: Month[] }) {
     <>
       <h1 className="sr-only">Booking</h1>
       <div className="pb-6 sm:pb-16">
-        <div className="sticky top-0 z-50 border-b bg-white pt-3 xl:hidden">
+        <div className="sticky top-0 z-10 border-b bg-white pt-3 xl:hidden">
           <div className="flex flex-row items-center">
             <div className="flex w-full flex-col gap-y-1 sm:w-2/3 sm:flex-row sm:gap-x-1 sm:py-5">
               <DateInput
@@ -231,7 +231,7 @@ export default function Calendar({ calendar }: { calendar: Month[] }) {
         </div>
       </div>
 
-      <div className="sticky bottom-0 z-50 flex justify-between border bg-white px-1 py-3 sm:px-6 xl:space-x-5 xl:rounded-lg">
+      <div className="sticky bottom-0 z-10 flex justify-between border bg-white px-1 py-3 sm:px-6 xl:space-x-5 xl:rounded-lg">
         <div className="hidden xl:flex xl:flex-row xl:gap-x-1 xl:gap-y-1 xl:py-5">
           <DateInput
             date={displayDateStart}
