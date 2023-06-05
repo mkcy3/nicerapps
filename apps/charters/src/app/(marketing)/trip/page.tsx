@@ -1,22 +1,11 @@
 import { eachDayOfInterval, isAfter, parseISO } from 'date-fns'
 
 import Calendar from '@/components/calendar'
+import { blockedDates } from '@/lib/cms'
 import { getCurrentSucceededIntents } from '@/lib/stripe'
 import { buildCalendar } from '@/lib/utils'
 
-const reservedDates = [
-  '2023-07-14',
-  '2023-07-15',
-  '2023-07-16',
-  '2023-07-17',
-  '2023-07-18',
-  '2023-07-19',
-  '2023-07-20',
-  '2023-07-21',
-  '2023-07-22',
-  '2023-07-23',
-  '2023-07-24',
-].map((dateString) => parseISO(dateString))
+const reservedDates = blockedDates.map((dateString) => parseISO(dateString))
 
 async function getBookedDates() {
   const intents = await getCurrentSucceededIntents()
