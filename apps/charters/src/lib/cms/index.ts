@@ -1,8 +1,9 @@
 export const publicRoutes = [
   '/',
-  '/trip(.*)',
+  '/trip',
   '/rates',
   '/privacy',
+  '/site',
   '/terms-of-use',
   '/faq',
 ]
