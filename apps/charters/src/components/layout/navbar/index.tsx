@@ -17,7 +17,7 @@ export default function Navbar() {
           className="flex items-center justify-between gap-x-6"
           aria-label="Global"
         >
-          <div className="flex lg:flex-1">
+          <div className="hidden md:flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
               <span className="sr-only">Nicer Charters</span>
               <img
@@ -27,7 +27,7 @@ export default function Navbar() {
               />
             </Link>
           </div>
-          <div className="flex space-x-5 md:hidden">
+          <div className="flex space-x-6 md:hidden">
             {navbarNavigation.map(
               (item) =>
                 !item.href.startsWith('#') && (

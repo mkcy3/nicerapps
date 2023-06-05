@@ -9,7 +9,7 @@ export const publicRoutes = [
 ]
 
 export const navbarNavigation = [
-  { name: 'Check Dates', href: '/trip' },
+  { name: 'Book', href: '/trip' },
   { name: 'Rates', href: '/rates' },
   { name: 'FAQ', href: '/faq' },
 ]

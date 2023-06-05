@@ -5,8 +5,7 @@ import { closeBanner } from './action'
 
 export default function Close() {
   async function handleClose() {
-    const res = await closeBanner()
-    console.log(res)
+    await closeBanner()
   }
   return (
     <button
