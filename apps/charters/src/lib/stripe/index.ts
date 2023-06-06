@@ -85,7 +85,7 @@ export async function getPrices() {
 
 export async function getUserSucceededIntents(userId: string) {
   const result = await stripe.paymentIntents.search({
-    query: `status:'succeeded' AND metadata['clerkUserId']:${userId}`,
+    query: `status:'succeeded' AND metadata['clerkUserId']:"${userId}"`,
   })
   return result.data
 }

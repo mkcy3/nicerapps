@@ -9,7 +9,7 @@ import UserButton from './user-button'
 
 export default function Navbar() {
   return (
-    <header className="bg-white px-6 py-4 text-black">
+    <header className="border-b bg-white px-6 py-4 text-black">
       <Container>
         <nav
           className="flex items-center justify-between gap-x-6"

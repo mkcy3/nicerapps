@@ -36,7 +36,7 @@ export default function StripeElements() {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `${process.env.NEXT_PUBLIC_URL}/success`,
+        return_url: `${process.env.NEXT_PUBLIC_URL}/payment`,
       },
     })
 
@@ -45,7 +45,7 @@ export default function StripeElements() {
     }
   }
   return (
-    <form className="flex flex-col space-y-5" onSubmit={handleSubmit}>
+    <form className="flex flex-col space-y-5 pb-16" onSubmit={handleSubmit}>
       <h2 className="mt-4 text-lg font-medium text-gray-900">Head Charterer</h2>
 
       <LinkAuthenticationElement options={{}} />
