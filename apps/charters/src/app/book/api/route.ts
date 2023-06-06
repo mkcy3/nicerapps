@@ -1,8 +1,8 @@
-import { auth } from '@clerk/nextjs'
 import { differenceInCalendarDays, parseISO } from 'date-fns'
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
+import { getAuth } from '@/lib/clerk/server'
 import { getCharterStatement } from '@/lib/stripe'
 import { stripeErrorHandling } from '@/lib/stripe'
 
@@ -10,7 +10,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
   apiVersion: '2022-11-15',
 })
 export async function POST(req: NextRequest) {
-  const { userId } = auth()
+  const { userId } = await getAuth()
   if (!userId) {
     return new Response('Unauthorized', { status: 401 })
   }

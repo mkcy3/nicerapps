@@ -7,6 +7,8 @@ import React, { useState } from 'react'
 
 import { Button } from '@/components/ui/button'
 
+import UserMenu from './user-menu'
+
 type MobileMenuProps = {
   children: React.ReactNode
   menu: { href: string; name: string }[]
@@ -60,12 +62,7 @@ export default function MobileMenu({ menu, children }: MobileMenuProps) {
                 ))}
               </div>
               <div className="py-6">
-                <Link
-                  href="/trip"
-                  className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                >
-                  Log in
-                </Link>
+                <UserMenu />
               </div>
             </div>
           </div>
