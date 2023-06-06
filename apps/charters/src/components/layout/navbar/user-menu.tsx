@@ -60,7 +60,7 @@ export default function UserMenu({
               href="/account"
               className={cn('block px-4 py-2 text-sm text-gray-700')}
             >
-              Your Bookings
+              Your Charters
             </Link>
           </Menu.Item>
           <Menu.Item>
@@ -75,13 +75,13 @@ export default function UserMenu({
       ) : (
         <>
           <Link
-            className="'-mx-3 hover:bg-gray-50' block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900"
+            className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
             href="/account"
           >
-            Your Bookings
+            Your Charters
           </Link>
           <button
-            className="'-mx-3 hover:bg-gray-50' block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900"
+            className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
             onClick={() => signOut()}
           >
             Sign out
