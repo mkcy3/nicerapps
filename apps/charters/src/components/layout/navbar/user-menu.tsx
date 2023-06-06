@@ -56,17 +56,27 @@ export default function UserMenu({
       {isDropDown ? (
         <>
           <Menu.Item>
-            <Link href="/profile">Your Bookings</Link>
+            <Link
+              href="/account"
+              className={cn('block px-4 py-2 text-sm text-gray-700')}
+            >
+              Your Bookings
+            </Link>
           </Menu.Item>
           <Menu.Item>
-            <button onClick={() => signOut()}>Sign out</button>
+            <button
+              className={cn('block px-4 py-2 text-sm text-gray-700')}
+              onClick={() => signOut()}
+            >
+              Sign out
+            </button>
           </Menu.Item>
         </>
       ) : (
         <>
           <Link
             className="'-mx-3 hover:bg-gray-50' block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900"
-            href="/profile"
+            href="/account"
           >
             Your Bookings
           </Link>
