@@ -42,7 +42,7 @@ export default function UserMenu({
               key={item.name}
               href={item.href}
               className={cn(
-                '-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+                'text-charcoal -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-gray-50'
               )}
             >
               {item.name}
@@ -76,13 +76,13 @@ export default function UserMenu({
       ) : (
         <>
           <Link
-            className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            className="text-charcoal -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-gray-50"
             href="/account"
           >
             Your Charters
           </Link>
           <button
-            className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            className="text-charcoal -mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-gray-50"
             onClick={() => signOut()}
           >
             Sign out

@@ -35,7 +35,7 @@ export default function IntentPage({
       <Container>
         <div className="space-y-2 px-4 sm:flex sm:items-baseline sm:justify-between sm:space-y-0 sm:px-0">
           <div className="flex sm:items-baseline sm:space-x-4">
-            <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+            <h1 className="text-charcoal text-2xl font-bold tracking-tight sm:text-3xl">
               Charter Confirmed!
             </h1>
           </div>
@@ -51,7 +51,7 @@ export default function IntentPage({
           <div className="space-y-8">
             <div className="border-b border-t border-gray-200 bg-white shadow-sm sm:rounded-lg sm:border">
               <div className="px-4 py-6 sm:px-6 lg:p-8">
-                <h3 className="text-base font-medium text-gray-900">
+                <h3 className="text-charcoal text-base font-medium">
                   {' '}
                   Next Steps
                 </h3>

@@ -46,10 +46,10 @@ export default function StripeElements() {
   }
   return (
     <form className="flex flex-col space-y-5 pb-16" onSubmit={handleSubmit}>
-      <h2 className="mt-4 text-lg font-medium text-gray-900">Head Charterer</h2>
+      <h2 className="text-charcoal mt-4 text-lg font-medium">Head Charterer</h2>
 
       <LinkAuthenticationElement options={{}} />
-      <h2 className="text-lg font-medium text-gray-900">Address information</h2>
+      <h2 className="text-charcoal text-lg font-medium">Address information</h2>
       <AddressElement
         options={{
           mode: 'billing',
@@ -61,7 +61,7 @@ export default function StripeElements() {
           },
         }}
       />
-      <h2 className="mt-4 text-lg font-medium text-gray-900">
+      <h2 className="text-charcoal mt-4 text-lg font-medium">
         Payment information
       </h2>
       <PaymentElement options={{}} />

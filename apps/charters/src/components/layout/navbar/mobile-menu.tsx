@@ -20,7 +20,7 @@ export default function MobileMenu({ menu, children }: MobileMenuProps) {
     <>
       <Button
         variant="secondary"
-        className="space-x-2 px-2 text-black hover:shadow-md"
+        className="text-charcoal space-x-2 px-2 hover:shadow-md"
         onClick={() => {
           setIsOpen(true)
         }}
@@ -55,7 +55,7 @@ export default function MobileMenu({ menu, children }: MobileMenuProps) {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+                    className="text-charcoal -mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50"
                   >
                     {item.name}
                   </Link>

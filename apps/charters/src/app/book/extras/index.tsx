@@ -25,7 +25,7 @@ export default function Extras() {
 
   return (
     <div>
-      <h2 className="mb-4 border-b text-lg font-medium text-gray-900">
+      <h2 className="text-charcoal mb-4 border-b text-lg font-medium">
         Extras
       </h2>
       <Switch.Group as="div" className="flex items-center">
@@ -46,7 +46,7 @@ export default function Extras() {
           />
         </Switch>
         <Switch.Label as="span" className="ml-3 flex flex-1 space-x-1 text-sm">
-          <span className="font-medium text-gray-900">Sleep Aboard</span>{' '}
+          <span className="text-charcoal font-medium">Sleep Aboard</span>{' '}
           <span className="text-gray-500">
             Arrive the night before to settle in, by 8pm.
           </span>

@@ -12,7 +12,7 @@ export default function AccountLayout({
       <div className=" px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
-            <h1 className="text-base font-semibold leading-6 text-gray-900">
+            <h1 className="text-charcoal text-base font-semibold leading-6">
               Your Charters
             </h1>
           </div>
@@ -25,43 +25,43 @@ export default function AccountLayout({
                   <tr>
                     <th
                       scope="col"
-                      className="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-0"
+                      className="text-charcoal whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-0"
                     >
                       Transaction ID
                     </th>
                     <th
                       scope="col"
-                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="text-charcoal whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold"
                     >
                       Charter Starting
                     </th>
                     <th
                       scope="col"
-                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="text-charcoal whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold"
                     >
                       Passengers
                     </th>
                     <th
                       scope="col"
-                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="text-charcoal whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold"
                     >
                       Sleep Aboard
                     </th>
                     <th
                       scope="col"
-                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="text-charcoal whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold"
                     >
                       Payed
                     </th>
                     <th
                       scope="col"
-                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="text-charcoal whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold"
                     >
                       Remaining
                     </th>
                     <th
                       scope="col"
-                      className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="text-charcoal whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold"
                     >
                       Due Date
                     </th>

@@ -35,7 +35,7 @@ async function BookPage({
         <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
           <h3 className="sr-only">Sailing Charter details</h3>
           <div className="space-y-6 border-t border-gray-200 px-4 py-6 sm:px-6">
-            <h2 className="text-lg font-medium text-gray-900">
+            <h2 className="text-charcoal text-lg font-medium">
               Sailing Charter Details
             </h2>
             <div className="flex flex-col">
@@ -57,7 +57,7 @@ async function BookPage({
                   className="flex items-center justify-between"
                 >
                   <dt className="text-sm">{item.label}</dt>
-                  <dd className="text-sm font-medium text-gray-900">
+                  <dd className="text-charcoal text-sm font-medium">
                     {formatAmountForDisplay(item.amount, 'CAD')}
                   </dd>
                 </div>
@@ -68,7 +68,7 @@ async function BookPage({
               <dt className="text-base font-medium">
                 Balance <span className="text-gray-400">(Due now)</span>
               </dt>
-              <dd className="text-base font-medium text-gray-900">
+              <dd className="text-charcoal text-base font-medium">
                 {formatAmountForDisplay(balanceDue, 'CAD')}
               </dd>
             </div>

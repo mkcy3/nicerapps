@@ -190,7 +190,7 @@ export default function Calendar({ calendar }: { calendar: Month[] }) {
         <div className="mx-auto grid grid-cols-1 gap-x-8 gap-y-8 pt-8 md:grid-cols-2 md:gap-y-16 xl:mx-0 xl:grid-cols-3">
           {calendar.map((month) => (
             <section key={month.name} className="text-center">
-              <h2 className="col-start-2 justify-self-center text-sm font-semibold text-gray-900">
+              <h2 className="text-charcoal col-start-2 justify-self-center text-sm font-semibold">
                 {month.name} {month.year}
               </h2>
 

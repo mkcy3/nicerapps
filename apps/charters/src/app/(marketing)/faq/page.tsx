@@ -40,13 +40,13 @@ const faqs = [
 export default function FaqPage() {
   return (
     <div id="faq" className="divide-y divide-gray-900/10 py-24 sm:py-32">
-      <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">
+      <h2 className="text-charcoal text-2xl font-bold leading-10 tracking-tight">
         Frequently asked questions
       </h2>
       <dl className="mt-10 space-y-8 divide-y divide-gray-900/10">
         {faqs.map((faq) => (
           <div key={faq.id} className="pt-8 lg:grid lg:grid-cols-12 lg:gap-8">
-            <dt className="text-base font-semibold leading-7 text-gray-900 lg:col-span-5">
+            <dt className="text-charcoal text-base font-semibold leading-7 lg:col-span-5">
               {faq.question}
             </dt>
             <dd className="mt-4 lg:col-span-7 lg:mt-0">

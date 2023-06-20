@@ -101,7 +101,7 @@ export default function HomePage() {
           <Container>
             <div className="px-6 lg:px-8">
               <div className="mx-auto max-w-2xl text-center">
-                <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                <h2 className="text-charcoal text-3xl font-bold tracking-tight sm:text-4xl">
                   Experiences for everyone
                 </h2>
                 <p className="mt-2 text-lg leading-8 text-gray-600">
@@ -190,7 +190,7 @@ export default function HomePage() {
                   <p className="text-base font-semibold leading-7 text-indigo-600">
                     Skipper
                   </p>
-                  <h1 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                  <h1 className="text-charcoal mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
                     Meet Milan Kor<span className="text-indigo-600">nicer</span>
                   </h1>
                   <div className="max-w-xl">

@@ -48,7 +48,7 @@ export default function DayButton({
       onClick={onClick}
       className={cn(
         'py-1.5 hover:bg-gray-100 focus:z-10',
-        'bg-white text-gray-900',
+        'text-charcoal bg-white',
         isDisabled && 'bg-gray-50 text-gray-400 hover:bg-gray-50',
         isRange && 'bg-indigo-400 text-white hover:bg-indigo-600',
         isSelected && 'bg-indigo-600 text-white hover:bg-indigo-500',

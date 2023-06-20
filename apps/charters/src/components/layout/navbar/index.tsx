@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import Logo from '@/components/logo'
 import Container from '@/components/ui/container'
 import { navbarNavigation } from '@/lib/cms'
 
@@ -9,7 +10,7 @@ import UserButton from './user-button'
 
 export default function Navbar() {
   return (
-    <header className="border-b bg-white px-6 py-4 text-black">
+    <header className="text-charcoal border-b bg-white px-6 py-4">
       <Container>
         <nav
           className="flex items-center justify-between gap-x-6"
@@ -17,35 +18,22 @@ export default function Navbar() {
         >
           <div className="hidden md:flex lg:flex-1">
             <Link href="/" className="-m-1.5 p-1.5">
-              <span className="sr-only">Nicer Charters</span>
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-                alt=""
-              />
+              <div className="flex items-center">
+                <span className="sr-only">Nicer Charters</span>
+                <Logo />
+                <span className="text-charcoal hidden md:inline-block">
+                  Nicer Charters
+                </span>
+              </div>
             </Link>
           </div>
-          <div className="flex space-x-6 md:hidden">
-            {navbarNavigation.map(
-              (item) =>
-                !item.href.startsWith('#') && (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="inline-block  text-sm  font-semibold hover:text-slate-500"
-                  >
-                    {item.name}
-                  </Link>
-                )
-            )}
-          </div>
 
-          <div className="hidden md:flex md:gap-x-6 lg:gap-x-12">
+          <div className="flex gap-x-6">
             {navbarNavigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="inline-block text-sm font-semibold  hover:text-slate-500"
+                className="inline-block px-2 text-sm font-semibold hover:text-slate-500"
               >
                 {item.name}
               </Link>

@@ -15,7 +15,7 @@ export default function DropMenu({ children }: { children: React.ReactNode }) {
           data-testid="user-menu"
           className={cn(
             buttonVariantStyles.secondary,
-            'space-x-2 px-2 text-black hover:shadow-md'
+            'text-charcoal space-x-2 px-2 hover:shadow-md'
           )}
         >
           {children}

@@ -22,7 +22,7 @@ export default function RatesLayout({
     <div className="mt-16 min-h-screen px-4 sm:px-6 lg:px-8">
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
-          <h1 className="text-base font-semibold leading-6 text-gray-900">
+          <h1 className="text-charcoal text-base font-semibold leading-6">
             Charter Rates
           </h1>
           <p className="mt-2 text-sm text-gray-700">
@@ -39,31 +39,31 @@ export default function RatesLayout({
                   <tr>
                     <th
                       scope="col"
-                      className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
+                      className="text-charcoal py-3.5 pl-4 pr-3 text-left text-sm font-semibold sm:pl-6"
                     >
                       Number of Nights
                     </th>
                     <th
                       scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="text-charcoal px-3 py-3.5 text-left text-sm font-semibold"
                     >
                       Price
                     </th>
                     <th
                       scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="text-charcoal px-3 py-3.5 text-left text-sm font-semibold"
                     >
                       Passengers
                     </th>
                     <th
                       scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="text-charcoal px-3 py-3.5 text-left text-sm font-semibold"
                     >
                       Departure Time
                     </th>
                     <th
                       scope="col"
-                      className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      className="text-charcoal px-3 py-3.5 text-left text-sm font-semibold"
                     >
                       Returning Time
                     </th>

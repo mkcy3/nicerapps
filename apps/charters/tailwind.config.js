@@ -20,6 +20,9 @@ module.exports = {
       '9xl': ['8rem', { lineHeight: '1' }],
     },
     extend: {
+      colors: {
+        charcoal: '#0F4257',
+      },
       borderRadius: {
         '4xl': '2rem',
       },

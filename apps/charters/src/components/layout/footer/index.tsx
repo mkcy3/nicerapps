@@ -1,5 +1,6 @@
 import Link from 'next/link'
 
+import Logo from '@/components/logo'
 import Container from '@/components/ui/container'
 import { footerNavigation } from '@/lib/cms'
 
@@ -56,11 +57,10 @@ export default function Footer() {
         </h2>
         <div className=" pb-8 pt-16">
           <div className="space-y-8">
-            <img
-              className="col-span-3 h-7"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              alt="Company name"
-            />
+            <div className="flex items-center">
+              <Logo />
+              <span className="text-charcoal"> Nicer Charters</span>
+            </div>
 
             <div className="mt-16 grid gap-8 sm:col-span-3 sm:grid-cols-3 xl:mt-0">
               <div>
@@ -69,7 +69,7 @@ export default function Footer() {
               {Object.entries(navigation).map(([key, value]) => (
                 <div key={key + '-footer'} className="md:grid md:gap-8">
                   <div>
-                    <h3 className="text-sm font-semibold capitalize leading-6 text-gray-900">
+                    <h3 className="text-charcoal text-sm font-semibold capitalize leading-6">
                       {key}
                     </h3>
                     <ul role="list" className="mt-6 space-y-4">
@@ -77,7 +77,7 @@ export default function Footer() {
                         <li key={item.name + '-footer'}>
                           <Link
                             href={item.href}
-                            className="text-sm leading-6 text-gray-600 hover:text-gray-900"
+                            className="hover:text-charcoal text-sm leading-6 text-gray-600"
                           >
                             {item.name}
                           </Link>
@@ -91,7 +91,7 @@ export default function Footer() {
           </div>
           <div className="mt-8 border-t border-gray-900/10 pt-8 lg:mt-24 lg:flex lg:items-center lg:justify-between">
             <div>
-              <h3 className="text-sm font-semibold leading-6 text-gray-900">
+              <h3 className="text-charcoal text-sm font-semibold leading-6">
                 First 3 Bookings in January get 15% off.
               </h3>
               <p className="mt-2 text-sm leading-6 text-gray-600">
@@ -109,7 +109,7 @@ export default function Footer() {
                 id="email-address"
                 autoComplete="email"
                 required
-                className="w-full min-w-0 appearance-none rounded-md border-0 bg-white px-3 py-1.5 text-base text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-56 sm:text-sm sm:leading-6"
+                className="text-charcoal w-full min-w-0 appearance-none rounded-md border-0 bg-white px-3 py-1.5 text-base shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-56 sm:text-sm sm:leading-6"
                 placeholder="Enter your email"
               />
               <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
