@@ -14,12 +14,6 @@ export const navbarNavigation = [
   { name: 'FAQ', href: '/faq' },
 ]
 
-export const userNavigation = [
-  { name: 'Manage Bookings', href: '#' },
-  { name: 'Settings', href: '#' },
-  { name: 'Sign out', href: '#' },
-]
-
 export const footerNavigation = {
   adventures: [
     { name: 'Destinations', href: '/#destinations' },

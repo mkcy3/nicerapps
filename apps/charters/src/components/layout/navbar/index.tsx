@@ -1,17 +1,15 @@
 import Link from 'next/link'
 
-import { buttonVariantStyles } from '@/components/ui/button'
 import Container from '@/components/ui/container'
 import { navbarNavigation } from '@/lib/cms'
-import { cn } from '@/lib/utils'
 
+import DropMenu from './drop-menu'
 import MobileMenu from './mobile-menu'
 import UserButton from './user-button'
-import UserMenu from './user-menu'
 
 export default function Navbar() {
   return (
-    <header className="bg-white px-6 py-4 text-black">
+    <header className="border-b bg-white px-6 py-4 text-black">
       <Container>
         <nav
           className="flex items-center justify-between gap-x-6"
@@ -55,10 +53,10 @@ export default function Navbar() {
           </div>
           <div className="flex flex-1 items-center justify-end gap-x-6">
             <div className="hidden md:block">
-              <UserMenu>
+              <DropMenu>
                 {/* @ts-expect-error even with 5.1 and using workspace version this errors... */}
                 <UserButton />
-              </UserMenu>
+              </DropMenu>
             </div>
             <div className="block md:hidden">
               <MobileMenu menu={navbarNavigation}>

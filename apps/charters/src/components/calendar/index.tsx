@@ -144,7 +144,7 @@ export default function Calendar({ calendar }: { calendar: Month[] }) {
       setSelectedDates((draft) => {
         draft.endDate = null
       })
-      console.log('Error: cannot book that range')
+
       return
     }
     setSelectedDates((draft) => {

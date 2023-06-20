@@ -1,40 +1,32 @@
+//reactor later
 'use client'
-import { Menu, Transition } from '@headlessui/react'
-import { Menu as IconMenu, User } from 'iconoir-react'
-import React, { Fragment } from 'react'
+import { Menu } from '@headlessui/react'
+import Link from 'next/link'
 
-import { buttonVariantStyles } from '@/components/ui/button'
-import { userNavigation } from '@/lib/cms'
+import { useCurrentAuth, useSignOut } from '@/lib/clerk/client'
 import { cn } from '@/lib/utils'
 
-export default function UserMenu({ children }: { children: React.ReactNode }) {
-  return (
-    <Menu as="div" className="relative ml-3">
-      <div>
-        <Menu.Button
-          data-testid="user-menu"
-          className={cn(
-            buttonVariantStyles.secondary,
-            'space-x-2 px-2 text-black hover:shadow-md'
-          )}
-        >
-          {children}
-        </Menu.Button>
-      </div>
-      <Transition
-        as={Fragment}
-        enter="transition ease-out duration-200"
-        enterFrom="transform opacity-0 scale-95"
-        enterTo="transform opacity-100 scale-100"
-        leave="transition ease-in duration-75"
-        leaveFrom="transform opacity-100 scale-100"
-        leaveTo="transform opacity-0 scale-95"
-      >
-        <Menu.Items className="absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-          {userNavigation.map((item) => (
+const visitorMenu = [
+  { name: 'Sign in', href: '/sign-in' },
+  { name: 'Sign up', href: '/sign-up' },
+]
+
+export default function UserMenu({
+  isDropDown = false,
+}: {
+  isDropDown?: boolean
+}) {
+  const { isLoaded, userId } = useCurrentAuth()
+  const signOut = useSignOut()
+
+  if (!isLoaded || !userId)
+    return (
+      <>
+        {visitorMenu.map((item) =>
+          isDropDown ? (
             <Menu.Item key={item.name}>
               {({ active }) => (
-                <a
+                <Link
                   href={item.href}
                   className={cn(
                     active ? 'bg-gray-100' : '',
@@ -42,12 +34,61 @@ export default function UserMenu({ children }: { children: React.ReactNode }) {
                   )}
                 >
                   {item.name}
-                </a>
+                </Link>
               )}
             </Menu.Item>
-          ))}
-        </Menu.Items>
-      </Transition>
-    </Menu>
+          ) : (
+            <Link
+              key={item.name}
+              href={item.href}
+              className={cn(
+                '-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50'
+              )}
+            >
+              {item.name}
+            </Link>
+          )
+        )}
+      </>
+    )
+
+  return (
+    <>
+      {isDropDown ? (
+        <>
+          <Menu.Item>
+            <Link
+              href="/account"
+              className={cn('block px-4 py-2 text-sm text-gray-700')}
+            >
+              Your Charters
+            </Link>
+          </Menu.Item>
+          <Menu.Item>
+            <button
+              className={cn('block px-4 py-2 text-sm text-gray-700')}
+              onClick={() => signOut()}
+            >
+              Sign out
+            </button>
+          </Menu.Item>
+        </>
+      ) : (
+        <>
+          <Link
+            className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            href="/account"
+          >
+            Your Charters
+          </Link>
+          <button
+            className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
+            onClick={() => signOut()}
+          >
+            Sign out
+          </button>
+        </>
+      )}
+    </>
   )
 }

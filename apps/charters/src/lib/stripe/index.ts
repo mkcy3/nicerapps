@@ -83,6 +83,13 @@ export async function getPrices() {
   return await stripe.prices.list()
 }
 
+export async function getUserSucceededIntents(userId: string) {
+  const result = await stripe.paymentIntents.search({
+    query: `status:'succeeded' AND metadata['clerkUserId']:"${userId}"`,
+  })
+  return result.data
+}
+
 /* eslint-disable */
 export function stripeErrorHandling(err: unknown) {
   if (err instanceof Stripe.errors.StripeError) {

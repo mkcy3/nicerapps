@@ -2,7 +2,7 @@ const faqs = [
   {
     id: 1,
     question: 'What happens if the weather is bad?',
-    answer: 'If the weather is hazardous, ',
+    answer: 'If the weather is dangerous we wont go. ',
   },
   {
     id: 2,
@@ -13,7 +13,7 @@ const faqs = [
   {
     id: 3,
     question: 'How long is a Day Sail?',
-    answer: '9 AM to 8 PM',
+    answer: '9 AM to 6 PM',
   },
   {
     id: 4,
@@ -25,6 +25,16 @@ const faqs = [
     id: 5,
     question: 'Will we learn to sail and sail the boat?',
     answer: 'Absolutely',
+  },
+  {
+    id: 6,
+    question: 'What to bring?',
+    answer: 'This and that',
+  },
+  {
+    id: 7,
+    question: 'How much food to bring?',
+    answer: 'a lot of food',
   },
 ]
 export default function FaqPage() {
