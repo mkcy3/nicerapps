@@ -1,6 +1,3 @@
-import { Calendar, Search } from 'iconoir-react'
-import { cookies } from 'next/headers'
-import Image from 'next/image'
 import Link from 'next/link'
 
 import Banner from '@/components/layout/banner'
