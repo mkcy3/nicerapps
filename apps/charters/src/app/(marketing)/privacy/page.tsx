@@ -1,3 +1,8 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy',
+}
 export default function PrivacyPage() {
   return (
     <div className="prose mt-16">

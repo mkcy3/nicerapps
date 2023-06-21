@@ -1,7 +1,11 @@
+import { Metadata } from 'next'
 import { redirect } from 'next/navigation'
 
 import Container from '@/components/ui/container'
 
+export const metadata: Metadata = {
+  title: 'Your Payment',
+}
 const info = [
   { label: 'What to bring', href: '#' },
   { label: 'What to do', href: '#' },

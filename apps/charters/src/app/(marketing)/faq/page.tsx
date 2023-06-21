@@ -1,3 +1,9 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'FAQ',
+}
+
 const faqs = [
   {
     id: 1,
@@ -37,6 +43,7 @@ const faqs = [
     answer: 'a lot of food',
   },
 ]
+
 export default function FaqPage() {
   return (
     <div id="faq" className="divide-y divide-gray-900/10 py-24 sm:py-32">

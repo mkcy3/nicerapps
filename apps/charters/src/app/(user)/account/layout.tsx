@@ -1,7 +1,11 @@
+import { Metadata } from 'next'
 import { Suspense } from 'react'
 
 import Container from '@/components/ui/container'
 
+export const metadata: Metadata = {
+  title: 'Dashboard',
+}
 export default function AccountLayout({
   children,
 }: {

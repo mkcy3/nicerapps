@@ -1,3 +1,9 @@
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Terms',
+}
+
 export default function TermsOfUsePage() {
   return (
     <div className="prose mt-16">

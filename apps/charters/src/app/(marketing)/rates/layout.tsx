@@ -1,6 +1,10 @@
 //nested layout acts as 'page' and page essentially compontent...
+import { Metadata } from 'next'
 import React, { Suspense } from 'react'
 
+export const metadata: Metadata = {
+  title: 'Rates',
+}
 const information = [
   {
     text: 'Every overnight charter has the option to add the sleep aboard addition at checkout. Any single night charter, including weekends, this is included.',

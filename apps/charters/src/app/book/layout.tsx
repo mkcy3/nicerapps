@@ -1,7 +1,11 @@
+import { Metadata } from 'next'
 import React, { Suspense } from 'react'
 
 import Container from '@/components/ui/container'
 
+export const metadata: Metadata = {
+  title: 'Checkout',
+}
 function BookLayout({ children }: { children: React.ReactNode }) {
   return (
     <Suspense>
