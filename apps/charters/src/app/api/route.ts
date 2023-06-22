@@ -1,13 +1,11 @@
-/* eslint no-case-declarations: 0 */
-// working and tested webhook saved for future.
 import { NextRequest, NextResponse } from 'next/server'
 import Stripe from 'stripe'
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? '', {
   apiVersion: '2022-11-15',
 })
 
-const endpointSecret = process.env.STRIPE_WH_SECRET_KEY as string
+const endpointSecret = process.env.STRIPE_WH_SECRET_KEY ?? ''
 
 export async function POST(req: NextRequest) {
   const request = await req.text()
@@ -29,7 +27,6 @@ export async function POST(req: NextRequest) {
     case 'payment_method.attached':
       break
     default:
-      console.log(`Unhandled event type ${event?.type}.`)
   }
 
   return NextResponse.json(

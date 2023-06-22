@@ -1,4 +1,5 @@
 import { Menu, User } from 'iconoir-react'
+import Image from 'next/image'
 
 import { getCurrentUser } from '@/lib/clerk/server'
 
@@ -17,10 +18,12 @@ export default async function UserBar() {
     <>
       <span className="sr-only">Open user menu</span>
       <Menu className="h-5 w-5" aria-hidden="true" />
-      <img
+      <Image
         src={user.profileImageUrl}
         alt="profile img"
         className="h-6 w-6 rounded-full"
+        width={30}
+        height={30}
       />
     </>
   )
