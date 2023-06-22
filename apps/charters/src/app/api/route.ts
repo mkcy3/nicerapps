@@ -29,7 +29,6 @@ export async function POST(req: NextRequest) {
     case 'payment_method.attached':
       break
     default:
-      console.log(`Unhandled event type ${event?.type}.`)
   }
 
   return NextResponse.json(

@@ -67,7 +67,6 @@ const posts = [
 // }
 
 export default function HomePage() {
-  console.log(mk)
   return (
     <>
       <Navbar />
