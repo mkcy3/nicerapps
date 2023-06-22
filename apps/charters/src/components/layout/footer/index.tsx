@@ -55,7 +55,7 @@ export default function Footer() {
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
-        <div className=" pb-8 pt-16">
+        <div className=" border-t pb-8 pt-16">
           <div className="space-y-8">
             <div className="flex items-center">
               <Logo />
