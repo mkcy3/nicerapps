@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     'Day sails Georgian Bay',
     'Week-long yacht adventures Georgian Bay',
     'Corporate yacht parties Georgian Bay',
+    'Corporate event Georgian Bay',
     'Bachelorette party yacht charters Georgian Bay',
     'Yacht cruises Georgian Bay',
     'Learn to sail in Georgian Bay',
@@ -33,11 +34,24 @@ export const metadata: Metadata = {
     'Sailing lessons Georgian Bay',
     'Yacht fleet Georgian Bay',
     'Bachelorette parties',
+    'Cruise Georgian Bay',
+    'Mileage building Toronto',
+    'Mileage builder Ontario',
+    'Mileage builder',
+    'Mileage building',
   ],
   formatDetection: {
     email: true,
     address: true,
     telephone: true,
+  },
+  metadataBase: new URL('https://acme.com'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/en-US',
+      'en-CA': '/en-CA',
+    },
   },
   openGraph: {
     title: 'Nicer Charters',
@@ -47,15 +61,16 @@ export const metadata: Metadata = {
     siteName: 'Nicer Charters',
     images: [
       {
-        url: 'https://nicercharters.com/og.png',
+        url: '',
         width: 800,
         height: 600,
+        alt: 'Nicer charter image',
       },
       {
-        url: 'https://nicercharters.com/og-alt.png',
+        url: '',
         width: 1800,
         height: 1600,
-        alt: 'My custom alt',
+        alt: 'Nicer charter image',
       },
     ],
     locale: 'en_CA',
