@@ -1,10 +1,6 @@
+'use client'
 import { Disclosure } from '@headlessui/react'
 import { Minus, Plus } from 'iconoir-react'
-import { Metadata } from 'next'
-
-export const metadata: Metadata = {
-  title: 'FAQ',
-}
 
 const faqs = [
   {
@@ -45,39 +41,34 @@ const faqs = [
 
 export default function FaqPage() {
   return (
-    <div id="faq" className="divide-y divide-gray-900/10 py-24 sm:py-32">
-      <h2 className="text-2xl font-bold leading-10 tracking-tight text-gray-900">
-        Frequently asked questions
-      </h2>
-      <dl className="mt-10 space-y-6 divide-y divide-gray-900/10">
-        {faqs.map((faq) => (
-          <Disclosure as="div" key={faq.question} className="pt-6">
-            {({ open }) => (
-              <>
-                <dt>
-                  <Disclosure.Button className="flex w-full items-start justify-between text-left text-gray-900">
-                    <span className="text-base font-semibold leading-7">
-                      {faq.question}
-                    </span>
-                    <span className="ml-6 flex h-7 items-center">
-                      {open ? (
-                        <Minus className="h-6 w-6" aria-hidden="true" />
-                      ) : (
-                        <Plus className="h-6 w-6" aria-hidden="true" />
-                      )}
-                    </span>
-                  </Disclosure.Button>
-                </dt>
-                <Disclosure.Panel as="dd" className="mt-2 pr-12">
-                  <p className="text-base leading-7 text-gray-600">
-                    {faq.answer}
-                  </p>
-                </Disclosure.Panel>
-              </>
-            )}
-          </Disclosure>
-        ))}
-      </dl>
-    </div>
+    <>
+      {faqs.map((faq) => (
+        <Disclosure as="div" key={faq.question} className="pt-6">
+          {({ open }) => (
+            <>
+              <dt>
+                <Disclosure.Button className="flex w-full items-start justify-between text-left text-gray-900">
+                  <span className="text-base font-semibold leading-7">
+                    {faq.question}
+                  </span>
+                  <span className="ml-6 flex h-7 items-center">
+                    {open ? (
+                      <Minus className="h-6 w-6" aria-hidden="true" />
+                    ) : (
+                      <Plus className="h-6 w-6" aria-hidden="true" />
+                    )}
+                  </span>
+                </Disclosure.Button>
+              </dt>
+              <Disclosure.Panel as="dd" className="mt-2 pr-12">
+                <p className="text-base leading-7 text-gray-600">
+                  {faq.answer}
+                </p>
+              </Disclosure.Panel>
+            </>
+          )}
+        </Disclosure>
+      ))}
+    </>
   )
 }

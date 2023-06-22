@@ -3,9 +3,13 @@ import { formatAmountForDisplay } from '@/lib/utils'
 
 export default async function RatesPage() {
   const prices = await getPrices()
-  const descendingPrices = prices.data.sort(
-    (a, b) => b.unit_amount! - a.unit_amount!
-  )
+  const descendingPrices = prices.data.sort((a, b) => {
+    if (!b.unit_amount && !a.unit_amount) {
+      return -1
+    }
+
+    return (b.unit_amount ?? 0) - (a.unit_amount ?? 0)
+  })
 
   return (
     <tbody className="divide-y divide-gray-200 bg-white">
