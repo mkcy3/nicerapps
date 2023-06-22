@@ -4,14 +4,13 @@
   "globalEnv": ["NEXT_PUBLIC_VERCEL_URL", "NODE_ENV"],
   "pipeline": {
     "build": {
-      "dependsOn": ["^build"],
       "env": [
         "STRIPE_SECRET_KEY",
         "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
         "STRIPE_WH_SECRET_KEY",
         "NEXT_PUBLIC_URL"
       ],
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     },
 
     "test": {},
