@@ -15,7 +15,7 @@ export default function Banner({ className }: { className?: string }) {
       {!isOpen && (
         <div
           className={cn(
-            'absolute inset-x-0 flex items-center gap-x-6 bg-indigo-600 px-6 py-2.5 sm:px-3.5 sm:before:flex-1',
+            'absolute inset-x-0 z-10 flex items-center gap-x-6 bg-indigo-600 px-6 py-2.5 sm:px-3.5 sm:before:flex-1',
             className
           )}
         >

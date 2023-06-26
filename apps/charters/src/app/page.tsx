@@ -1,10 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
-import heroImage from '@/assets/hero-charters.webp'
 import mk from '@/assets/milan.webp'
 import firstImage from '@/assets/post1.webp'
 import secondImage from '@/assets/post2.webp'
+import thirdImage from '@/assets/post3.webp'
+import Carousel from '@/components/carousel'
 import Banner from '@/components/layout/banner'
 import Footer from '@/components/layout/footer'
 import Navbar from '@/components/layout/navbar'
@@ -26,7 +27,7 @@ const posts = [
     title: 'Week Long Adventurers',
     href: '#',
     description: 'Explore a little farther',
-    imageUrl: '',
+    imageUrl: thirdImage.src,
   },
   {
     id: 3,
@@ -72,32 +73,8 @@ export default function HomePage() {
       <Navbar />
       <Banner />
       <main>
-        <Image
-          src={heroImage}
-          alt="Hero collage"
-          className="absolute inset-0 -z-10 h-5/6 w-full object-fill md:object-cover"
-          priority
-        />
-        <section
-          id="hero"
-          className="h-[calc(83.333333vh-72px)] py-24 sm:py-32"
-        >
-          <Container>
-            <div className="flex h-full flex-col items-start justify-center space-y-6">
-              <h1 className="font-display text-5xl font-medium tracking-tight text-white sm:text-6xl">
-                Go sailing on Georgian Bay
-              </h1>
-              <p className="max-w-2xl text-lg tracking-tight text-slate-200">
-                Blah blah
-              </p>
-
-              <Link href="/trip" className={cn(buttonVariantStyles.primary)}>
-                Check Dates
-              </Link>
-
-              <div className="flex justify-between"></div>
-            </div>
-          </Container>
+        <section id="hero" className="h-[calc(83.333333vh-72px)]">
+          <Carousel />
         </section>
         <section id="destinations" className=" py-24 sm:py-32">
           <Container>
