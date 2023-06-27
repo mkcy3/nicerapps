@@ -4,6 +4,6 @@ test('homepage has heading on it', async ({ page }) => {
   await page.goto('http://localhost:3000')
 
   await expect(
-    page.getByRole('heading', { name: 'Go sailing on Georgian Bay' })
+    page.getByRole('heading', { name: 'Explore GBay' })
   ).toBeVisible()
 })

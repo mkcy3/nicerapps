@@ -11,7 +11,25 @@ import { buttonVariantStyles } from '@/components/ui/button'
 import Container from '@/components/ui/container'
 import { cn } from '@/lib/utils'
 
-export default function Carousel() {
+const slides = [
+  {
+    heading: 'Explore GBay',
+    subHeading: 'Blah Blah',
+    src: firstImage.src,
+  },
+  {
+    heading: 'Unforgettable sunsets in Georgian Bay',
+    subHeading: 'Blah Blah',
+    src: secondImage.src,
+  },
+  {
+    heading: 'Sailing on GBay',
+    subHeading: 'Blah Blah',
+    src: thirdImage.src,
+  },
+]
+
+export default function Carousel({ className }: { className: string }) {
   const [emblaRef, emblaApi] = useEmblaCarousel()
 
   const scrollPrev = useCallback(
@@ -25,61 +43,47 @@ export default function Carousel() {
 
   return (
     <div
-      className="h-[calc(83.333333vh-72px)] w-full overflow-hidden"
+      className={cn(
+        'h-[calc(83.333333vh-72px)] w-full overflow-hidden',
+        className
+      )}
       ref={emblaRef}
     >
       <div className="flex h-full touch-pan-y">
-        <div className="relative flex min-w-full">
-          <Container>
-            <div className="flex h-full w-full flex-col items-start justify-center space-y-6">
-              <h1 className="font-display text-5xl font-medium tracking-tight text-white sm:text-6xl">
-                Go sailing on Georgian Bay
-              </h1>
-              <p className="max-w-2xl text-lg tracking-tight text-slate-200">
-                Blah blah
-              </p>
+        {slides.map((slide, idx) => (
+          <div key={`slide-${idx}`} className="relative flex min-w-full">
+            <Container>
+              <div className="flex h-full w-full flex-col items-start justify-center space-y-6 px-16 lg:px-0">
+                <h1 className="font-display text-5xl font-medium tracking-tight text-white sm:text-6xl">
+                  {slide.heading}
+                </h1>
+                <p className="max-w-2xl text-lg tracking-tight text-slate-200">
+                  {slide.subHeading}
+                </p>
 
-              <Link href="/trip" className={cn(buttonVariantStyles.primary)}>
-                Check Dates
-              </Link>
-
-              <div className="flex justify-between"></div>
-            </div>
-          </Container>
-          <Image
-            src={thirdImage.src}
-            alt="third carousel image"
-            className="absolute -z-10 block w-full object-fill"
-            width={1440}
-            height={770}
-          />
-        </div>
-        <div className="relative flex min-w-full">
-          <Image
-            src={secondImage.src}
-            alt="second carousel image"
-            className="block w-full"
-            width={1440}
-            height={770}
-          />
-        </div>
-        <div className="relative flex min-w-full">
-          <Image
-            src={firstImage.src}
-            alt="first carousel image"
-            className="block w-full"
-            width={1440}
-            height={770}
-          />
-        </div>
+                <Link href="/trip" className={cn(buttonVariantStyles.primary)}>
+                  Check Dates
+                </Link>
+              </div>
+            </Container>
+            <Image
+              src={slide.src}
+              alt="third carousel image"
+              className="absolute -z-10 block h-[calc(83.333333vh-72px)] w-full object-cover lg:object-fill"
+              width={1440}
+              height={770}
+              priority={idx === 0 ? true : false}
+            />
+          </div>
+        ))}
       </div>
 
       <button
-        className="absolute left-6 top-1/2 z-10 m-0 inline-flex h-16 w-16 -translate-y-1/2 cursor-pointer touch-manipulation items-center justify-center border-0 bg-transparent p-0 no-underline"
+        className="absolute left-0 top-1/2 z-10 m-0 inline-flex h-16 w-16 -translate-y-1/2 cursor-pointer touch-manipulation items-center justify-center border-0 bg-transparent p-0 no-underline lg:left-6"
         onClick={scrollPrev}
       >
         <svg
-          className="h-2/3 text-white opacity-40"
+          className="h-1/3 text-white opacity-40"
           viewBox="137.718 -1.001 366.563 644"
         >
           <path
@@ -90,11 +94,11 @@ export default function Carousel() {
       </button>
 
       <button
-        className="absolute right-6 top-1/2 z-10 m-0 inline-flex h-16 w-16 -translate-y-1/2 cursor-pointer touch-manipulation items-center justify-center border-0 bg-transparent p-0 no-underline"
+        className="absolute right-0 top-1/2 z-10 m-0 inline-flex h-16 w-16 -translate-y-1/2 cursor-pointer touch-manipulation items-center justify-center border-0 bg-transparent p-0 no-underline lg:right-6"
         onClick={scrollNext}
       >
         <svg
-          className="h-2/3 text-white opacity-40"
+          className="h-1/3 text-white opacity-40"
           viewBox="0 0 238.003 238.003"
         >
           <path

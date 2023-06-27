@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import mk from '@/assets/milan.webp'
+import mobileHeroImage from '@/assets/mobile-hero.webp'
 import firstImage from '@/assets/post1.webp'
 import secondImage from '@/assets/post2.webp'
 import thirdImage from '@/assets/post3.webp'
@@ -17,7 +18,7 @@ const posts = [
   {
     id: 1,
     title: 'Day and Weekend Sailors',
-    href: '#',
+    href: '/trip',
     description:
       'Enjoy a day on beausail.... Outline Day Sail and maybe Weekend activites.',
     imageUrl: firstImage.src,
@@ -25,47 +26,19 @@ const posts = [
   {
     id: 2,
     title: 'Week Long Adventurers',
-    href: '#',
+    href: '/trip',
     description: 'Explore a little farther',
     imageUrl: thirdImage.src,
   },
   {
     id: 3,
     title: 'Aspiring Cruisers',
-    href: '#',
+    href: '/trip',
     description:
       'A special package for mileage building and people looking to go cruising in retirement. This trip is packed with information about vessel operation, maintenance and offshore sailing concerns.',
     imageUrl: secondImage.src,
   },
-  // More posts...
 ]
-
-// function Photos() {
-//   let rotations = ['rotate-2', '-rotate-2', 'rotate-2', 'rotate-2', '-rotate-2']
-
-//   return (
-//     <div className="mt-16 sm:mt-20">
-//       <div className="-my-4 flex justify-center gap-5 overflow-hidden py-4 sm:gap-8">
-//         {[image1, image2, image3, image4, image5].map((image, imageIndex) => (
-//           <div
-//             key={image.src}
-//             className={clsx(
-//               'relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl',
-//               rotations[imageIndex % rotations.length]
-//             )}
-//           >
-//             <Image
-//               src={image}
-//               alt=""
-//               sizes="(min-width: 640px) 18rem, 11rem"
-//               className="absolute inset-0 h-full w-full object-cover"
-//             />
-//           </div>
-//         ))}
-//       </div>
-//     </div>
-//   )
-// }
 
 export default function HomePage() {
   return (
@@ -73,8 +46,31 @@ export default function HomePage() {
       <Navbar />
       <Banner />
       <main>
-        <section id="hero" className="h-[calc(83.333333vh-72px)]">
-          <Carousel />
+        <section id="hero" className="relative h-[calc(83.333333vh-72px)]">
+          <Carousel className="hidden md:block" />
+
+          <div className="relative flex h-full w-full flex-col items-start justify-center md:hidden">
+            <Container>
+              <h1 className="font-display text-5xl font-medium tracking-tight text-white sm:text-6xl">
+                Sailing on Georgian Bay
+              </h1>
+              <p className="max-w-2xl text-lg tracking-tight text-slate-200">
+                Party it up or chill on Gbay
+              </p>
+
+              <Link href="/trip" className={cn(buttonVariantStyles.primary)}>
+                Check Dates
+              </Link>
+            </Container>
+            <Image
+              src={mobileHeroImage.src}
+              alt="beautiful georgian bay"
+              width={500}
+              height={600}
+              priority
+              className="absolute -z-10 h-full w-full object-fill"
+            />
+          </div>
         </section>
         <section id="destinations" className=" py-24 sm:py-32">
           <Container>
