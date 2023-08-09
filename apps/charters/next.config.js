@@ -7,7 +7,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'images.clerk.dev',
+        hostname: 'img.clerk.com',
       },
     ],
   },
