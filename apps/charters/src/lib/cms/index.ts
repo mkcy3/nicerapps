@@ -24,7 +24,6 @@ export const footerNavigation = {
   resources: [
     { name: 'FAQ', href: '/faq' },
     { name: 'Rates', href: '/rates' },
-    { name: 'Charter Terms', href: '#' },
     { name: 'Sitemap', href: '/site' },
   ],
 }

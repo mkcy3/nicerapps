@@ -65,6 +65,7 @@ export default function Footer() {
             <div className="mt-16 grid gap-8 sm:col-span-3 sm:grid-cols-3 xl:mt-0">
               <div>
                 <p>156 Marina Park Ave, Midland, ON L4R 4P4</p>
+                <p>1:30 Hours from Toronto</p>
               </div>
               {Object.entries(navigation).map(([key, value]) => (
                 <div key={key + '-footer'} className="md:grid md:gap-8">
@@ -89,39 +90,7 @@ export default function Footer() {
               ))}
             </div>
           </div>
-          <div className="mt-8 border-t border-gray-900/10 pt-8 lg:mt-24 lg:flex lg:items-center lg:justify-between">
-            <div>
-              <h3 className="text-charcoal text-sm font-semibold leading-6">
-                First 3 Bookings in January get 15% off.
-              </h3>
-              <p className="mt-2 text-sm leading-6 text-gray-600">
-                Get notified when season bookings open! Its the only email we
-                send.
-              </p>
-            </div>
-            <form className="mt-6 sm:flex sm:max-w-md lg:mt-0">
-              <label htmlFor="email-address" className="sr-only">
-                Email address
-              </label>
-              <input
-                type="email"
-                name="email-address"
-                id="email-address"
-                autoComplete="email"
-                required
-                className="text-charcoal w-full min-w-0 appearance-none rounded-md border-0 bg-white px-3 py-1.5 text-base shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:w-56 sm:text-sm sm:leading-6"
-                placeholder="Enter your email"
-              />
-              <div className="mt-4 sm:ml-4 sm:mt-0 sm:flex-shrink-0">
-                <button
-                  type="submit"
-                  className="flex w-full items-center justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                >
-                  Subscribe
-                </button>
-              </div>
-            </form>
-          </div>
+
           <div className="mt-8 border-t border-gray-900/10 pt-8 md:flex md:items-center md:justify-between">
             <div className="flex space-x-6 md:order-2">
               {social.map((item) => (

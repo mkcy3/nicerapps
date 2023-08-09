@@ -8,7 +8,9 @@
         "STRIPE_SECRET_KEY",
         "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
         "STRIPE_WH_SECRET_KEY",
-        "NEXT_PUBLIC_URL"
+        "NEXT_PUBLIC_URL",
+        "NEXT_PUBLIC_BOTPOISON",
+        "BOTPOISON_SECRET"
       ],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"],
       "dependsOn": ["^build"]

@@ -13,18 +13,20 @@ import { cn } from '@/lib/utils'
 
 const slides = [
   {
-    heading: 'Explore GBay',
-    subHeading: 'Blah Blah',
+    heading: 'Sail Away',
+    subHeading: `Learn to sail and create memories on Georgian Bay! Whether
+    booking a day trip or a week long adventure, we make any duration unforgettable.`,
     src: firstImage.src,
   },
   {
-    heading: 'Unforgettable sunsets in Georgian Bay',
-    subHeading: 'Blah Blah',
+    heading: 'Unforgettable Sunsets',
+    subHeading: 'Make the big day even more special.',
     src: secondImage.src,
   },
   {
-    heading: 'Sailing on GBay',
-    subHeading: 'Blah Blah',
+    heading: 'Explore Georgian Bay',
+    subHeading:
+      'Witness some of the most breathtaking geography Canada has to offer.',
     src: thirdImage.src,
   },
 ]
@@ -62,14 +64,14 @@ export default function Carousel({ className }: { className: string }) {
                 </p>
 
                 <Link href="/trip" className={cn(buttonVariantStyles.primary)}>
-                  Check Dates
+                  Browse dates
                 </Link>
               </div>
             </Container>
             <Image
               src={slide.src}
               alt="third carousel image"
-              className="absolute -z-10 block h-[calc(83.333333vh-72px)] w-full object-cover lg:object-fill"
+              className="absolute -z-10 block h-[calc(83.333333vh-72px)] w-full object-cover brightness-50 lg:object-fill"
               width={1440}
               height={770}
               priority={idx === 0 ? true : false}

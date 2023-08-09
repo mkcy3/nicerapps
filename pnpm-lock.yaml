@@ -31,6 +31,12 @@ importers:
 
   apps/charters:
     dependencies:
+      '@botpoison/browser':
+        specifier: ^0.1.30
+        version: 0.1.30
+      '@botpoison/node':
+        specifier: ^0.1.10
+        version: 0.1.10
       '@clerk/nextjs':
         specifier: ^4.23.2
         version: 4.23.2(next@13.4.13)(react-dom@18.2.0)(react@18.2.0)
@@ -38,8 +44,8 @@ importers:
         specifier: ^1.7.16
         version: 1.7.16(react-dom@18.2.0)(react@18.2.0)
       '@stripe/react-stripe-js':
-        specifier: ^2.1.1
-        version: 2.1.1(@stripe/stripe-js@2.0.0)(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^2.1.2
+        version: 2.1.2(@stripe/stripe-js@2.0.0)(react-dom@18.2.0)(react@18.2.0)
       '@stripe/stripe-js':
         specifier: ^2.0.0
         version: 2.0.0
@@ -415,6 +421,18 @@ packages:
       '@babel/helper-string-parser': 7.22.5
       '@babel/helper-validator-identifier': 7.22.5
       to-fast-properties: 2.0.0
+
+  /@botpoison/browser@0.1.30:
+    resolution: {integrity: sha512-hl+YoByBwBrNE0Hv/mwse9kAV6hAlq5qnwSlFhjnI/LkwOxNo1hOQ+x2UlopQ5QEIgxhxjndz9PwcMhFojEKfQ==}
+    engines: {node: '>=10'}
+    dependencies:
+      js-sha512: 0.8.0
+    dev: false
+
+  /@botpoison/node@0.1.10:
+    resolution: {integrity: sha512-sKkiQyfACvGYLvN6KUVwFTDru4tlutxYPoihsDMs6Pklso9ADfb78jShGfhvBYVXn6Vhf5z19yalaUmzU2yjfA==}
+    engines: {node: '>=10'}
+    dev: false
 
   /@clerk/backend@0.27.0:
     resolution: {integrity: sha512-Sj541JrpqAn1A/UwdyDBxFV3stq2A/Pe/8HdPTG3Cct6briPyavfi46O5s1+L3BSvUcKUY+UbM0+8VsoCNFi4w==}
@@ -1247,10 +1265,10 @@ packages:
     resolution: {integrity: sha512-RNiOoTPkptFtSVzQevY/yWtZwf/RxyVnPy/OcA9HBM3MlGDnBEYL5B41H0MTn0Uec8Hi+2qUtTfG2WWZBmMejQ==}
     dev: false
 
-  /@stripe/react-stripe-js@2.1.1(@stripe/stripe-js@2.0.0)(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-aHm6cWOqmOyq3eKKlR42hgvrcZhzc9ijL+BeXJ5H3uaWUKKcooSsBys0tiKl0gLxYQHUjUCvrRSX8fYaPBmAKg==}
+  /@stripe/react-stripe-js@2.1.2(@stripe/stripe-js@2.0.0)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-2JcKRvOdMD698uGrY0cINLHb6XHnY24L+wlWlw2+TbI2aXlQZ9t8Mc+KssFES+EuNgISbrp7fJR3w/13epfiOw==}
     peerDependencies:
-      '@stripe/stripe-js': ^1.44.1
+      '@stripe/stripe-js': ^1.44.1 || ^2.0.0
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
     dependencies:
@@ -3685,6 +3703,10 @@ packages:
   /js-cookie@3.0.1:
     resolution: {integrity: sha512-+0rgsUXZu4ncpPxRL+lNEptWMOWl9etvPHc/koSRp6MPwpRYAhmk0dUG00J4bxVV3r9uUzfo24wW0knS07SKSw==}
     engines: {node: '>=12'}
+    dev: false
+
+  /js-sha512@0.8.0:
+    resolution: {integrity: sha512-PWsmefG6Jkodqt+ePTvBZCSMFgN7Clckjd0O7su3I0+BW2QWUTJNzjktHsztGLhncP2h8mcF9V9Y2Ha59pAViQ==}
     dev: false
 
   /js-string-escape@1.0.1:
