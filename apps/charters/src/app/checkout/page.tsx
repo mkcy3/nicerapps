@@ -14,14 +14,14 @@ export default async function CheckoutPage({
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
   const { start, end, passengers, sleep } = searchParams
-  if (!(start || end || passengers)) return redirect('/trip')
+  if (!(start || end || passengers)) return redirect('/booking')
 
   const startDate = parseISO(start as string)
   const endDate = parseISO(end as string)
   const nights = differenceInCalendarDays(endDate, startDate)
 
   if (nights < 0 || nights > 14 || (nights > 0 && Number(passengers) > 6))
-    return redirect('/trip')
+    return redirect('/booking')
 
   const displayStartDate = format(startDate, 'dd MMM')
   const displayEndDate = format(endDate, 'dd MMM yyyy')

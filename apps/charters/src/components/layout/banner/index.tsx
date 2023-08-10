@@ -20,7 +20,7 @@ export default function Banner({ className }: { className?: string }) {
           )}
         >
           <p className="text-sm leading-6 text-white">
-            <Link href="/trip">
+            <Link href="/booking">
               <strong className="font-semibold">2023 Season</strong>
               <svg
                 viewBox="0 0 2 2"

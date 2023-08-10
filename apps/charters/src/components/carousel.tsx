@@ -63,7 +63,10 @@ export default function Carousel({ className }: { className: string }) {
                   {slide.subHeading}
                 </p>
 
-                <Link href="/trip" className={cn(buttonVariantStyles.primary)}>
+                <Link
+                  href="/booking"
+                  className={cn(buttonVariantStyles.primary)}
+                >
                   Browse dates
                 </Link>
               </div>

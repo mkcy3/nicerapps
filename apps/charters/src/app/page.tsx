@@ -18,14 +18,14 @@ const posts = [
   {
     id: 1,
     title: 'Day and Weekend Sailors',
-    href: '/trip',
+    href: '/booking',
     description: 'Sail away and enjoy a day on Beausoleil Island.',
     imageUrl: firstImage.src,
   },
   {
     id: 2,
     title: 'Week Long Adventurers',
-    href: '/trip',
+    href: '/booking',
     description:
       'See all the breath taking spots in Georgian Bay on a week long trip.',
     imageUrl: thirdImage.src,
@@ -33,7 +33,7 @@ const posts = [
   {
     id: 3,
     title: 'Aspiring Cruisers',
-    href: '/trip',
+    href: '/booking',
     description:
       'A special trip for mileage building and those looking to go cruising. This trip is packed with information about vessel operation, maintenance and offshore sailing.',
     imageUrl: secondImage.src,
@@ -61,7 +61,7 @@ export default function HomePage() {
               </p>
 
               <Link
-                href="/trip"
+                href="/booking"
                 className={cn(buttonVariantStyles.primary, 'w-fit')}
               >
                 Browse dates
