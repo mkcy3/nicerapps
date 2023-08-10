@@ -6,6 +6,8 @@ export const publicRoutes = [
   '/site',
   '/terms-of-use',
   '/faq',
+  '/sign-in',
+  '/sign-up',
 ]
 
 export const navbarNavigation = [
