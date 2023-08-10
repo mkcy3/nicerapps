@@ -1,6 +1,6 @@
 export const publicRoutes = [
   '/',
-  '/trip',
+  '/booking',
   '/rates',
   '/privacy',
   '/site',
@@ -11,7 +11,7 @@ export const publicRoutes = [
 ]
 
 export const navbarNavigation = [
-  { name: 'Book', href: '/trip' },
+  { name: 'Book', href: '/booking' },
   { name: 'Rates', href: '/rates' },
   { name: 'FAQ', href: '/faq' },
 ]
@@ -20,7 +20,7 @@ export const footerNavigation = {
   adventures: [
     { name: 'Destinations', href: '/#destinations' },
     { name: 'Skipper', href: '/#skipper' },
-    { name: 'Make a booking', href: '/trip' },
+    { name: 'Make a booking', href: '/booking' },
   ],
 
   resources: [

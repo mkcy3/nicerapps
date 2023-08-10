@@ -3,7 +3,7 @@ import { Elements } from '@stripe/react-stripe-js'
 
 import getStripe from '@/lib/stripe/get-stripe'
 
-import Extras from '../extras'
+import Extras from './extras'
 import StripeElements from './stripe-elements'
 
 const appearance = {

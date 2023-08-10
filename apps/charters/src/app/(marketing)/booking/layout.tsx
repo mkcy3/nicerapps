@@ -4,7 +4,7 @@ import { Suspense } from 'react'
 export const metadata: Metadata = {
   title: 'Book Your Trip',
 }
-export default function TripLayout({
+export default function BookingLayout({
   children,
 }: {
   children: React.ReactNode

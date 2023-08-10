@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test'
 
 test('booking page has months and sub calendars visible', async ({ page }) => {
-  await page.goto('http://localhost:3000/trip')
+  await page.goto('http://localhost:3000/booking')
   await expect(
     page.getByText(
       'May 2023SMTWTFS12345678910111213141516171819202122232425262728293031'
@@ -42,7 +42,7 @@ test('booking page has months and sub calendars visible', async ({ page }) => {
 test('select start date, end date and number of passengers', async ({
   page,
 }) => {
-  await page.goto('http://localhost:3000/trip')
+  await page.goto('http://localhost:3000/booking')
 
   await expect(page.getByRole('button', { name: 'Check in?' })).toBeVisible()
   await page

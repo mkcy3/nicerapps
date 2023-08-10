@@ -61,7 +61,7 @@ function LinkWrapper({
       <Link
         className={cn(buttonVariantStyles.primary, sharedStyle, classNames)}
         href={{
-          pathname: '/book',
+          pathname: '/checkout',
           query: {
             start: format(start, 'yyyy-MM-dd'),
             end: format(end, 'yyyy-MM-dd'),

@@ -4,11 +4,11 @@ import { redirect } from 'next/navigation'
 import { getCharterStatement } from '@/lib/stripe'
 import { formatAmountForDisplay } from '@/lib/utils'
 
-import StripeCheckout from './checkout'
+import StripeCheckout from '../../components/checkout'
 
 //TODO: proper date exception handling
 
-async function BookPage({
+export default async function CheckoutPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
@@ -78,5 +78,3 @@ async function BookPage({
     </StripeCheckout>
   )
 }
-
-export default BookPage

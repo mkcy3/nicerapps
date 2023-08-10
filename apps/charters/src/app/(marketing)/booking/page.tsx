@@ -30,7 +30,7 @@ async function getBookedDates() {
   return bookedDates
 }
 
-export default async function TripPage() {
+export default async function BookingPage() {
   const today = new Date()
   const cutOffDate = new Date(today.getFullYear(), 9, 10)
 
